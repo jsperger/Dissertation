@@ -1,0 +1,16 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+
+**.bbl
+**.pdf
+*.DS_Store
+*.log
+*.gz
+*.dvi
+*.aux
+*.html
+
+template/example_dissertation.tex
+archive/

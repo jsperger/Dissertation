@@ -1,0 +1,484 @@
+\documentclass[12pt,,letterpaper,twoside]{report}
+\usepackage[]{graphicx}
+\usepackage[]{color}
+
+%% maxwidth is the original width if it is less than linewidth
+%% otherwise use linewidth (to make sure the graphics do not exceed the margin)
+\makeatletter
+\def\maxwidth{ %
+  \ifdim\Gin@nat@width>\linewidth
+    \linewidth
+  \else
+    \Gin@nat@width
+  \fi
+}
+\makeatother
+
+\definecolor{fgcolor}{rgb}{0.345, 0.345, 0.345}
+\newcommand{\hlnum}[1]{\textcolor[rgb]{0.686,0.059,0.569}{#1}}%
+\newcommand{\hlstr}[1]{\textcolor[rgb]{0.192,0.494,0.8}{#1}}%
+\newcommand{\hlcom}[1]{\textcolor[rgb]{0.678,0.584,0.686}{\textit{#1}}}%
+\newcommand{\hlopt}[1]{\textcolor[rgb]{0,0,0}{#1}}%
+\newcommand{\hlstd}[1]{\textcolor[rgb]{0.345,0.345,0.345}{#1}}%
+\newcommand{\hlkwa}[1]{\textcolor[rgb]{0.161,0.373,0.58}{\textbf{#1}}}%
+\newcommand{\hlkwb}[1]{\textcolor[rgb]{0.69,0.353,0.396}{#1}}%
+\newcommand{\hlkwc}[1]{\textcolor[rgb]{0.333,0.667,0.333}{#1}}%
+\newcommand{\hlkwd}[1]{\textcolor[rgb]{0.737,0.353,0.396}{\textbf{#1}}}%
+\let\hlipl\hlkwb
+
+\usepackage{framed}
+\makeatletter
+\newenvironment{kframe}{%
+ \def\at@end@of@kframe{}%
+ \ifinner\ifhmode%
+  \def\at@end@of@kframe{\end{minipage}}%
+  \begin{minipage}{\columnwidth}%
+ \fi\fi%
+ \def\FrameCommand##1{\hskip\@totalleftmargin \hskip-\fboxsep
+ \colorbox{shadecolor}{##1}\hskip-\fboxsep
+     % There is no \\@totalrightmargin, so:
+     \hskip-\linewidth \hskip-\@totalleftmargin \hskip\columnwidth}%
+ \MakeFramed {\advance\hsize-\width
+   \@totalleftmargin\z@ \linewidth\hsize
+   \@setminipage}}%
+ {\par\unskip\endMakeFramed%
+ \at@end@of@kframe}
+\makeatother
+
+\definecolor{shadecolor}{rgb}{.97, .97, .97}
+\definecolor{messagecolor}{rgb}{0, 0, 0}
+\definecolor{warningcolor}{rgb}{1, 0, 1}
+\definecolor{errorcolor}{rgb}{1, 0, 0}
+\newenvironment{knitrout}{}{} % an empty environment to be redefined in TeX
+
+\usepackage{alltt}
+
+% Layout
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{titlesec}
+\usepackage[subfigure]{tocloft}
+\usepackage{mdframed}
+\usepackage{titletoc}
+
+% Citation style
+\usepackage{natbib}
+\usepackage{apalike}
+
+% include citations inline
+\usepackage{bibentry}
+\nobibliography*
+
+% Figures
+\usepackage{subfigure}
+\usepackage{epsfig}
+\usepackage{booktabs}
+\usepackage{multicol}
+\usepackage{listings}
+
+% Math
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+% Typography
+\usepackage{times}
+\usepackage{microtype}
+\usepackage{textcomp}
+
+% Macro support
+\usepackage{xspace}
+
+% PDF links
+\usepackage[hidelinks]{hyperref} % backref=page
+
+% Some packages to help with tables/figures
+\usepackage[section]{placeins}
+\usepackage{morefloats}
+\usepackage{amssymb}
+\usepackage{setspace}
+\usepackage{rotating}
+\usepackage{graphicx}
+\usepackage{booktabs} 
+\usepackage{stmaryrd}
+\usepackage{times}
+\usepackage{bm}
+\usepackage{indentfirst}
+
+% Use this command to start each chapter
+% The format allows chapters in the table 
+% of contents to meet grad school requirements
+% as of 2017
+
+\newcommand{\mychapter}[2]{
+    \setcounter{chapter}{#1}
+    \setcounter{section}{0}
+    \chapter*{#2}
+    \addcontentsline{toc}{chapter}{#2}
+}
+
+
+\usepackage{appendix}
+
+\input{DoctoralThesisTexTemplate/template/layout}
+
+\input{DoctoralThesisTexTemplate/template/macros}
+
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+
+% You can put custom definitions and other LaTeX header information here
+\DeclareMathOperator{\E}{{\rm I\kern-.3em E}}
+\DeclareMathOperator{\I}{{\rm I}}
+\DeclareMathOperator{\BR}{BR}
+\DeclareMathOperator*{\argmax}{argmax}
+\DeclareMathOperator*{\argmin}{argmin}
+\newcommand\norm[1]{\left\lVert#1\right\rVert}
+
+\begin{document}
+
+%--------   BEGIN FRONTMATTER -------------------------------------------------%
+% front matter pages use 2in top margin
+\newgeometry{left=1.25in,top=2in,right=1.25in,bottom=1in,nohead}
+\pagenumbering{roman}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% TITLEPAGE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{titlepage}
+\begin{center}
+
+% 1. The title of the thesis/dissertation, centered 2? below the top of the page
+
+\vspace{2in}
+\begin{singlespace}
+Experimental Designs for Pragmatic Trials and Precision Medicine
+\end{singlespace}
+
+
+% 2. Your name, centered 1? below the title.
+\vspace{61pt} % 1 in = 72pt, 11pt for the line with text
+John H. Sperger
+\end{center}
+
+\vspace{50pt}
+\begin{singlespace}
+\begin{center}
+\noindent 
+A dissertation submitted to the faculty of the University of North Carolina at Chapel Hill in partial fulfillment of the requirements for the degree of Doctor
+of Philosophy in the Department of Biostatistics in the Gillings School
+of Global Public Health.
+\end{center}
+\end{singlespace}
+
+
+%4. On the lower half of the page, centered, the words ?Chapel Hill?
+%and one line below that, the year in which your committee approves
+%the completed thesis/dissertation.
+\vspace{50pt}
+\begin{center}
+\begin{singlespace} 
+Chapel Hill\\
+2022
+\end{singlespace}
+\end{center}
+
+%5. On the right-hand side of the page, ?Approved by,? followed by lines for the
+%signatures of the adviser and four (two for thesis) readers. List
+ 
+
+\vfill
+\begin{flushright}
+\begin{minipage}[t]{1.5in} 
+Approved by:\\
+%To be approved by: \\
+ 
+ Dr.~Michael R. Kosorok \\  Dr.~Eric Laber \\ 
+ Dr.~Anastasia Ivanova \\  Dr.~Lisa M. Lavange \\  Dr.~Angela Smith \\ 
+
+\end{minipage}
+\end{flushright}
+
+\end{titlepage}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% COPYRIGHT %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%2. Copyright Page (optional)
+\newgeometry{left=1.25in,top=8.33in,right=1.25in,bottom=1in,nohead}
+
+%If you wish to copyright your thesis, you must include a copyright page with the following information single-spaced and centered on the bottom half of the page:
+%? Year 
+%Full Name (exactly as it appears on the title page) 
+%ALL RIGHTS RESERVED
+%This page should immediately follow the title page, and should bear the lower case Roman numeral: ii.
+
+\begin{center}
+\begin{singlespace}
+\copyright 2022 \\
+John H. Sperger \\
+ALL RIGHTS RESERVED
+\end{singlespace}
+\end{center}
+
+\clearpage
+\newgeometry{left=1.25in,top=2in,right=1.25in,bottom=1in,nohead}
+
+% Normal pages from here on out; TOC title takes care of 2in requirement.
+\restoregeometry
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% ABSTRACT %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%The word Abstract should be centered below the top of the page. 
+%Skip one line, then center your name followed by the title of the 
+%thesis/dissertation. Use as many lines as necessary. Centered below the 
+%title include the phrase, in parentheses, ?(Under the direction of  
+%_________)? and include the name(s) of the dissertation advisor(s).
+%Skip one line and begin the content of the abstract. It should be 
+%double-spaced and conform to margin guidelines. An abstract should not 
+%exceed 150 words for a thesis and 350 words for a dissertation. The 
+%latter is a requirement of both the Graduate School and UMI's 
+%Dissertation Abstracts International.
+%Because your dissertation abstract will be published, please prepare and 
+%proofread it carefully. Print all symbols and foreign words clearly and 
+%accurately to avoid errors or delays. Make sure that the title given at 
+%the top of the abstract has the same wording as the title shown on your 
+%title page. Avoid mathematical formulas, diagrams, and other 
+%illustrative materials, and only offer the briefest possible description 
+%of your thesis/dissertation and a concise summary of its conclusions. Do 
+%not include lengthy explanations and opinions.
+%The abstract should bear the lower case Roman number ii (if you did not 
+%include a copyright page) or iii (if you include a copyright page).
+
+\begin{center}
+\vspace*{52pt}
+{\normalsize \textbf{ABSTRACT}}
+\vspace{11pt}
+
+\begin{singlespace}
+ John H. Sperger : Experimental Designs for Pragmatic Trials and
+Precision Medicine \\
+(Under the direction of   Dr.~Michael R. Kosorok and  Dr.~Eric Laber)
+\end{singlespace}
+\end{center}
+
+Traditional clinical trial designs focus on demonstrating the efficacy
+of a treatment compared to a placebo quantified in terms of the average
+treatment effect (ATE). While these methods have been profoundly
+successful, the guidance they provide is limited compared to the rich
+complexity of information physicians consider when making their
+treatment recommendations. In recent decades, two separate strands of
+research have sought to build on these foundations while providing
+evidence that can better inform clinical decision-making: 1) comparative
+effectiveness studies that investigate the relative efficacy of multiple
+treatments for the same condition in terms of the ATE, and 2) precision
+medicine research that attempts to formalize the long-standing medical
+practice of tailoring treatment based on an individual's unique
+characteristics in a data-driven way. Equally allocating patients
+between treatments is not an efficient way to investigate these new
+research questions, and new experimental designs are needed to improve
+the information gained from clinical trials.
+
+We first tackle the question of how to design a trial when treatment effects vary depending
+on a patient's characteristics and our goal is to estimate a dynamic
+treatment regime (DTR) that will maximize the expected outcomes of the
+general population. To this end, we propose a sequential design that
+removes ineffective treatments at set intervals in the trial by
+evaluating the change in the value function if that treatment weren't
+available to assign in a DTR. This can be viewed as an extension of the
+successive rejection algorithm from the response-adaptive randomization
+(RAR) literature to the case where the expected response depends on
+contextual patient information. We discuss a trial design problem that
+motivated this design and conduct a simulation study to demonstrate the
+effectiveness of this design compared to equal allocation. 
+
+For further
+projects, I propose to extend this design to the structured case where
+one treatment can provide information about the expected response on
+another treatment (e.g.~different doses of the same medication).
+Eliminating ineffective treatments in the structured case will require
+modifying the decision criteria to account for potential information
+gain. I also propose a design for multi-level interventions that have an
+intervention at the individual level that can be fully randomized and a
+cluster-level intervention that is randomized using a stepped-wedge
+design. This is motivated by the ongoing NC Works4Health trial to
+evaluate the effectiveness of a multi-level intervention comprised of a
+lifestyle coaching program at the individual level and supervisor
+training at the employer level.
+
+\clearpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% DEDICATION %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%A dedication is an honorific statement from the author to a person or group to 
+%whom the author commends the effort and product of the dissertation. Most 
+%dedications are short statements of tribute beginning with ?To??. No heading is 
+%required on the dedication page. The text of short dedications should be 
+%centered between the left and right margins and 2? from the top of the page.
+\begin{center}
+\vspace*{52pt}
+
+\singlespacing
+
+I hope we passed the audition.
+
+\end{center}
+
+\pagebreak
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% ACKNOWLEDGEMENTS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%Acknowledgements are the author's statement of gratitude to and
+%recognition of the people and institutions who helped the author's
+%research and writing.
+\begin{center}
+\vspace*{52pt}
+{\normalsize \textbf{ACKNOWLEDGEMENTS}}
+\end{center}
+
+Thanks grandma!
+
+\clearpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% TABLE OF CONTENTS %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\renewcommand{\contentsname}{TABLE OF CONTENTS}
+\renewcommand{\cfttoctitlefont}{\normalsize\bfseries}
+\renewcommand{\cftaftertoctitle}{\hfill}
+\renewcommand{\cftdotsep}{1.5}
+\cftsetrmarg{1.0in}
+
+\setlength{\cftbeforetoctitleskip}{61pt}
+\setlength{\cftaftertoctitleskip}{28pt}
+
+
+
+% format chapter entries like other entries
+\renewcommand{\cftchapfont}{\normalfont}
+\renewcommand{\cftchappagefont}{\normalfont}
+\renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}
+
+\setlength{\cftbeforechapskip}{15pt}
+\setlength{\cftbeforesecskip}{10pt}
+\setlength{\cftbeforesubsecskip}{10pt}
+\setlength{\cftbeforesubsubsecskip}{10pt}
+
+\begin{singlespace}
+\begin{center}
+\tableofcontents
+\end{center}
+\end{singlespace}
+
+\clearpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LIST OF TABLES %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\renewcommand{\listtablename}{LIST OF TABLES}
+\phantomsection
+\addcontentsline{toc}{chapter}{LIST OF TABLES}
+
+\setlength{\cftbeforelottitleskip}{-11pt}
+\setlength{\cftafterlottitleskip}{22pt}
+\renewcommand{\cftlottitlefont}{\hfill\normalsize\bfseries}
+\renewcommand{\cftafterlottitle}{\hfill}
+
+\setlength{\cftbeforetabskip}{10pt}
+
+\begin{singlespace}
+\listoftables
+\end{singlespace}
+
+\clearpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LIST OF FIGURES %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\renewcommand{\listfigurename}{LIST OF FIGURES}
+\phantomsection
+\addcontentsline{toc}{chapter}{LIST OF FIGURES}
+
+\setlength{\cftbeforeloftitleskip}{-11pt} %11
+\setlength{\cftafterloftitleskip}{22pt} %22
+\renewcommand{\cftloftitlefont}{\hfill\normalsize\bfseries}
+\renewcommand{\cftafterloftitle}{\hfill}
+
+\setlength{\cftbeforefigskip}{10pt}
+\cftsetrmarg{1.0in}
+
+\begin{singlespace}
+\listoffigures
+\end{singlespace}
+\clearpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LIST OF ABBREVIATINS %%%%%%%%%%%%%%%%%%%%%%%%%
+\phantomsection
+\addcontentsline{toc}{chapter}{LIST OF ABBREVIATIONS}
+
+\begin{center}
+{\normalsize \textbf{LIST OF ABBREVIATIONS}}
+\end{center}
+
+\newcommand{\Ab}[2]{\noindent  #1 \> #2 \\}
+\newcommand{\Abi}[2]{\noindent #1 \hspace{1.5cm} \= #2 \\}
+
+\begin{tabbing}
+\Abi{LM}{Linear Model}\Abi{GLM}{Generalized Linear
+Model}\Abi{TS}{Thompson Sampling}\Abi{RAR}{Response-adaptive
+Randomization}
+\end{tabbing}
+
+\clearpage
+%------------ END FRONTMATTER -------------------------------------------------%
+
+%------------ BEGIN  MAIN TEXT ------------------------------------------------%
+
+\pagenumbering{arabic}
+
+\hypertarget{introduction}{%
+\section{Introduction}\label{introduction}}
+
+Test abstract
+
+\abstract{Testy Mctest}
+
+\hypertarget{getting-started}{%
+\subsection{Getting started}\label{getting-started}}
+
+\hypertarget{or-in-separate-files}{%
+\subsection{Or in separate files}\label{or-in-separate-files}}
+
+\hypertarget{literature-review}{%
+\section{Literature Review}\label{literature-review}}
+
+Or you can split chapters/sections/paragraphs or even words in separate
+child documents.
+
+\hypertarget{how-to-cite}{%
+\section{How to cite}\label{how-to-cite}}
+
+You can also cite other papers.
+
+\hypertarget{rmarkdown-syntax}{%
+\subsection{rmarkdown syntax}\label{rmarkdown-syntax}}
+
+You cite articles using \texttt{rmarkdown} syntax (google rmarkdown for
+helpful hints). For example, \citet{halmos1970howto} is a good text
+read. Or writing about mathematics is challenging
+\citep{halmos1970howto}.
+
+%------------ END MAIN TEXT ---------------------------------------------------%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%------------ BIBLIOGRAPHY ----------------------------------------------------%
+
+\clearpage
+\phantomsection
+
+{\def\chapter*#1{} % suppress bibliograph header.
+\begin{singlespace}
+\addcontentsline{toc}{chapter}{BIBLIOGRAPHY}
+\begin{center}
+\normalsize \textbf{BIBLIOGRAPHY}
+\vspace{17pt}
+\end{center}
+
+\bibliographystyle{apalike}
+\bibliography{dissertation.bib}
+\end{singlespace}
+}
+
+
+
+\end{document}

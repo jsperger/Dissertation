@@ -1,0 +1,83 @@
+---
+title: "Experimental Designs for Pragmatic Trials and Precision Medicine"
+author: 
+  first: John
+  last: Sperger
+  middle: H.
+year: 2022
+fontsize: 12pt
+output: 
+  pdf_document:
+    citation_package: natbib
+    keep_tex: true
+    fig_caption: true
+    latex_engine: pdflatex
+    template: DoctoralThesisTexTemplate/template/template.tex
+    includes: 
+      in_header: header_include.tex
+bibliography: dissertation.bib
+bibliography-style: asa
+toc: true
+lot: true
+lof: true
+committee:
+  advisors: 
+    - Dr. Michael R. Kosorok
+    - Dr. Eric Laber
+  members: 
+    - Dr. Anastasia Ivanova
+    - Dr. Lisa M. Lavange
+    - Dr. Angela Smith
+degree: Doctor of Philosophy
+department: Biostatistics
+school: Gillings School of Global Public Health
+dedication: I hope we passed the audition.
+abstract: "Traditional clinical trial designs focus on demonstrating the efficacy of a treatment compared to a placebo quantified in terms of the average treatment effect (ATE). While these methods have been profoundly successful, the guidance they provide is limited compared to the rich complexity of information physicians consider when making their treatment recommendations. In recent decades, two separate strands of research have sought to build on these foundations while providing evidence that can better inform clinical decision-making: 1) comparative effectiveness studies that investigate the relative efficacy of multiple treatments for the same condition in terms of the ATE, and 2) precision medicine research that attempts to formalize the long-standing medical practice of tailoring treatment based on an individual's unique characteristics in a data-driven way. Equally allocating patients between treatments is not an efficient way to investigate these new research questions, and new experimental designs are needed to improve the information gained from clinical trials. 
+
+
+
+
+We first tackle the question of how to design a trial when treatment effects vary depending on a patient's characteristics and our goal is to estimate a dynamic treatment regime (DTR) that will maximize the expected outcomes of the general population. To this end, we propose a sequential design that removes ineffective treatments at set intervals in the trial by evaluating the change in the value function if that treatment weren't available to assign in a DTR. This can be viewed as an extension of the successive rejection algorithm from the response-adaptive randomization (RAR) literature to the case where the expected response depends on contextual patient information. We discuss a trial design problem that motivated this design and conduct a simulation study to demonstrate the effectiveness of this design compared to equal allocation. 
+
+
+
+For further projects, I propose to extend this design to the structured case where one treatment can provide information about the expected response on another treatment (e.g. different doses of the same medication). Eliminating ineffective treatments in the structured case will require modifying the decision criteria to account for potential information gain. I also propose a design for multi-level interventions that have an intervention at the individual level that can be fully randomized and a cluster-level intervention that is randomized using a stepped-wedge design. This is motivated by the ongoing NC Works4Health trial to evaluate the effectiveness of a multi-level intervention comprised of a lifestyle coaching program at the individual level and supervisor training at the employer level."
+acknowledgements: Thanks grandma!
+abbreviations:
+ - short: LM
+   long: "Linear Model"
+ - short: GLM
+   long: "Generalized Linear Model"
+ - short: TS
+   long: "Thompson Sampling"
+ - short: RAR
+   long: "Response-adaptive Randomization"   
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+# Introduction 
+
+
+Test abstract
+
+\abstract{Testy Mctest}
+
+## Getting started
+
+
+## Or in separate files
+
+```{r, child='lit_review.Rmd'}
+```
+
+# How to cite
+
+You can also cite other papers.
+
+## rmarkdown syntax
+
+You cite articles using `rmarkdown` syntax (google rmarkdown for helpful hints). For example, @halmos1970howto is a good text read. Or writing about mathematics is challenging [@halmos1970howto].

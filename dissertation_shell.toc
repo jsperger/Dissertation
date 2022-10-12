@@ -1,0 +1,11 @@
+\contentsline {chapter}{LIST OF TABLES}{viii}{section*.1}
+\contentsline {chapter}{LIST OF FIGURES}{ix}{section*.2}
+\contentsline {chapter}{LIST OF ABBREVIATIONS}{x}{section*.3}
+\contentsline {section}{\numberline {0.1}Introduction}{1}{section.0.1}
+\contentsline {subsection}{\numberline {0.1.1}Getting started}{1}{subsection.0.1.1}
+\contentsline {subsection}{\numberline {0.1.2}Or in separate files}{1}{subsection.0.1.2}
+\contentsline {section}{\numberline {0.2}Literature Review}{1}{section.0.2}
+\contentsline {section}{\numberline {0.3}How to cite}{1}{section.0.3}
+\contentsline {subsection}{\numberline {0.3.1}rmarkdown syntax}{1}{subsection.0.3.1}
+\contentsline {chapter}{BIBLIOGRAPHY}{2}{section*.4}
+\contentsfinish 
