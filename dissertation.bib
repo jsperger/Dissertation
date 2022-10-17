@@ -1,9 +1,1106 @@
-@article{halmos1970howto,
-	author = {Halmos, Paul R.},
-	title = {How to Write Mathematics},
-	journal = {L'Enseignement Mathématique},
-	volume = {16},
-	number = {2},
-	pages = {123-152},
-	year = {1970},
+
+ @misc{dartmouth_atlas_data_2021, 
+ title={Dartmouth Atlas DATA}, 
+ url={https://data.dartmouthatlas.org/#coding_trends}, 
+ journal={Dartmouth Atlas DATA}, 
+ year={2021}} 
+ 
+ 
+@article{russo_simple_2016,
+	title = {Simple {Bayesian} {Algorithms} for {Best} {Arm} {Identification}},
+	url = {http://arxiv.org/abs/1602.08448},
+	abstract = {This paper considers the optimal adaptive allocation of measurement effort for identifying the best among a finite set of options or designs. An experimenter sequentially chooses designs to measure and observes noisy signals of their quality with the goal of confidently identifying the best design after a small number of measurements. This paper proposes three simple and intuitive Bayesian algorithms for adaptively allocating measurement effort, and formalizes a sense in which these seemingly naive rules are the best possible. One proposal is top-two probability sampling, which computes the two designs with the highest posterior probability of being optimal, and then randomizes to select among these two. One is a variant of top-two sampling which considers not only the probability a design is optimal, but the expected amount by which its quality exceeds that of other designs. The final algorithm is a modified version of Thompson sampling that is tailored for identifying the best design. We prove that these simple algorithms satisfy a sharp optimality property. In a frequentist setting where the true quality of the designs is fixed, one hopes the posterior definitively identifies the optimal design, in the sense that that the posterior probability assigned to the event that some other design is optimal converges to zero as measurements are collected. We show that under the proposed algorithms this convergence occurs at an exponential rate, and the corresponding exponent is the best possible among all allocation},
+	urldate = {2018-05-29},
+	journal = {arXiv:1602.08448 [cs]},
+	author = {Russo, Daniel},
+	month = feb,
+	year = {2016},
+	note = {arXiv: 1602.08448},
+	keywords = {Computer Science - Learning, thompson sampling, PCORI, BIOS70th},
+	file = {arXiv\:1602.08448 PDF:/Users/jsperger/Zotero/storage/JTNEL2DF/Russo - 2016 - Simple Bayesian Algorithms for Best Arm Identifica.pdf:application/pdf;arXiv.org Snapshot:/Users/jsperger/Zotero/storage/IIRTD29H/1602.html:text/html}
+}
+
+@article{russo_tutorial_2017,
+	title = {A {Tutorial} on {Thompson} {Sampling}},
+	url = {http://arxiv.org/abs/1707.02038},
+	abstract = {Thompson sampling is an algorithm for online decision problems where actions are taken sequentially in a manner that must balance between exploiting what is known to maximize immediate performance and investing to accumulate new information that may improve future performance. The algorithm addresses a broad range of problems in a computationally efficient manner and is therefore enjoying wide use. This tutorial covers the algorithm and its application, illustrating concepts through a range of examples, including Bernoulli bandit problems, shortest path problems, dynamic pricing, recommendation, active learning with neural networks, and reinforcement learning in Markov decision processes. Most of these problems involve complex information structures, where information revealed by taking an action informs beliefs about other actions. We will also discuss when and why Thompson sampling is or is not effective and relations to alternative algorithms.},
+	urldate = {2018-06-17},
+	journal = {arXiv:1707.02038 [cs]},
+	author = {Russo, Daniel and Van Roy, Benjamin and Kazerouni, Abbas and Osband, Ian and Wen, Zheng},
+	month = jul,
+	year = {2017},
+	note = {arXiv: 1707.02038},
+	keywords = {Computer Science - Learning},
+	file = {arXiv\:1707.02038 PDF:/Users/jsperger/Zotero/storage/73BQH3G3/Russo et al. - 2017 - A Tutorial on Thompson Sampling.pdf:application/pdf;arXiv.org Snapshot:/Users/jsperger/Zotero/storage/YYTGC9X4/1707.html:text/html}
+}
+
+@article{russo_tutorial_2018,
+	title = {A {Tutorial} on {Thompson} {Sampling}},
+	volume = {11},
+	doi = {10.1561/2200000070},
+	abstract = {Thompson sampling is an algorithm for online decision problems where actions are taken sequentially in a manner that must balance between exploiting what is known to maximize immediate performance and investing to accumulate new information that may improve future performance. The algorithm addresses a broad range of problems in a computationally eﬃcient manner and is therefore enjoying wide use. This tutorial covers the algorithm and its application, illustrating concepts through a range of examples, including Bernoulli bandit problems, shortest path problems, product recommendation, assortment, active learning with neural networks, and reinforcement learning in Markov decision processes. Most of these problems involve complex information structures, where information revealed by taking an action informs beliefs about other actions. We will also discuss when and why Thompson sampling is or is not eﬀective and relations to alternative algorithms.},
+	language = {en},
+	number = {1},
+	journal = {Foundations and Trends® in Machine Learning},
+	author = {Russo, Daniel J. and {Abbas Kazerouni, Benjamin Van Roy, Ian Osband, Zheng Wen}},
+	year = {2018},
+	keywords = {PCORI, BIOS70th},
+	pages = {1--96},
+	file = {Russo - A Tutorial on Thompson Sampling.pdf:/Users/jsperger/Zotero/storage/5K2Y6ZHE/Russo - A Tutorial on Thompson Sampling.pdf:application/pdf}
+}
+
+@article{thall_covariate-adjusted_2005,
+	title = {Covariate-adjusted adaptive randomization in a sarcoma trial with multi-stage treatments},
+	volume = {24},
+	issn = {1097-0258},
+	url = {https://onlinelibrary.wiley.com/doi/abs/10.1002/sim.2077},
+	doi = {10.1002/sim.2077},
+	abstract = {We present a Bayesian design for a multi-centre, randomized clinical trial of two chemotherapy regimens for advanced or metastatic unresectable soft tissue sarcoma. After randomization, each patient receives up to four stages of chemotherapy, with the patient's disease evaluated after each stage and categorized on a trinary scale of severity. Therapy is continued to the next stage if the patient's disease is stable, and is discontinued if either tumour response or treatment failure is observed. We assume a probability model that accounts for baseline covariates and the multi-stage treatment and disease evaluation structure. The design uses covariate-adjusted adaptive randomization based on a score that combines the patient's probabilities of overall treatment success or failure. The adaptive randomization procedure generalizes the method proposed by Thompson (1933) for two binomial distributions with beta priors. A simulation study of the design in the context of the sarcoma trial is presented. Copyright © 2005 John Wiley \& Sons, Ltd.},
+	language = {en},
+	number = {13},
+	urldate = {2019-06-03},
+	journal = {Statistics in Medicine},
+	author = {Thall, Peter F. and Wathen, J. Kyle},
+	year = {2005},
+	keywords = {sarcoma, adaptive design, PCORI, adaptive randomization, Bayesian design, clinical trial, covariate adjustment, BIOS70th},
+	pages = {1947--1964},
+	file = {Full Text PDF:/Users/jsperger/Zotero/storage/4GKMNG9A/Thall and Wathen - 2005 - Covariate-adjusted adaptive randomization in a sar.pdf:application/pdf;Snapshot:/Users/jsperger/Zotero/storage/6PTGYANC/sim.html:text/html}
+}
+
+@article{laber_optimal_2018,
+	title = {Optimal treatment allocations in space and time for on-line control of an emerging infectious disease},
+	volume = {67},
+	issn = {1467-9876},
+	url = {https://rss.onlinelibrary.wiley.com/doi/abs/10.1111/rssc.12266},
+	doi = {10.1111/rssc.12266},
+	abstract = {A key component in controlling the spread of an epidemic is deciding where, when and to whom to apply an intervention. We develop a framework for using data to inform these decisions in realtime. We formalize a treatment allocation strategy as a sequence of functions, one per treatment period, that map up-to-date information on the spread of an infectious disease to a subset of locations where treatment should be allocated. An optimal allocation strategy optimizes some cumulative outcome, e.g. the number of uninfected locations, the geographic footprint of the disease or the cost of the epidemic. Estimation of an optimal allocation strategy for an emerging infectious disease is challenging because spatial proximity induces interference between locations, the number of possible allocations is exponential in the number of locations, and because disease dynamics and intervention effectiveness are unknown at outbreak. We derive a Bayesian on-line estimator of the optimal allocation strategy that combines simulation–optimization with Thompson sampling. The estimator proposed performs favourably in simulation experiments. This work is motivated by and illustrated using data on the spread of white nose syndrome, which is a highly fatal infectious disease devastating bat populations in North America.},
+	language = {en},
+	number = {4},
+	urldate = {2019-06-03},
+	journal = {Journal of the Royal Statistical Society: Series C (Applied Statistics)},
+	author = {Laber, Eric B. and Meyer, Nick J. and Reich, Brian J. and Pacifici, Krishna and Collazo, Jaime A. and Drake, John M.},
+	year = {2018},
+	keywords = {Infectious disease control, Optimal allocation strategy, Thompson sampling, Treatment allocation, White nose syndrome},
+	pages = {743--789},
+	file = {Full Text PDF:/Users/jsperger/Zotero/storage/5KGTR9KI/Laber et al. - 2018 - Optimal treatment allocations in space and time fo.pdf:application/pdf;Snapshot:/Users/jsperger/Zotero/storage/BFESCIPP/rssc.html:text/html}
+}
+
+@article{bastani2020online,
+  title={Online decision making with high-dimensional covariates},
+  author={Bastani, Hamsa and Bayati, Mohsen},
+  journal={Operations Research},
+  volume={68},
+  number={1},
+  pages={276--294},
+  year={2020},
+  publisher={INFORMS}
+}
+
+@article{bastani2017mostly,
+  title={Mostly exploration-free algorithms for contextual bandits},
+  author={Bastani, Hamsa and Bayati, Mohsen and Khosravi, Khashayar},
+  journal={arXiv preprint arXiv:1704.09011},
+  year={2017}
+}
+
+@inproceedings{xu2018fully,
+  title={A fully adaptive algorithm for pure exploration in linear bandits},
+  author={Xu, Liyuan and Honda, Junya and Sugiyama, Masashi},
+  booktitle={International Conference on Artificial Intelligence and Statistics},
+  pages={843--851},
+  year={2018},
+  organization={PMLR}
+}
+
+@inproceedings{lattimore2017end,
+  title={The end of optimism? an asymptotic analysis of finite-armed linear bandits},
+  author={Lattimore, Tor and Szepesvari, Csaba},
+  booktitle={Artificial Intelligence and Statistics},
+  pages={728--737},
+  year={2017},
+  organization={PMLR}
+}
+
+@article{villar2018covariate,
+  title={Covariate-adjusted response-adaptive randomization for multi-arm clinical trials using a modified forward looking Gittins index rule},
+  author={Villar, Sof{\'\i}a S and Rosenberger, William F},
+  journal={Biometrics},
+  volume={74},
+  number={1},
+  pages={49--57},
+  year={2018},
+  publisher={Wiley Online Library}
+}
+
+@inproceedings{bubeck2009pure,
+  title={Pure exploration in multi-armed bandits problems},
+  author={Bubeck, S{\'e}bastien and Munos, R{\'e}mi and Stoltz, Gilles},
+  booktitle={International conference on Algorithmic learning theory},
+  pages={23--37},
+  year={2009},
+  organization={Springer}
+}
+
+@article{rubin1978bayesian,
+  title={Bayesian inference for causal effects: The role of randomization},
+  author={Rubin, Donald B},
+  journal={The Annals of statistics},
+  pages={34--58},
+  year={1978},
+  publisher={JSTOR}
+}
+
+@book{pukelsheim2006optimal,
+  title={Optimal design of experiments},
+  author={Pukelsheim, Friedrich},
+  year={2006},
+  publisher={SIAM}
+}
+
+@article{wathen2017simulation,
+  title={A simulation study of outcome adaptive randomization in multi-arm clinical trials},
+  author={Wathen, J Kyle and Thall, Peter F},
+  journal={Clinical Trials},
+  volume={14},
+  number={5},
+  pages={432--440},
+  year={2017},
+  publisher={SAGE Publications Sage UK: London, England}
+}
+
+@book{hu2006theory,
+  title={The theory of response-adaptive randomization in clinical trials},
+  author={Hu, Feifang and Rosenberger, William F},
+  volume={525},
+  year={2006},
+  publisher={John Wiley \& Sons}
+}
+
+@article{kosorok2019precision,
+  title={Precision medicine},
+  author={Kosorok, Michael R and Laber, Eric B},
+  journal={Annual review of statistics and its application},
+  volume={6},
+  pages={263--286},
+  year={2019},
+  publisher={Annual Reviews}
+}
+
+@article{lei2012smart,
+  title={A" SMART" design for building individualized treatment sequences},
+  author={Lei, Huitan and Nahum-Shani, Inbal and Lynch, Kevin and Oslin, David and Murphy, Susan A},
+  journal={Annual review of clinical psychology},
+  volume={8},
+  pages={21--48},
+  year={2012},
+  publisher={Annual Reviews}
+}
+
+@book{kosorok2015adaptive,
+  title={Adaptive treatment strategies in practice: planning trials and analyzing data for personalized medicine},
+  author={Kosorok, Michael R and Moodie, Erica EM},
+  year={2015},
+  publisher={SIAM}
+}
+
+@book{lattimore2020bandit,
+  title={Bandit algorithms},
+  author={Lattimore, Tor and Szepesv{\'a}ri, Csaba},
+  year={2020},
+  publisher={Cambridge University Press}
+}
+
+@article{thompson1933likelihood,
+  title={On the likelihood that one unknown probability exceeds another in view of the evidence of two samples},
+  author={Thompson, William R},
+  journal={Biometrika},
+  volume={25},
+  number={3/4},
+  pages={285--294},
+  year={1933},
+  publisher={JSTOR}
+}
+
+@article{villar2015multi,
+  title={Multi-armed bandit models for the optimal design of clinical trials: benefits and challenges},
+  author={Villar, Sof{\'\i}a S and Bowden, Jack and Wason, James},
+  journal={Statistical science: a review journal of the Institute of Mathematical Statistics},
+  volume={30},
+  number={2},
+  pages={199},
+  year={2015},
+  publisher={Europe PMC Funders}
+}
+
+@article{guo2017subgroup,
+  title={A subgroup cluster-based Bayesian adaptive design for precision medicine},
+  author={Guo, Wentian and Ji, Yuan and Catenacci, Daniel VT},
+  journal={Biometrics},
+  volume={73},
+  number={2},
+  pages={367--377},
+  year={2017},
+  publisher={Wiley Online Library}
+}
+
+@inproceedings{audibert2010best,
+  title={Best arm identification in multi-armed bandits.},
+  author={Audibert, Jean-Yves and Bubeck, S{\'e}bastien and Munos, R{\'e}mi},
+  booktitle={COLT},
+  pages={41--53},
+  year={2010}
+}
+
+@article{russo2020simple,
+  title={Simple Bayesian Algorithms for Best-Arm Identification},
+  author={Russo, Daniel},
+  journal={Operations Research},
+  volume={68},
+  number={6},
+  pages={1625--1647},
+  year={2020},
+  publisher={INFORMS}
+}
+
+@book{fedorov2013optimal,
+  title={Optimal design for nonlinear response models},
+  author={Fedorov, Valerii V and Leonov, Sergei L},
+  year={2013},
+  publisher={CRC Press}
+}
+
+@inproceedings{gopalan2015thompson,
+  title={Thompson sampling for learning parameterized markov decision processes},
+  author={Gopalan, Aditya and Mannor, Shie},
+  booktitle={Conference on Learning Theory},
+  pages={861--898},
+  year={2015},
+  organization={PMLR}
+}
+
+@article{ouyang2017learning,
+  title={Learning unknown markov decision processes: A thompson sampling approach},
+  author={Ouyang, Yi and Gagrani, Mukul and Nayyar, Ashutosh and Jain, Rahul},
+  journal={arXiv preprint arXiv:1709.04570},
+  year={2017}
+}
+
+@inproceedings{agrawal2013thompson,
+  title={Thompson sampling for contextual bandits with linear payoffs},
+  author={Agrawal, Shipra and Goyal, Navin},
+  booktitle={International Conference on Machine Learning},
+  pages={127--135},
+  year={2013},
+  organization={PMLR}
+}
+
+@inproceedings{agrawal2013further,
+  title={Further optimal regret bounds for thompson sampling},
+  author={Agrawal, Shipra and Goyal, Navin},
+  booktitle={Artificial intelligence and statistics},
+  pages={99--107},
+  year={2013},
+  organization={PMLR}
+}
+
+@article{agrawal2017near,
+author = {Agrawal, Shipra and Goyal, Navin},
+title = {Near-Optimal Regret Bounds for Thompson Sampling},
+year = {2017},
+issue_date = {October 2017},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+volume = {64},
+number = {5},
+issn = {0004-5411},
+url = {https://doi.org/10.1145/3088510},
+doi = {10.1145/3088510},
+abstract = {Thompson Sampling (TS) is one of the oldest heuristics for multiarmed bandit problems. It is a randomized algorithm based on Bayesian ideas and has recently generated significant interest after several studies demonstrated that it has favorable empirical performance compared to the state-of-the-art methods. In this article, a novel and almost tight martingale-based regret analysis for Thompson Sampling is presented. Our technique simultaneously yields both problem-dependent and problem-independent bounds: (1) the first near-optimal problem-independent bound of O(√ NT ln T) on the expected regret and (2) the optimal problem-dependent bound of (1 + ϵ)Σi ln T / d(μi,μ1) + O(N/ϵ2) on the expected regret (this bound was first proven by Kaufmann et al. (2012b)).Our technique is conceptually simple and easily extends to distributions other than the Beta distribution used in the original TS algorithm. For the version of TS that uses Gaussian priors, we prove a problem-independent bound of O(√ NT ln N) on the expected regret and show the optimality of this bound by providing a matching lower bound. This is the first lower bound on the performance of a natural version of Thompson Sampling that is away from the general lower bound of Ω (√ NT) for the multiarmed bandit problem.},
+journal = {J. ACM},
+month = sep,
+articleno = {30},
+numpages = {24},
+keywords = {Multi-armed bandits}
+}
+
+  
+
+@inproceedings{korda2013thompson,
+ author = {Korda, Nathaniel and Kaufmann, Emilie and Munos, Remi},
+ booktitle = {Advances in Neural Information Processing Systems},
+ editor = {C. J. C. Burges and L. Bottou and M. Welling and Z. Ghahramani and K. Q. Weinberger},
+ pages = {},
+ publisher = {Curran Associates, Inc.},
+ title = {Thompson Sampling for 1-Dimensional Exponential Family Bandits},
+ url = {https://proceedings.neurips.cc/paper/2013/file/aba3b6fd5d186d28e06ff97135cade7f-Paper.pdf},
+ volume = {26},
+ year = {2013}
+}
+
+@inproceedings{kaufmann2012thompson,
+  title={Thompson sampling: An asymptotically optimal finite-time analysis},
+  author={Kaufmann, Emilie and Korda, Nathaniel and Munos, R{\'e}mi},
+  booktitle={International conference on algorithmic learning theory},
+  pages={199--213},
+  year={2012},
+  organization={Springer}
+}
+
+@inproceedings{agrawal2012analysis,
+  title={Analysis of thompson sampling for the multi-armed bandit problem},
+  author={Agrawal, Shipra and Goyal, Navin},
+  booktitle={Conference on learning theory},
+  pages={39--1},
+  year={2012},
+  organization={JMLR Workshop and Conference Proceedings}
+}
+
+
+@article{lai1985asymptotically,
+  title={Asymptotically efficient adaptive allocation rules},
+  author={Lai, Tze Leung and Robbins, Herbert},
+  journal={Advances in applied mathematics},
+  volume={6},
+  number={1},
+  pages={4--22},
+  year={1985},
+  publisher={Academic Press}
+}
+
+@article{neyman1934aspects,
+ ISSN = {09528385},
+ URL = {http://www.jstor.org/stable/2342192},
+ author = {Jerzy Neyman},
+ journal = {Journal of the Royal Statistical Society},
+ number = {4},
+ pages = {558--625},
+ publisher = {[Wiley, Royal Statistical Society]},
+ title = {On the Two Different Aspects of the Representative Method: The Method of Stratified Sampling and the Method of Purposive Selection},
+ volume = {97},
+ year = {1934}
+}
+
+
+@article{sperger2020future,
+  title={The future of precision health is data-driven decision support},
+  author={Sperger, John and Freeman, Nikki LB and Jiang, Xiaotong and Bang, David and de Marchi, Daniel and Kosorok, Michael R},
+  journal={Statistical Analysis and Data Mining: The ASA Data Science Journal},
+  volume={13},
+  number={6},
+  pages={537--543},
+  year={2020},
+  publisher={Wiley Online Library}
+}
+
+@article{loftus2018causal,
+  title={Causal reasoning for algorithmic fairness},
+  author={Loftus, Joshua R and Russell, Chris and Kusner, Matt J and Silva, Ricardo},
+  journal={arXiv preprint arXiv:1805.05859},
+  year={2018}
+}
+
+@article{corbett2018measure,
+  title={The measure and mismeasure of fairness: A critical review of fair machine learning},
+  author={Corbett-Davies, Sam and Goel, Sharad},
+  journal={arXiv preprint arXiv:1808.00023},
+  year={2018}
+}
+
+@article{berk2018fairness,
+  title={Fairness in criminal justice risk assessments: The state of the art},
+  author={Berk, Richard and Heidari, Hoda and Jabbari, Shahin and Kearns, Michael and Roth, Aaron},
+  journal={Sociological Methods \& Research},
+  pages={0049124118782533},
+  year={2018},
+  publisher={Sage Publications Sage CA: Los Angeles, CA}
+}
+
+
+@article{zou_ai_2018,
+  title={{AI} can be sexist and racist—it’s time to make it fair},
+	volume = {559},
+	copyright = {2019 Nature},
+	url = {https://www.nature.com/articles/d41586-018-05707-8},
+	doi = {10.1038/d41586-018-05707-8},
+	abstract = {Computer scientists must identify sources of bias, de-bias training data and develop artificial-intelligence algorithms that are robust to skews in the data.},
+	language = {en},
+	number = {7714},
+	urldate = {2019-12-01},
+	journal = {Nature},
+	author = {Zou, James and Schiebinger, Londa},
+	month = jul,
+	year = {2018},
+	pages = {324--326},
+}
+
+@article{osband2015bootstrapped,
+  title={Bootstrapped thompson sampling and deep exploration},
+  author={Osband, Ian and Van Roy, Benjamin},
+  journal={arXiv preprint arXiv:1507.00300},
+  year={2015}
+}
+
+@book{gelman2013bayesian,
+  title={Bayesian data analysis},
+  author={Gelman, Andrew and Carlin, John B and Stern, Hal S and Dunson, David B and Vehtari, Aki and Rubin, Donald B},
+  year={2013},
+  publisher={CRC press}
+}
+
+@article{simpson2017penalising,
+  title={Penalising model component complexity: A principled, practical approach to constructing priors},
+  author={Simpson, Daniel and Rue, H{\aa}vard and Riebler, Andrea and Martins, Thiago G and S{\o}rbye, Sigrunn H},
+  journal={Statistical science},
+  volume={32},
+  number={1},
+  pages={1--28},
+  year={2017},
+  publisher={Institute of Mathematical Statistics}
+}
+
+@article{gelman2008weakly,
+  title={A weakly informative default prior distribution for logistic and other regression models},
+  author={Gelman, Andrew and Jakulin, Aleks and Pittau, Maria Grazia and Su, Yu-Sung},
+  journal={The annals of applied statistics},
+  volume={2},
+  number={4},
+  pages={1360--1383},
+  year={2008},
+  publisher={Institute of Mathematical Statistics}
+}
+
+@article{berger2006case,
+  title={The case for objective Bayesian analysis},
+  author={Berger, James},
+  journal={Bayesian analysis},
+  volume={1},
+  number={3},
+  pages={385--402},
+  year={2006},
+  publisher={International Society for Bayesian Analysis}
+}
+
+@inproceedings{liu2016prior,
+  title={On the prior sensitivity of Thompson sampling},
+  author={Liu, Che-Yu and Li, Lihong},
+  booktitle={International Conference on Algorithmic Learning Theory},
+  pages={321--336},
+  year={2016},
+  organization={Springer}
+}
+
+
+@article{nabi2020bayesian,
+  title={Bayesian Meta-Prior Learning Using Empirical Bayes},
+  author={Nabi, Sareh and Nassif, Houssam and Hong, Joseph and Mamani, Hamed and Imbens, Guido},
+  journal={arXiv preprint arXiv:2002.01129},
+  year={2020}
+}
+
+@article{simchowitz2021bayesian,
+  title={Bayesian decision-making under misspecified priors with applications to meta-learning},
+  author={Simchowitz, Max and Tosh, Christopher and Krishnamurthy, Akshay and Hsu, Daniel and Lykouris, Thodoris and Dud{\'\i}k, Miroslav and Schapire, Robert E},
+  journal={arXiv preprint arXiv:2107.01509},
+  year={2021}
+}
+
+@inproceedings{honda2014optimality,
+  title={Optimality of Thompson sampling for Gaussian bandits depends on priors},
+  author={Honda, Junya and Takemura, Akimichi},
+  booktitle={Artificial Intelligence and Statistics},
+  pages={375--383},
+  year={2014},
+  organization={PMLR}
+}
+
+@inproceedings{kveton2019garbage,
+  title={Garbage in, reward out: Bootstrapping exploration in multi-armed bandits},
+  author={Kveton, Branislav and Szepesvari, Csaba and Vaswani, Sharan and Wen, Zheng and Lattimore, Tor and Ghavamzadeh, Mohammad},
+  booktitle={International Conference on Machine Learning},
+  pages={3601--3610},
+  year={2019},
+  organization={PMLR}
+}
+
+@article{angus2020remap,
+  title={The REMAP-CAP (randomized embedded multifactorial adaptive platform for community-acquired pneumonia) study. rationale and design},
+  author={Angus, Derek C and Berry, Scott and Lewis, Roger J and Al-Beidh, Farah and Arabi, Yaseen and van Bentum-Puijk, Wilma and Bhimani, Zahra and Bonten, Marc and Broglio, Kristine and Brunkhorst, Frank and others},
+  journal={Annals of the American Thoracic Society},
+  volume={17},
+  number={7},
+  pages={879--891},
+  year={2020},
+  publisher={American Thoracic Society}
+}
+
+@article{barker2009spy,
+  title={I-SPY 2: an adaptive breast cancer trial design in the setting of neoadjuvant chemotherapy},
+  author={Barker, AD and Sigman, CC and Kelloff, GJ and Hylton, NM and Berry, DA and Esserman, LJs},
+  journal={Clinical Pharmacology \& Therapeutics},
+  volume={86},
+  number={1},
+  pages={97--100},
+  year={2009},
+  publisher={Wiley Online Library}
+}
+
+@book{efron1994introduction,
+  title={An introduction to the bootstrap},
+  author={Efron, Bradley and Tibshirani, Robert J},
+  year={1994},
+  publisher={CRC press}
+}
+
+@article{efron7bootstrap,
+  title={Bootstrap methods: Another look at the jackknife, 1979},
+  author={Efron, B},
+  journal={The Annals of Statistics},
+  volume={7},
+  number={1},
+  pages={126}
+}
+
+@article{miller2003rehabilitating,
+  title={Rehabilitating equipoise},
+  author={Miller, Paul B and Weijer, Charles},
+  journal={Kennedy Institute of Ethics Journal},
+  volume={13},
+  number={2},
+  pages={93--118},
+  year={2003},
+  publisher={Johns Hopkins University Press}
+}
+
+@article{saxman2015ethical,
+  title={Ethical considerations for outcome-adaptive trial designs: a clinical researcher's perspective},
+  author={Saxman, Scott Brian},
+  journal={Bioethics},
+  volume={29},
+  number={2},
+  pages={59--65},
+  year={2015},
+  publisher={Wiley Online Library}
+}
+
+@book{fried1974medical,
+	author = {Charles Fried},
+	year = {1974},
+	title = {Medical Experimentation: Personal Integrity and Social Policy}
+}
+
+@article{freedman1987equipoise,
+  title={Equipoise and the Ethics of Clinical Research},
+  author={Freedman, Benjamin},
+  journal={New England Journal of Medicine},
+  volume={317},
+  number={3},
+  pages={141--145},
+  year={1987}
+}
+
+@article{moore2020variation,
+  title={Variation in the estimated costs of pivotal clinical benefit trials supporting the US approval of new therapeutic agents, 2015--2017: a cross-sectional study},
+  author={Moore, Thomas J and Heyward, James and Anderson, Gerard and Alexander, G Caleb},
+  journal={BMJ open},
+  volume={10},
+  number={6},
+  pages={e038863},
+  year={2020},
+  publisher={British Medical Journal Publishing Group}
+}
+
+@article{tomkins2021intelligentpooling,
+  title={IntelligentPooling: practical Thompson sampling for mHealth},
+  author={Tomkins, Sabina and Liao, Peng and Klasnja, Predrag and Murphy, Susan},
+  journal={Machine Learning},
+  pages={1--43},
+  year={2021},
+  publisher={Springer}
+}
+
+@article{kim2011battle,
+  title={The BATTLE trial: personalizing therapy for lung cancer},
+  author={Kim, Edward S and Herbst, Roy S and Wistuba, Ignacio I and Lee, J Jack and Blumenschein, George R and Tsao, Anne and Stewart, David J and Hicks, Marshall E and Erasmus, Jeremy and Gupta, Sanjay and others},
+  journal={Cancer discovery},
+  volume={1},
+  number={1},
+  pages={44--53},
+  year={2011},
+  publisher={AACR}
+}
+
+
+@article{papadimitrakopoulou2016battle,
+  title={The BATTLE-2 study: a biomarker-integrated targeted therapy study in previously treated patients with advanced non--small-cell lung cancer},
+  author={Papadimitrakopoulou, Vassiliki and Lee, J Jack and Wistuba, Ignacio I and Tsao, Anne S and Fossella, Frank V and Kalhor, Neda and Gupta, Sanjay and Byers, Lauren Averett and Izzo, Julie G and Gettinger, Scott N and others},
+  journal={Journal of clinical oncology},
+  volume={34},
+  number={30},
+  pages={3638},
+  year={2016},
+  publisher={American Society of Clinical Oncology}
+}
+
+@article{smith1918standard,
+  title={On the standard deviations of adjusted and interpolated values of an observed polynomial function and its constants and the guidance they give towards a proper choice of the distribution of observations},
+  author={Smith, Kirstine},
+  journal={Biometrika},
+  volume={12},
+  number={1/2},
+  pages={1--85},
+  year={1918},
+  publisher={JSTOR}
+}
+
+@misc{zhang2021inference,
+      title={Inference for Batched Bandits}, 
+      author={Kelly W. Zhang and Lucas Janson and Susan A. Murphy},
+      year={2021},
+      eprint={2002.03217},
+      archivePrefix={arXiv},
+      primaryClass={cs.LG}
+}
+
+@misc{hadad2021confidence,
+      title={Confidence Intervals for Policy Evaluation in Adaptive Experiments}, 
+      author={Vitor Hadad and David A. Hirshberg and Ruohan Zhan and Stefan Wager and Susan Athey},
+      year={2021},
+      eprint={1911.02768},
+      archivePrefix={arXiv},
+      primaryClass={stat.ML}
+}
+
+@article{ma2020statistical,
+  title={Statistical inference for covariate-adaptive randomization procedures},
+  author={Ma, Wei and Qin, Yichen and Li, Yang and Hu, Feifang},
+  journal={Journal of the American Statistical Association},
+  volume={115},
+  number={531},
+  pages={1488--1497},
+  year={2020},
+  publisher={Taylor \& Francis}
+}
+
+@article{robertson2020response,
+  title={Response-adaptive randomization in clinical trials: from myths to practical considerations},
+  author={Robertson, David S and Lee, Kim May and Lopez-Kolkovska, Boryana C and Villar, Sofia S},
+  journal={arXiv preprint arXiv:2005.00564},
+  year={2020}
+}
+
+@article{qian2021micro,
+  title={The Micro-Randomized Trial for Developing Digital Interventions: Experimental Design and Data Analysis Considerations},
+  author={Qian, Tianchen and Walton, Ashley E and Collins, Linda M and Klasnja, Predrag and Lanza, Stephanie T and Nahum-Shani, Inbal and Rabbi, Mashifiqui and Russell, Michael A and Walton, Maureen A and Yoo, Hyesun and others},
+  journal={arXiv preprint arXiv:2107.03544},
+  year={2021}
+}
+
+@article{bidargaddi2020designing,
+  title={Designing m-Health interventions for precision mental health support},
+  author={Bidargaddi, N and Schrader, G and Klasnja, P and Licinio, J and Murphy, S},
+  journal={Translational psychiatry},
+  volume={10},
+  number={1},
+  pages={1--8},
+  year={2020},
+  publisher={Nature Publishing Group}
+}
+
+@misc{dong2019performance,
+      title={On the Performance of Thompson Sampling on Logistic Bandits}, 
+      author={Shi Dong and Tengyu Ma and Benjamin Van Roy},
+      year={2019},
+      eprint={1905.04654},
+      archivePrefix={arXiv},
+      primaryClass={stat.ML}
+}
+
+@misc{dumitrascu2018pgts,
+      title={PG-TS: Improved Thompson Sampling for Logistic Contextual Bandits}, 
+      author={Bianca Dumitrascu and Karen Feng and Barbara E Engelhardt},
+      year={2018},
+      eprint={1805.07458},
+      archivePrefix={arXiv},
+      primaryClass={stat.ML}
+}
+
+@article{li2013generalized,
+  title={Generalized Thompson sampling for contextual bandits},
+  author={Li, Lihong},
+  journal={arXiv preprint arXiv:1310.7163},
+  year={2013}
+}
+
+@book{atkinson2019randomised,
+  title={Randomised response-adaptive designs in clinical trials},
+  author={Atkinson, Anthony C and Biswas, Atanu},
+  year={2019},
+  publisher={Chapman and Hall/CRC}
+}
+
+@article{robbins1952some,
+  title={Some aspects of the sequential design of experiments},
+  author={Robbins, Herbert},
+  journal={Bulletin of the American Mathematical Society},
+  volume={58},
+  number={5},
+  pages={527--535},
+  year={1952},
+  publisher={American Mathematical Society}
+}
+
+@article{bush1953stochastic,
+  title={A stochastic model with applications to learning},
+  author={Bush, Robert R and Mosteller, Frederick},
+  journal={The Annals of Mathematical Statistics},
+  pages={559--585},
+  year={1953},
+  publisher={JSTOR}
+}
+
+@book{wald1947sequential,
+  title={Sequential analysis.},
+  author={Wald, Abraham},
+  year={1947},
+  publisher={John Wiley}
+}
+
+@incollection{tewari2017ads,
+  title={From ads to interventions: Contextual bandits in mobile health},
+  author={Tewari, Ambuj and Murphy, Susan A},
+  booktitle={Mobile Health},
+  pages={495--517},
+  year={2017},
+  publisher={Springer}
+}
+
+@article{woodroofe1979one,
+  title={A one-armed bandit problem with a concomitant variable},
+  author={Woodroofe, Michael},
+  journal={Journal of the American Statistical Association},
+  volume={74},
+  number={368},
+  pages={799--806},
+  year={1979},
+  publisher={Taylor \& Francis}
+}
+
+@article{langford2007epoch,
+  title={The epoch-greedy algorithm for multi-armed bandits with side information},
+  author={Langford, John and Zhang, Tong},
+  journal={Advances in neural information processing systems},
+  volume={20},
+  year={2007}
+}
+
+@article{gittins1979bandit,
+  title={Bandit processes and dynamic allocation indices},
+  author={Gittins, John C},
+  journal={Journal of the Royal Statistical Society: Series B (Methodological)},
+  volume={41},
+  number={2},
+  pages={148--164},
+  year={1979},
+  publisher={Wiley Online Library}
+}
+
+@book{van2000asymptotic,
+  title={Asymptotic statistics},
+  author={Van der Vaart, Aad W},
+  volume={3},
+  year={2000},
+  publisher={Cambridge university press}
+}
+
+@book{berger2013statistical,
+  title={Statistical decision theory and Bayesian analysis},
+  author={Berger, James O},
+  year={2013},
+  publisher={Springer Science \& Business Media}
+}
+
+@inproceedings{carpentier2016tight,
+  title={Tight (lower) bounds for the fixed budget best arm identification bandit problem},
+  author={Carpentier, Alexandra and Locatelli, Andrea},
+  booktitle={Conference on Learning Theory},
+  pages={590--604},
+  year={2016},
+  organization={PMLR}
+}
+
+@article{emerson1990parameter,
+  title={Parameter estimation following group sequential hypothesis testing},
+  author={Emerson, Scott S and Fleming, Thomas R},
+  journal={Biometrika},
+  volume={77},
+  number={4},
+  pages={875--892},
+  year={1990},
+  publisher={Oxford University Press}
+}
+
+@misc{nie2017adaptively,
+      title={Why Adaptively Collected Data Have Negative Bias and How to Correct for It}, 
+      author={Xinkun Nie and Xiaoying Tian and Jonathan Taylor and James Zou},
+      year={2017},
+      eprint={1708.01977},
+      archivePrefix={arXiv},
+      primaryClass={stat.ML}
+}
+
+@article{xu2013estimation,
+  title={Estimation bias in multi-armed bandit algorithms for search advertising},
+  author={Xu, Min and Qin, Tao and Liu, Tie-Yan},
+  journal={Advances in Neural Information Processing Systems},
+  volume={26},
+  year={2013}
+}
+
+@article{melfi2000estimation,
+  title={Estimation after adaptive allocation},
+  author={Melfi, Vincent F and Page, Connie},
+  journal={Journal of Statistical Planning and Inference},
+  volume={87},
+  number={2},
+  pages={353--363},
+  year={2000},
+  publisher={Elsevier}
+}
+
+@article{butler2018incorporating,
+  title={Incorporating patient preferences into estimation of optimal individualized treatment rules},
+  author={Butler, Emily L and Laber, Eric B and Davis, Sonia M and Kosorok, Michael R},
+  journal={Biometrics},
+  volume={74},
+  number={1},
+  pages={18--26},
+  year={2018},
+  publisher={Wiley Online Library}
+}
+
+@article{fleming2005surrogate,
+  title={Surrogate endpoints and FDA’s accelerated approval process},
+  author={Fleming, Thomas R},
+  journal={Health affairs},
+  volume={24},
+  number={1},
+  pages={67--78},
+  year={2005},
+  publisher={Project HOPE-The People-to-People Health Foundation, Inc.}
+}
+
+@article{gyawali2020evaluating,
+  title={Evaluating the evidence behind the surrogate measures included in the FDA's table of surrogate endpoints as supporting approval of cancer drugs},
+  author={Gyawali, Bishal and Hey, Spencer P and Kesselheim, Aaron S},
+  journal={EClinicalMedicine},
+  volume={21},
+  pages={100332},
+  year={2020},
+  publisher={Elsevier}
+}
+
+@article{fleming1996surrogate,
+  title={Surrogate end points in clinical trials: are we being misled?},
+  author={Fleming, Thomas R and DeMets, David L},
+  journal={Annals of internal medicine},
+  volume={125},
+  number={7},
+  pages={605--613},
+  year={1996},
+  publisher={American College of Physicians}
+}
+
+@book{tsiatis2019dynamic,
+  title={Dynamic treatment regimes: Statistical methods for precision medicine},
+  author={Tsiatis, Anastasios A and Davidian, Marie and Holloway, Shannon T and Laber, Eric B},
+  year={2019},
+  publisher={Chapman and Hall/CRC}
+}
+
+@inproceedings{li2011unbiased,
+  title={Unbiased offline evaluation of contextual-bandit-based news article recommendation algorithms},
+  author={Li, Lihong and Chu, Wei and Langford, John and Wang, Xuanhui},
+  booktitle={Proceedings of the fourth ACM international conference on Web search and data mining},
+  pages={297--306},
+  year={2011}
+}
+
+@article{chen2021statistical,
+  title={Statistical inference for online decision making: In a contextual bandit setting},
+  author={Chen, Haoyu and Lu, Wenbin and Song, Rui},
+  journal={Journal of the American Statistical Association},
+  volume={116},
+  number={533},
+  pages={240--255},
+  year={2021},
+  publisher={Taylor \& Francis}
+}
+
+@article{bibaut2021post,
+  title={Post-contextual-bandit inference},
+  author={Bibaut, Aur{\'e}lien and Dimakopoulou, Maria and Kallus, Nathan and Chambaz, Antoine and van der Laan, Mark},
+  journal={Advances in Neural Information Processing Systems},
+  volume={34},
+  year={2021}
+}
+
+
+@InProceedings{jin21dMOTS,
+  title = 	 {MOTS: Minimax Optimal Thompson Sampling},
+  author =       {Jin, Tianyuan and Xu, Pan and Shi, Jieming and Xiao, Xiaokui and Gu, Quanquan},
+  booktitle = 	 {Proceedings of the 38th International Conference on Machine Learning},
+  pages = 	 {5074--5083},
+  year = 	 {2021},
+  editor = 	 {Meila, Marina and Zhang, Tong},
+  volume = 	 {139},
+  series = 	 {Proceedings of Machine Learning Research},
+  month = 	 {18--24 Jul},
+  publisher =    {PMLR},
+  pdf = 	 {http://proceedings.mlr.press/v139/jin21d/jin21d.pdf},
+  url = 	 {https://proceedings.mlr.press/v139/jin21d.html},
+  abstract = 	 {Thompson sampling is one of the most widely used algorithms in many online decision problems due to its simplicity for implementation and superior empirical performance over other state-of-the-art methods. Despite its popularity and empirical success, it has remained an open problem whether Thompson sampling can achieve the minimax optimal regret O(\sqrt{TK}) for K-armed bandit problems, where T is the total time horizon. In this paper we fill this long open gap by proposing a new Thompson sampling algorithm called MOTS that adaptively truncates the sampling result of the chosen arm at each time step. We prove that this simple variant of Thompson sampling achieves the minimax optimal regret bound O(\sqrt{TK}) for finite time horizon T and also the asymptotic optimal regret bound when $T$ grows to infinity as well. This is the first time that the minimax optimality of multi-armed bandit problems has been attained by Thompson sampling type of algorithms.}
+}
+
+@article{russo2014learning,
+  title={Learning to optimize via information-directed sampling},
+  author={Russo, Daniel and Van Roy, Benjamin},
+  journal={Advances in Neural Information Processing Systems},
+  volume={27},
+  year={2014}
+}
+
+@article{ivanova2003play,
+  title={A play-the-winner-type urn design with reduced variability},
+  author={Ivanova, Anastasia},
+  journal={Metrika},
+  volume={58},
+  number={1},
+  pages={1--13},
+  year={2003},
+  publisher={Springer}
+}
+
+@article{cordoba2010definition,
+  title={Definition, reporting, and interpretation of composite outcomes in clinical trials: systematic review},
+  author={Cordoba, Gloria and Schwartz, Lisa and Woloshin, Steven and Bae, Harold and G{\o}tzsche, Peter C},
+  journal={Bmj},
+  volume={341},
+  year={2010},
+  publisher={British Medical Journal Publishing Group}
+}
+
+@article{thall1998some,
+  title={Some extensions and applications of a Bayesian strategy for monitoring multiple outcomes in clinical trials},
+  author={Thall, Peter F and Sung, Hsi-Guang},
+  journal={Statistics in medicine},
+  volume={17},
+  number={14},
+  pages={1563--1580},
+  year={1998},
+  publisher={Wiley Online Library}
+}
+
+@article{benjamin2019assessing,
+  title={Assessing risk, automating racism},
+  author={Benjamin, Ruha},
+  journal={Science},
+  volume={366},
+  number={6464},
+  pages={421--422},
+  year={2019},
+  publisher={American Association for the Advancement of Science}
+}
+
+@article{li2019nearly,
+  title={Nearly Minimax-Optimal Regret for Linearly Parameterized Bandits},
+  author={Li, Yingkai and Wang, Yining and Zhou, Yuan},
+  journal={arXiv preprint arXiv:1904.00242},
+  year={2019}
+}
+
+ @article{van2018contextual,
+  title={contextual: Evaluating contextual multi-armed bandit problems in R},
+  author={van Emden, Robin and Kaptein, Maurits},
+  journal={arXiv preprint arXiv:1811.01926},
+  year={2018}
+}
+
+@misc{vowpal,
+  author = {Vowpal Wabbit Team},
+  title = {Vowpal Wabbit},
+  year = 2022,
+  url = {vowpalwabbit.org},
+  urldate = {2022-05-30}
+}
+
+@article{thall2015statistical,
+  title={Statistical controversies in clinical research: scientific and ethical problems with adaptive randomization in comparative clinical trials},
+  author={Thall, Peter and Fox, Patricia and Wathen, J},
+  journal={Annals of Oncology},
+  volume={26},
+  number={8},
+  pages={1621--1628},
+  year={2015},
+  publisher={Elsevier}
+}
+
+@article{chen2016personalized,
+  title={Personalized dose finding using outcome weighted learning},
+  author={Chen, Guanhua and Zeng, Donglin and Kosorok, Michael R},
+  journal={Journal of the American Statistical Association},
+  volume={111},
+  number={516},
+  pages={1509--1521},
+  year={2016},
+  publisher={Taylor \& Francis}
+}
+
+@inproceedings{zhu2020kernel,
+  title={Kernel assisted learning for personalized dose finding},
+  author={Zhu, Liangyu and Lu, Wenbin and Kosorok, Michael R and Song, Rui},
+  booktitle={Proceedings of the 26th ACM SIGKDD International Conference on Knowledge Discovery \& Data Mining},
+  pages={56--65},
+  year={2020}
+}
+
+@article{guo2017bayesian,
+  title={Bayesian phase I/II biomarker-based dose finding for precision medicine with molecularly targeted agents},
+  author={Guo, Beibei and Yuan, Ying},
+  journal={Journal of the American Statistical Association},
+  volume={112},
+  number={518},
+  pages={508--520},
+  year={2017},
+  publisher={Taylor \& Francis}
+}
+
+@article{zhou2021parsimonious,
+  title={A parsimonious personalized dose-finding model via dimension reduction},
+  author={Zhou, Wenzhuo and Zhu, Ruoqing and Zeng, Donglin},
+  journal={Biometrika},
+  volume={108},
+  number={3},
+  pages={643--659},
+  year={2021},
+  publisher={Oxford University Press}
+}
+
+@article{goodman1995some,
+  title={Some practical improvements in the continual reassessment method for phase I studies},
+  author={Goodman, Steven N and Zahurak, Marianna L and Piantadosi, Steven},
+  journal={Statistics in medicine},
+  volume={14},
+  number={11},
+  pages={1149--1161},
+  year={1995},
+  publisher={Wiley Online Library}
+}
+
+@article{o1990continual,
+  title={Continual reassessment method: a practical design for phase 1 clinical trials in cancer},
+  author={O'Quigley, John and Pepe, Margaret and Fisher, Lloyd},
+  journal={Biometrics},
+  pages={33--48},
+  year={1990},
+  publisher={JSTOR}
 }

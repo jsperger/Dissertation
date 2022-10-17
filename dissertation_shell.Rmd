@@ -42,7 +42,7 @@ We first tackle the question of how to design a trial when treatment effects var
 
 
 For further projects, I propose to extend this design to the structured case where one treatment can provide information about the expected response on another treatment (e.g. different doses of the same medication). Eliminating ineffective treatments in the structured case will require modifying the decision criteria to account for potential information gain. I also propose a design for multi-level interventions that have an intervention at the individual level that can be fully randomized and a cluster-level intervention that is randomized using a stepped-wedge design. This is motivated by the ongoing NC Works4Health trial to evaluate the effectiveness of a multi-level intervention comprised of a lifestyle coaching program at the individual level and supervisor training at the employer level."
-acknowledgements: Thanks grandma!
+acknowledgements: To be acknowledged at a later date.
 abbreviations:
  - short: LM
    long: "Linear Model"
@@ -62,22 +62,20 @@ knitr::opts_chunk$set(echo = FALSE)
 # Introduction 
 
 
-Test abstract
+# Literature Review
 
-\abstract{Testy Mctest}
-
-## Getting started
-
-
-## Or in separate files
-
-```{r, child='lit_review.Rmd'}
+```{r, child='001_lit_terminology.Rmd'}
 ```
 
-# How to cite
 
-You can also cite other papers.
 
-## rmarkdown syntax
+# Succesive Rejection for the Contextual Bandit
 
-You cite articles using `rmarkdown` syntax (google rmarkdown for helpful hints). For example, @halmos1970howto is a good text read. Or writing about mathematics is challenging [@halmos1970howto].
+```{r, child='110_p1_intro.Rmd'}
+```
+
+```{r, child='120_p1_problem_definition.Rmd'}
+```
+
+```{r, child='130_p1_method.Rmd'}
+```

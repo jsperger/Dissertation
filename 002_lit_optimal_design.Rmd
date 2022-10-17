@@ -1,0 +1,45 @@
+---
+output: pdf_document
+---
+
+# Optimal Design
+
+The word ``optimal'' is frequently encountered in the discussion of trial designs with a rich history going back until at least the pioneering work of Kirstine Smith in her 1918 dissertation \citep{smith1918standard}.
+
+
+
+*Control over the context space*
+
+*Deterministic rewards*
+
+## Common Kinds of Optimality
+
+$c$-optimality
+$\min \log \text{det}\left(c^T(X^TX)^{-1}c\right)$
+
+$c \in \mathbb{R}^d$
+
+$d$-optimality
+
+$\min \log \text{det}\left((X^TX)^{-1}\right)$
+
+
+
+$g$-optimality
+
+## Optimal Design in Clinical Trials
+
+Atkinson
+
+Elving Set
+
+Barycentric Spanners
+
+Geometric design
+
+Very dependent on the shape of the function
+
+When the response is a linear function of the parameters the optimal design puts the entirety of the observations
+on the edges of the design space. 
+When the response is a quadtratic function, the optimal design splits half of the observations between the edges of the design space and the other half is placed in the middle of the design space.
+Christine Smith worked out the optimal design for polynomial functions up to degree six. The degree must be known in advance. The optimal design for a lower degree polynomial will not be optimal for higher degree polynomials; indeed it may not be estimable at all.

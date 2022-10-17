@@ -1,0 +1,48 @@
+---
+output: pdf_document
+---
+
+## Problem Definition 
+
+We will now formalize the statement of the problem. At time $t = 1, \ldots [T]$ a new subject 
+enters the study and we observe their covariate information encoded in a vector $x_t \in  \mathcal{X} \subseteq \mathbb{R}^d$ where
+$X_1, \ldots, X_2$ are independent and identically distributed random variables with context distribution $\mathcal{D}$. 
+After this covariate information is observed, a treatment (arm, action) $a_t \in \mathcal{A}$ is assigned according to an assignment policy $\pi: \mathcal{X} \times \mathcal{H}_{t-1} \to \mathcal{A}$ where $\mathcal{H}_{t-1} = \left\{(x_1, a_1, r_1), \ldots, (x_{t - 1}, a_{t - 1}, r_{t -1})\right\}$ is the collected history of contexts, actions, and rewards through time $t-1$ with $\mathcal{H}_0 = null$
+. The outcome (reward) $r_t \in [0,1]$ is immediately observed. The conditional expected reward is a fixed but unknown function of the covariate and treatment information $\E[r_t |x_t, a_t] = f(x_t, a_t)$. 
+
+
+
+### Objective
+
+Our goal will be to minimize the expected regret in the target population based on the estimated 
+optimal policy $\widehat{\pi}_T$ at the conclusion of the study. This does not take into account any of the 
+outcomes in the study except insofar as they influence the estimation of the optimal policy at the end of the trial.
+
+$\mathrm{Reg}_{\text{pop}} = \E_{X, \pi}[f^*(\pi^*(x), x) - f^*(\widehat{\pi}_T(x), x)]$
+
+### Assumptions
+
+
+*Assumption - realizibility*
+
+There exists $f^* \in \mathcal{F}$ s.t. $\E[Y | x_t, a_t] = f^*(x_t, a_t)$
+
+*Assumption - rewards*
+
+$Y_t = f^*(a_t, \pi_t) + \epsilon_t$
+
+Where $\epsilon_t$ is a fixed but unknown distribution. Because $Y_t$ is bounded this implies
+that $\epsilon_t$ has a sub-Gaussian distribution.
+
+*Assumption - Function Class*
+
+$|\mathcal{F}|$ is bounded
+
+$\mathrm{VC}(\mathcal{F})$ is bounded where $\mathrm{VC}$ is Vapnik-Chernis dimension
+
+*Assumption - Oracle Access - Foster'20*
+
+We assume that we have access to a solver
+
+$\widehat{f}_m = \argmin_{f \in \mathcal{F}} \sum_{t = \tau_{m-1}}^{\tau_m - 1} \left(f(x_t, a_t) - r(x_t, a_t) \right)^2$
+

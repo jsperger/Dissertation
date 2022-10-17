@@ -1,0 +1,18 @@
+---
+output: pdf_document
+---
+
+## Method
+
+The logic of our method is to increase the sample size for better treatments at 
+the expense of inferior treatments by sequentially eliminating treatments that 
+are not optimal for any subset of patients. It proceeds by splitting the available samples $T$ into $M$ epochs where 
+$M = ceiling(\log_2{T})$. At the end of an epoch the set of feasible treatments for the next epoch, $\mathcal{A}_{m + 1}$,
+is formed by constructing confidence intervals around the estimated value functions for the estimated optimal policies
+if treatment $a$ were not available $\pi_{\not a} = \pi: \mathcal{H} \times \mathcal{X} \to \mathcal{A} \, \backslash \, a$.
+If a treatment is *not* part of the optimal DTR then the value function doesn't change when it is removed, that is $\mathcal{V}(\pi_{\not a}) = \mathcal{V}(\pi)$. For mathematical simplicity, we will only use the observations in the most recent epoch to determine the set of feasible treatments for the next epoch. Because the assignments within an epoch are random with equal probability the parameter estiamtes will be unbiased. Data from past epochs could be incorporated using an AIPW estimator in practice.
+
+$\mathcal{V}(\pi) = \E_X[Y^*(\pi(X))]$
+
+$\mathcal{V}(\pi_{\not a})$
+
