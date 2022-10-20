@@ -1,0 +1,23 @@
+---
+output: pdf_document
+---
+
+
+Determining dosages that are both efficacious and safe is a key step in drug development. This dosage is often dependent on patients' characteristics such as age, weight, and disease-specific biomarkers. Often these differences are dealt with qualitatively or ignored in early-phase clinical trials. The question of estimating an optimal personal dosing role has received some attention in the past with the growing interest in precision medicine. This literature focused on estimating personalized dose responses after data has been collected \citep{chen2016personalized, zhu2020kernel, zhou2021parsimonious}. In this project, we will instead investigate how to design a clinical trial when the goal is to estimate an optimal dosing rule and we're able to adapt the randomization probabilities over time. 
+
+\subsection{Previous work}
+
+Dose-finding trials have a rich tradition of adaptivity from the (deservedly) statistically maligned 3+3 design to more statistically sound methods including Bayesian Continual Reassessment Method \cite{o1990continual, goodman1995some}. More recently, \cite{guo2017bayesian} propose an adaptive design when there are biomarkers that affect dose response utilizing Thompson Sampling. However, their objective is to maximize the expected number of successes within the trial rather than most accurately estimate the rule so that when it's applied to the general population it minimizes the expected regret. 
+
+In the bandit literature, this type of problem is an example of a structured bandit problem where playing one arm provides some information about the expected reward of playing a different arm. The linear bandit problem is the simplest structured bandit problem, and in it, the expected response is given by $a^T \theta$ where the parameter vector $\theta$ is shared across all actions, we have full control over which $a \in \mathcal{A} = \{a_1, \ldots, a_k\}$ we select, and the response does not include any covariate information \cite{xu2018fully}. The optimism under uncertainty principle that's used in unstructured bandit problems like the MAB and CMAB problems are suboptimal in a structured bandit problem \citep{lattimore2017end}.
+
+
+\subsection{Problem Definition}
+
+We consider a trial where the sample size $T$ is fixed, there is a single treatment with $K$ possible dosages, and the researcher is able to adapt the randomization probability for the $t$-th patient based on the accumulated data of the trial up to that point. 
+ Each treatment $k$ is associated with an unknown parameter vector $\beta_k \in \mathbb{R}^d$. For any integer $k$, let $[k]$ denote the set $\{1, \ldots, k \}$. At each time $t = 1, \ldots, T$, we observe a new individual with baseline covariates $x_t \in \mathbb{R}^d$. The experimenter then uses a randomization policy $\pi(x_t)$ to assign this individual to a treatment $a_t \in [K]$ and observes a stochastic linear outcome
+$$Y_{t} = X_t^T \beta_k + A_t^T\theta + \epsilon_{t}$$
+
+\subsection{Proposed Method}
+
+Propose to extend the successive rejection algorithm to the structured case by modifying the rejection criteria to include the potential information gain that an arm provides. 

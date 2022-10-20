@@ -10,20 +10,22 @@ For a natural number $n$, let $[n]$ denote the set $\{1, \ldots, n\}$
 
 ## Problem Definition
 
-    \begin{itemize}
-    \item $t \in [T]$ indexes the observations
-    \item $k \in [K]$ indexes arms 
+\begin{itemize}
+    
+\item $t \in [T]$ indexes the observations
+
+\item $k \in [K]$ indexes arms 
 
 \item $X_t \in  \mathcal{X} \subseteq \mathbb{R}^d$ denotes the context (covariate) vector at time $t$
 
 We'll assume that $\mathcal{X}$ has been rescaled so that $\mathcal{X} \subseteq [0, 1]^d$ for simplicity
 
-     \item $A_t \in [K] \equiv \mathcal{A}$ denotes the arm (action, treatment) chosen at time $t$
+\item $A_t \in [K] \equiv \mathcal{A}$ denotes the arm (action, treatment) chosen at time $t$
      
 
-     \item $\beta_k$ is the parameter vector associated with arm $k$
+ \item $\beta_k$ is the parameter vector associated with arm $k$
 
-     \item $Y_t \in \mathbb{R}$ denotes the outcome at time $t$
+\item $Y_t \in \mathbb{R}$ denotes the outcome at time $t$
 
 \item $\mathcal{H}_t = \sigma(X_1, A_1, Y_1, \ldots, A_{t - 1}, Y_{t -1}, X_t)$ the collected history available at prior to making the assignment for patient $t$
 \end{itemize}

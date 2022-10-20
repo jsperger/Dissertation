@@ -31,7 +31,7 @@ committee:
 degree: Doctor of Philosophy
 department: Biostatistics
 school: Gillings School of Global Public Health
-dedication: I hope we passed the audition.
+dedication: In loving memory of Connie and Herb Sperger. 
 abstract: "Traditional clinical trial designs focus on demonstrating the efficacy of a treatment compared to a placebo quantified in terms of the average treatment effect (ATE). While these methods have been profoundly successful, the guidance they provide is limited compared to the rich complexity of information physicians consider when making their treatment recommendations. In recent decades, two separate strands of research have sought to build on these foundations while providing evidence that can better inform clinical decision-making: 1) comparative effectiveness studies that investigate the relative efficacy of multiple treatments for the same condition in terms of the ATE, and 2) precision medicine research that attempts to formalize the long-standing medical practice of tailoring treatment based on an individual's unique characteristics in a data-driven way. Equally allocating patients between treatments is not an efficient way to investigate these new research questions, and new experimental designs are needed to improve the information gained from clinical trials. 
 
 
@@ -74,6 +74,12 @@ $\mcE$
 ```{r, child='002_lit_optimal_design.Rmd'}
 ```
 
+```{r, child='002_bandit_objectives.Rmd'}
+```
+
+```{r, child='002_regret_power.Rmd'}
+```
+
 # Succesive Rejection for the Contextual Bandit
 
 ```{r, child='110_p1_intro.Rmd'}
@@ -84,6 +90,7 @@ $\mcE$
 
 ```{r, child='130_p1_method.Rmd'}
 ```
+
 
 ## High Probability Events
 
@@ -96,6 +103,13 @@ $\mcE$
 ```{r, child='149c_p1_hpe_mt.Rmd'}
 ```
 
+# Proposal Two
+
+```{r, child='200_proposal_two.Rmd'}
+```
+
+
+# Proposal Three
 
 # Appendix
 

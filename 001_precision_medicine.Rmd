@@ -18,4 +18,6 @@ patients to treatments based on their covariates $\pi: \mcX \to \mcA$. The data 
 comes is assumed to come in the form of a triple $(X, A, Y)$ where $X$ is a vector denoting the patient's covariate information, $A$ the action taken, and $Y$ the response observed. Then the history at time $t$ $\mcH_t$ is a filtration that encapsulates all the complete data available $\mcH_t = \sigma\left((X_1, A_1, Y_1), \ldots, (X_t, A_t, Y_t)\right)$. Letting
 $Y^*\left(\pi(X)\right)$ denote the potential outcome if a patient with covariates $X$ were treated according to DTR $\pi$,
 the value of a DTR $\mcV(\pi)$ is defined as the expected value of assigning treatments according to the DTR:
-$mcV(\pi) = \E_X[Y^*(\pi(X))]$. The statistical goal of precision medicine is to estimate an optimal DTR $\pi^*$ that maximizes the value function $\mcV(pi^*) \geq \mcV(\pi) \,\forall \pi \in \Pi$. We say an optimal DTR because there does not need to be a unique optimal DTR, though many authors may impose this assumption for simplicity. 
+$mcV(\pi) = \E_X[Y^*(\pi(X))]$. The statistical goal of precision medicine is to estimate an optimal DTR $\pi^*$ that maximizes the value function $\mcV(pi^*) \geq \mcV(\pi) \,\forall \pi \in \Pi$. We say an optimal DTR because there does not need to be a unique optimal DTR, though many authors may impose this assumption for simplicity.
+
+SMARTs
