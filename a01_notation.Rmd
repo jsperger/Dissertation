@@ -5,6 +5,11 @@ output: pdf_document
 
 \section{Notation}
 For a natural number $n$, let $[n]$ denote the set $\{1, \ldots, n\}$ 
+
+## Optimal Design
+
+## Problem Definition
+
     \begin{itemize}
     \item $t \in [T]$ indexes the observations
     \item $k \in [K]$ indexes arms 
@@ -21,4 +26,17 @@ We'll assume that $\mathcal{X}$ has been rescaled so that $\mathcal{X} \subseteq
      \item $Y_t \in \mathbb{R}$ denotes the outcome at time $t$
 
 \item $\mathcal{H}_t = \sigma(X_1, A_1, Y_1, \ldots, A_{t - 1}, Y_{t -1}, X_t)$ the collected history available at prior to making the assignment for patient $t$
+\end{itemize}
+
+## Algorithm-related 
+
+#### Tuning parameters
+\begin{itemize}
+\item $\delta$ failure probability
+\item $\beta_m$ Confidence radius
+\item $\mu_m$ smoothing parameter
+\item $\lambda_m$ instance dependent scale factor
+\item $\gamma_m$ Learning rate. 
+
+$$\gamma_m = \lambda_m \sqrt{\frac{| \mcA| n_{m-1}}{\log{2 | \mcF | T^2 / \delta}}}$$
 \end{itemize}

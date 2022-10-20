@@ -18,7 +18,7 @@ Our goal will be to minimize the expected regret in the target population based 
 optimal policy $\widehat{\pi}_T$ at the conclusion of the study. This does not take into account any of the 
 outcomes in the study except insofar as they influence the estimation of the optimal policy at the end of the trial.
 
-$\mathrm{Reg}_{\text{pop}} = \E_{X, \pi}[f^*(\pi^*(x), x) - f^*(\widehat{\pi}_T(x), x)]$
+$$\mathrm{Reg}_{\text{pop}} = \E_{X, \pi}[f^*(\pi^*(x), x) - f^*(\widehat{\pi}_T(x), x)]$$
 
 ### Assumptions
 

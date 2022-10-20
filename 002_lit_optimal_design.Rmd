@@ -4,28 +4,35 @@ output: pdf_document
 
 # Optimal Design
 
-The word ``optimal'' is frequently encountered in the discussion of trial designs with a rich history going back until at least the pioneering work of Kirstine Smith in her 1918 dissertation \citep{smith1918standard}.
+The word ``optimal'' is frequently encountered in the discussion of trial designs.
+The optimal design literature has a rich history going back until at least the pioneering work of Kirstine Smith in her 1918 dissertation \citep{smith1918standard}. Before delving into their results, it is important to emphasize that optimality is always contingent on an objective and the assumptions made about the problem. This is at odds with the non-technical usage of optimal meaning the "best possible" because, outside of extremely trivial special cases, a design that is optimal for one standard objective will \emph{not} be optimal for a different objective \citep{silvey1980optimal, bubeck2009pure}. 
 
+Additionally, the results from this literature are not always directly applicable to clinical research.
+It is often assumed that we have full control to choose a point to sample, while 
+in clinical trials we must take patients as they are (subject to certain inclusion/exclusion criteria). 
+Similarly rewards may be deterministic rather than stochastic. These optimality results can still 
+provide a useful target; one technique for adaptive designs is to find the optimal 
+design and then modify the randomization to target it \citep{atkinson1982optimum, atkinson1992optimum}.
 
-
-*Control over the context space*
-
-*Deterministic rewards*
 
 ## Common Kinds of Optimality
 
-$c$-optimality
-$\min \log \text{det}\left(c^T(X^TX)^{-1}c\right)$
+To review the basic objectives for optimal design, consider the problem of
+estimating a linear response function $\E[Y] = X^T \beta$. Perhaps the most common
+objective in optimal design is $d$-optimality which is motivated by the goal of minimizing the volume for the confidence ellipsoid around $\beta$.  The volume of the confidence ellipsoid for $\beta$ is proportional to $\det{(XX^T)}^{-1/2}$, and so maximizing $\det{(XX^T)}$ makes this ellipsoid as small as possible. 
 
-$c \in \mathbb{R}^d$
+$$\text{d-optimal criterion:=} \max_{X \in \mathcal{X}}  \text{det}\left(XX^T\right)$$
+The $d$-optimality criterion is concerned with the overall volume of the confidence ellipsoid,
+while we might only be interested in a particular point or region. This desire motivates 
+$c$- and $V$-optimality which try respectivelyto minimize the confidence region at a point and in a particular region. 
+For a given $c \in \mathcal{X}$ of interest, the $c$-optimality criterion is defined as 
+$\argmin_{X \in \mathcal{X}} c^T(XX^T)^{-1}c$. The $V$-optimality criterion is defined in
+a similar fashion except we'll define a region of interest $C \subseteq \mathcal{X}$, and then
+$\argmin_{X \in \mathcal{X}} \int_{c \in C}c^T(XX^T)^{-1}c \, \mathrm{d}F(c)$.
+$c$- and $V$- optimal designs have an intuitive appeal because the whole covariate space 
+is not usually equally interesting; an attractive property of $d$-optimality that is not shared by 
+either $c$- or $V$-optimality is that it is invariant to reparameterizations.
 
-$d$-optimality
-
-$\min \log \text{det}\left((X^TX)^{-1}\right)$
-
-
-
-$g$-optimality
 
 ## Optimal Design in Clinical Trials
 

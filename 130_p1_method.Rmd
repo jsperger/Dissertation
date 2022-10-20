@@ -16,3 +16,29 @@ $\mathcal{V}(\pi) = \E_X[Y^*(\pi(X))]$
 
 $\mathcal{V}(\pi_{\not a})$
 
+
+### Meta-algorithm
+
+
+\begin{algorithm}[H]
+\SetAlgoVlined
+\KwIn{Sample size $N$, Treatment arms $[K]$}
+\SetKwFunction{FindDominatedArms}{FindDominatedArms}
+\SetKwFunction{WithinEpochRandomization}{WithinEpochRandomization}
+
+Set the number of epochs $L = \lceil \log_2{K} \rceil$
+
+Define epoch boundaries $\tau_m = 2^m$
+
+Set epoch sample sizes to $t_m = \tau_m - \tau_{m - 1}$
+
+Set active arm set $\mathcal{A}_1 = [K]$
+
+ \For{$l = 1, \ldots, L$}{
+  Assign patients to $a \in \mathcal{A}_l$ using \WithinEpochRandomization 
+  
+Update active arm set $\mathcal{A}_{l + 1} = \mathcal{A}_l \, \backslash$ \FindDominatedArms{$\mathcal{A}_l, \, \mathcal{H}_t$}
+  
+ }
+ \caption{Contextual Drop the Loser Meta-algorithm}
+\end{algorithm}

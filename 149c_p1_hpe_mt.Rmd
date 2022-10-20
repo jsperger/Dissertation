@@ -1,0 +1,14 @@
+---
+output: pdf_document
+---
+
+Let $D_{\delta} = 16 \log{\frac{2 | \mcF | T^2 }{\delta}}$
+
+
+Define $M_t(f) = \left(f(x_t, a_t) - r_t(a_t) \right)^2 - \left(f^*(x_t, a_t) - r_t(a_t) \right)^2$
+
+Let $\hpeMt$ denote the event that 
+
+$$\sum_{t = \tau}^{\tau'} \E[M_t(f) | \mcH_{t - 1} ] \leq C_{\delta} + 2 \sum_{t = \tau}^{\tau'}M_(f)$$
+
+For all $f \in \mcF$, and $\tau, \tau' \in [T]$ $\hpeMt$ holds with probability at least $1-\delta / 2$

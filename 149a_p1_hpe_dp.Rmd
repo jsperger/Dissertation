@@ -1,0 +1,16 @@
+---
+output: pdf_document
+---
+
+Taken from Foster 20 (add citation)
+
+## $\hpeDP$
+
+Set $\mu_m = \frac{64 \log{4M/\delta}}{n_{m-1}}$ for all $m \in [M]$. 
+Let $\delta$ be a fixed in the interval $(0, 1]$, and then define the event 
+$\hpeDP$ as the event that for all $m \in [M]$
+
+$$\hpeDP := \{2/3 \varrho \leq \widehat{\varrho} \leq 4/3 \varrho\}$$
+
+$\hpeDP$ holds with probability at least $1 - \delta/2$
+

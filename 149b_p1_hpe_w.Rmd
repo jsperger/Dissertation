@@ -1,0 +1,16 @@
+---
+output: pdf_document
+---
+
+
+## $\hpeW$
+
+Let $\delta$ be a fixed in the interval $(0, 1]$, and for all $m \in [M]$ let 
+$\hpeW^{(m)}$ denote the event that
+
+$$\hpeW^{(m)} = \begin{cases} \widehat{w}_m \in [2/3 w_m, 4/3w_m] & \text{if } w_m \geq \frac{64}{n_{m-1}} \log{4M/\delta} \\ \widehat{w}_m < \frac{65}{n_{m-1}} \log{4M/\delta} & \text{if } w_m > \frac{64}{n_{m-1}} \log{4M/\delta}
+\end{cases}$$
+
+Define the event $\hpeW = \cap_{m = 1}^{M} \hpeW^{(m)}$
+
+Then $hpeW$ holds with probability at least $1 - \delta/2$

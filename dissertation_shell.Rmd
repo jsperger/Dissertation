@@ -61,13 +61,18 @@ knitr::opts_chunk$set(echo = FALSE)
 
 # Introduction 
 
+$\mcE$
 
 # Literature Review
 
 ```{r, child='001_lit_terminology.Rmd'}
 ```
 
+```{r, child='001_precision_medicine.Rmd'}
+```
 
+```{r, child='002_lit_optimal_design.Rmd'}
+```
 
 # Succesive Rejection for the Contextual Bandit
 
@@ -78,4 +83,21 @@ knitr::opts_chunk$set(echo = FALSE)
 ```
 
 ```{r, child='130_p1_method.Rmd'}
+```
+
+## High Probability Events
+
+```{r, child='149a_p1_hpe_dp.Rmd'}
+```
+
+```{r, child='149b_p1_hpe_w.Rmd'}
+```
+
+```{r, child='149c_p1_hpe_mt.Rmd'}
+```
+
+
+# Appendix
+
+```{r, child='a01_notation.Rmd'}
 ```

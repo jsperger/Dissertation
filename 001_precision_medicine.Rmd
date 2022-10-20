@@ -1,0 +1,21 @@
+---
+output: pdf_document
+---
+
+# Precision Medicine
+
+Precision medicine, and more recently precision health out of recognition for the broader applications
+of these methods beyond clinical medicine, is a movement to formalize the long-standing practice of physicians
+tailoring their treatments to the characteristics of their patients and the 
+disease presentation. The goal is to improve the health of individuals and populations
+by taking heterogeneity into account in an empirically-driven and statistically-sound way \citep{kosorok2015adaptive, kosorok2019precision}. The apex of this approach is decision support tools, and perhaps in the future,
+automated decision making in appropriate contexts \citep{sperger2020future}.
+
+The dynamic treatment regime (DTR) is perhaps the best known way to formalize the map from patient characteristics to 
+potential treatments in Biostatistics, though it is also called an individualized treatment rule or a policy.
+A DTR $\pi$ is a function, or set of functions, that maps
+patients to treatments based on their covariates $\pi: \mcX \to \mcA$. The data available to base our decisions on
+comes is assumed to come in the form of a triple $(X, A, Y)$ where $X$ is a vector denoting the patient's covariate information, $A$ the action taken, and $Y$ the response observed. Then the history at time $t$ $\mcH_t$ is a filtration that encapsulates all the complete data available $\mcH_t = \sigma\left((X_1, A_1, Y_1), \ldots, (X_t, A_t, Y_t)\right)$. Letting
+$Y^*\left(\pi(X)\right)$ denote the potential outcome if a patient with covariates $X$ were treated according to DTR $\pi$,
+the value of a DTR $\mcV(\pi)$ is defined as the expected value of assigning treatments according to the DTR:
+$mcV(\pi) = \E_X[Y^*(\pi(X))]$. The statistical goal of precision medicine is to estimate an optimal DTR $\pi^*$ that maximizes the value function $\mcV(pi^*) \geq \mcV(\pi) \,\forall \pi \in \Pi$. We say an optimal DTR because there does not need to be a unique optimal DTR, though many authors may impose this assumption for simplicity. 
