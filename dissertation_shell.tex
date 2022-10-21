@@ -69,6 +69,10 @@
 \usepackage{bibentry}
 \nobibliography*
 
+% Algorithms
+\usepackage[ruled, vlined]{algorithm2e}
+
+
 % Figures
 \usepackage{subfigure}
 \usepackage{epsfig}
@@ -127,12 +131,32 @@
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
 
 % You can put custom definitions and other LaTeX header information here
+
+% Operators
 \DeclareMathOperator{\E}{{\rm I\kern-.3em E}}
 \DeclareMathOperator{\I}{{\rm I}}
+\DeclareMathOperator{\V}{{\mathcal{V} }}
+
 \DeclareMathOperator{\BR}{BR}
+\DeclareMathOperator{\R}{\rm R}
+\DeclareMathOperator{\Reg}{\rm Reg}
+
 \DeclareMathOperator*{\argmax}{argmax}
 \DeclareMathOperator*{\argmin}{argmin}
 \newcommand\norm[1]{\left\lVert#1\right\rVert}
+
+% Useful shorthand
+\newcommand{\mcA}{{\mathcal{A}}}
+\newcommand{\mcE}{{\mathcal{E}}}
+\newcommand{\mcF}{{\mathcal{F}}}
+\newcommand{\mcH}{{\mathcal{H}}}
+\newcommand{\mcV}{{\mathcal{V}}}
+\newcommand{\mcX}{{\mathcal{X}}}
+
+% High Probability Events 
+\newcommand{\hpeDP}{{\mathcal{E}_{\mathrm{dp}}}}
+\newcommand{\hpeMt}{{\mathcal{E}_{\text{MSE}_t}}}
+\newcommand{\hpeW}{{\mathcal{E}_{\mathrm{W}}}}
 
 \begin{document}
 
@@ -149,7 +173,7 @@
 
 \vspace{2in}
 \begin{singlespace}
-Experimental Designs for Pragmatic Trials and Precision Medicine
+Experimental Designs for Precision Medicine
 \end{singlespace}
 
 
@@ -251,8 +275,7 @@ ALL RIGHTS RESERVED
 \vspace{11pt}
 
 \begin{singlespace}
- John H. Sperger : Experimental Designs for Pragmatic Trials and
-Precision Medicine \\
+ John H. Sperger : Experimental Designs for Precision Medicine \\
 (Under the direction of   Dr.~Michael R. Kosorok and  Dr.~Eric Laber)
 \end{singlespace}
 \end{center}
@@ -272,9 +295,8 @@ practice of tailoring treatment based on an individual's unique
 characteristics in a data-driven way. Equally allocating patients
 between treatments is not an efficient way to investigate these new
 research questions, and new experimental designs are needed to improve
-the information gained from clinical trials.
-
-We first tackle the question of how to design a trial when treatment effects vary depending
+the information gained from clinical trials. ¶ We first tackle the
+question of how to design a trial when treatment effects vary depending
 on a patient's characteristics and our goal is to estimate a dynamic
 treatment regime (DTR) that will maximize the expected outcomes of the
 general population. To this end, we propose a sequential design that
@@ -285,9 +307,7 @@ successive rejection algorithm from the response-adaptive randomization
 (RAR) literature to the case where the expected response depends on
 contextual patient information. We discuss a trial design problem that
 motivated this design and conduct a simulation study to demonstrate the
-effectiveness of this design compared to equal allocation. 
-
-For further
+effectiveness of this design compared to equal allocation. ¶ For further
 projects, I propose to extend this design to the structured case where
 one treatment can provide information about the expected response on
 another treatment (e.g.~different doses of the same medication).
@@ -315,7 +335,7 @@ training at the employer level.
 
 \singlespacing
 
-I hope we passed the audition.
+In loving memory of Connie and Herb Sperger.
 
 \end{center}
 
@@ -331,7 +351,7 @@ I hope we passed the audition.
 {\normalsize \textbf{ACKNOWLEDGEMENTS}}
 \end{center}
 
-Thanks grandma!
+To be acknowledged at a later date.
 
 \clearpage
 
@@ -414,8 +434,10 @@ Thanks grandma!
 \newcommand{\Abi}[2]{\noindent #1 \hspace{1.5cm} \= #2 \\}
 
 \begin{tabbing}
-\Abi{LM}{Linear Model}\Abi{GLM}{Generalized Linear
-Model}\Abi{TS}{Thompson Sampling}\Abi{RAR}{Response-adaptive
+\Abi{CMAB}{Contextual multi-armed bandit}\Abi{LM}{Linear
+Model}\Abi{GLM}{Generalized Linear Model}\Abi{MAB}{Multi-armed
+Bandit}\Abi{SMART}{Sequential multiple-assignment randomized
+trial}\Abi{TS}{Thompson Sampling}\Abi{RAR}{Response-adaptive
 Randomization}
 \end{tabbing}
 
@@ -429,34 +451,750 @@ Randomization}
 \hypertarget{introduction}{%
 \section{Introduction}\label{introduction}}
 
-Test abstract
+How can we ensure that patients receive the right medical interventions
+at the right time? And beyond the individual, how can we determine where
+to intervene to promote public health? These questions cut to the core
+of medical and public health aspirations, but it is only in the past few
+decades that methodological and technological advances have progressed
+to the point where these questions can be investigated in a data-driven,
+empirical way. These questions have been considered by both fields since
+their inception, but this kind of tailoring has historically only been
+possible in non-systematic and qualitative ways. While clinicians make
+treatment decisions after eliciting details of a patient's disease
+history and considering their characteristics and comorbidities, the
+vast majority of evidence from randomized clinical trials (RCTs) are
+very stylized circumstances where efficacy for an intervention was
+compared to a placebo and extensive inclusion/exclusion criteria are
+used to reduce heterogeneity as much as possible. New trial designs are
+needed to bridge this gap.
 
-\abstract{Testy Mctest}
+Precision medicine, and precision health more broadly, endeavors to use
+statistical methods to match ``the right patient to the right treatment
+at the right time'' in an evidence-based way
+\citep{kosorok2015adaptive, kosorok2019precision}. The majority of this
+literature has focused on how to estimate optimal dynamic treatment
+regimes including Q-learning, A-learning, Outcome Weighted Learning, and
+Residual Weighted Learning and many others including extensions of these
+methods. The major design innovation from this movement is the
+Sequential multiple-assignment randomized trial (SMART), which was
+developed to provide information that could be used for sequencing
+treatments \citep{lei2012smart}. The randomization probabilities in a
+SMART are typically static throughout the course of the trial, but the
+randomization probabilities for later stages can depend on the
+assignment and observed response from earlier stages. Trial designs for
+the single-stage decision problem where the expected treatment response
+is a function of patient covariates is relatively underexplored.
+Interaction effects are necessarily more difficult to estimate than main
+effects, and more efficient trial designs are needed to answer questions
+about tailoring treatments to patients.
 
-\hypertarget{getting-started}{%
-\subsection{Getting started}\label{getting-started}}
+This dissertation proposes multiple randomization methods that can be
+used to improve the estimation of dynamic treatment regimes (DTRs) and
+evaluate multilevel interventions that would improve the efficiency of
+trying to answer scientific questions about where and when to intervene
+to maximally improve the health of individuals and consequently the
+population. The next section reviews the existing literature on and
+history of precision medicine, response-adaptive randomization methods
+that change allocation probabilities based on accumulating evidence, and
+the parallel literature on ``bandit'' problems that has evolved
+primarily in the computer science and operations research literatures.
 
-\hypertarget{or-in-separate-files}{%
-\subsection{Or in separate files}\label{or-in-separate-files}}
+Chapter one extends the ``drop the loser'' rule to the general case
+where the treatment effect can be a function of patient covariates
+\citep{ivanova2000drop, ivanova2003play}; it can also be viewed as
+extending the work on ``best arm identification'' for the multi-armed
+bandit (MAB) problem to the contextual multi-armed bandit problem
+(CMAB).
+
+In chapter two, we extend this approach to the case where there is
+structure between interventions and information from one treatment
+assignment could provide information about the expected response on a
+different treatment. This setting naturally arises in dose finding
+studies where the response at one dosage can provide information about
+the expected response at a different dosage. We consider two cases: one
+where there is a safety constraint and one without a safety constraint.
+In the case where there is no safety constraint, treatments that are
+known to be suboptimal can still be assigned if they are more
+informative about the optimal dose than other treatments. The structure
+of the dose-response relationship determines whether this is the case;
+in the simple case where there is a linear relationship between dose and
+response the optimal design would only allocate patients to the highest
+or lowest dose for example.
+
+We investigate a trial design for multilevel interventions when the
+individual component can be completely randomized but all participants
+at the group level must receive the intervention. With these constraints
+at the group level we propose a Stepped Wedge design where the time at
+which a group receives the intervention is randomized
+\citep{gambia1987gambia, hussey2007design}. We show the efficacy of this
+method through simulation studies and provide a formula for sample size
+calculation.
 
 \hypertarget{literature-review}{%
 \section{Literature Review}\label{literature-review}}
 
-Or you can split chapters/sections/paragraphs or even words in separate
-child documents.
+\hypertarget{terminology}{%
+\section{Terminology}\label{terminology}}
 
-\hypertarget{how-to-cite}{%
-\section{How to cite}\label{how-to-cite}}
+Before diving in, a brief note about terminology. The problems
+investigated in this dissertation have a rich history that spans
+multiple research areas including statistics, operations research, and
+computer science. With such a storied history spanning decades and
+departments, it's perhaps no surprise that the terminology used in
+different domains is not standardized, nor has it been standard across
+time within each domain. The problem of how to sequentially choose an
+action from a set of potential actions with unknown rewards where we
+only observe the outcome for the action we chose is known as the
+``multi-armed bandit'' (MAB) problem. The name is a reference to
+one-armed bandits, a slang term for slot machines that first appeared
+in, as far as I am aware, in \cite{bush1953stochastic}. While this is
+the first paper the authors know of that uses the term, it seems likely
+that the term was in circulation before this publication because the
+authors didn't feel the need to define their terminology. Two decades
+before this problem was named the MAB problem, William R. Thompson
+proposed a heuristic solution for the two-arm case which adapts the
+randomization probabilities based on the posterior probability that the
+arm's mean reward is greatest \cite{thompson1933likelihood}. Related
+work in this interim period simply referred to the problem under the
+broad heading of ``sequential design''
+\citep{wald1947sequential, robbins1952some}. When the response is a
+function of covariates and the action, instead of simply the selected
+action, the problem is most commonly called the contextual multi-armed
+bandit (CMAB) problem \citep{woodroofe1979one, langford2007epoch}.
 
-You can also cite other papers.
+MAB and CMAB are the standard terminologies in computer science and
+operations research, but recent statistical work does not have a common
+term for these problem setups. The methods are often described by the
+term response-adaptive randomization (RAR) to refer to the case where
+the treatment assignment only depends on past actions and responses, and
+covariate-adjusted response-adaptive (CARA) when covariate information
+is included \citep{hu2006theory}. Depending on the author,
+response-adaptive randomization may be used as an umbrella term for any
+randomization method that uses past response information, while others
+reserve the term for only those methods that use response but not
+covariate information \citep{hu2006theory}. The even broader term
+``adaptive randomization'\,' is also in use \cite{thall2015statistical}.
+This is far from an exhaustive list of the terms authors have used to
+describe these problems, but we hope this historical aside will serve as
+a useful orientation for those who would like to read more on the
+subject in different fields.
 
-\hypertarget{rmarkdown-syntax}{%
-\subsection{rmarkdown syntax}\label{rmarkdown-syntax}}
+I will use the terms multi-armed bandit (MAB) and contextual multi-armed
+bandit (CMAB) when referring to the respective problem formulations
+because of the long history of the problem under these names. The terms
+action, arm, intervention, and treatment will be used interchangeably
+throughout the dissertation to refer to the treatment assignment.
+Similarly context may be used in place of covariate information, and
+reward in place of response when a larger response implies a better
+outcome.
 
-You cite articles using \texttt{rmarkdown} syntax (google rmarkdown for
-helpful hints). For example, \citet{halmos1970howto} is a good text
-read. Or writing about mathematics is challenging
-\citep{halmos1970howto}.
+\subsubsection{Landau Notation}
+
+Algorithms and randomization methods may be compared in terms of how
+quickly the regret grows as a function of the number of arms and study
+participants. To describe these bounds we'll use Landau notation or
+``big o'\,'-notation to characterize the rate that functions grow. For
+functions \(f, g\) that map the natural numbers to the non-negative
+reals, we say that \(f(n)\) is \(O\left(g(n)\right)\) if and only if
+\(\limsup_{n \to \infty}\frac{f(n)}{g(n)} < \infty\). While constants
+may differ and smaller order terms may differ, the leading term in
+\(f(n)\) can't grow at a faster rate than the leading term in \(g(n)\).
+We say that \(f(n)\) is \(\Omega \left(g(n)\right)\) if and only if
+\(\liminf_{n \to \infty}\frac{f(n)}{g(n)} > 0\).
+
+\hypertarget{precision-medicine}{%
+\section{Precision Medicine}\label{precision-medicine}}
+
+Precision medicine, and more recently precision health out of
+recognition for the broader applications of these methods beyond
+clinical medicine, is a movement to formalize the long-standing practice
+of physicians tailoring their treatments to the characteristics of their
+patients and the disease presentation. The goal is to improve the health
+of individuals and populations by taking heterogeneity into account in
+an empirically-driven and statistically-sound way
+\citep{kosorok2015adaptive, kosorok2019precision}. The apex of this
+approach is decision support tools, and perhaps in the future, automated
+decision making in appropriate contexts \citep{sperger2020future}.
+
+The dynamic treatment regime (DTR) is perhaps the best known way to
+formalize the map from patient characteristics to potential treatments
+in Biostatistics, though it is also called an individualized treatment
+rule or a policy. A DTR \(\pi\) is a function, or set of functions, that
+maps patients to treatments based on their covariates
+\(\pi: \mcX \to \mcA\). The data available to base our decisions on
+comes is assumed to come in the form of a triple \((X, A, Y)\) where
+\(X\) is a vector denoting the patient's covariate information, \(A\)
+the action taken, and \(Y\) the response observed. Then the history at
+time \(t\) \(\mcH_t\) is a filtration that encapsulates all the complete
+data available
+\(\mcH_t = \sigma\left((X_1, A_1, Y_1), \ldots, (X_t, A_t, Y_t)\right)\).
+Letting \(Y^*\left(\pi(X)\right)\) denote the potential outcome if a
+patient with covariates \(X\) were treated according to DTR \(\pi\), the
+value of a DTR \(\mcV(\pi)\) is defined as the expected value of
+assigning treatments according to the DTR:
+\(mcV(\pi) = \E_X[Y^*(\pi(X))]\). The statistical goal of precision
+medicine is to estimate an optimal DTR \(\pi^*\) that maximizes the
+value function \(\mcV(pi^*) \geq \mcV(\pi) \,\forall \pi \in \Pi\). We
+say an optimal DTR because there does not need to be a unique optimal
+DTR, though many authors may impose this assumption for simplicity.
+
+\hypertarget{estimation-methods}{%
+\subsection{Estimation Methods}\label{estimation-methods}}
+
+Estimation approaches for DTRs fall into two broad approaches: 1) the
+``direct'' approach tries to optimize the estimated policy directly
+without estimating the relationship between treatment and response, and
+2) the ``indirect'' or regression-based approach which attempts to model
+the and then creates a DTR by selecting the treatment that maximizes the
+estimated expected response
+
+\hypertarget{smarts}{%
+\subsection{SMARTs}\label{smarts}}
+
+The idea of adapting
+
+Thompson Sampling
+
+Play the winner
+
+\hypertarget{optimal-design}{%
+\section{Optimal Design}\label{optimal-design}}
+
+The word ``optimal'\,' is frequently encountered in the discussion of
+trial designs. The optimal design literature has a rich history going
+back until at least the pioneering work of Kirstine Smith in her 1918
+dissertation \citep{smith1918standard}. Before delving into their
+results, it is important to emphasize that optimality is always
+contingent on an objective and the assumptions made about the problem.
+This is at odds with the non-technical usage of optimal meaning the
+``best possible'' because, outside of extremely trivial special cases, a
+design that is optimal for one standard objective will \emph{not} be
+optimal for a different objective
+\citep{silvey1980optimal, bubeck2009pure}.
+
+Additionally, the results from this literature are not always directly
+applicable to clinical research. It is often assumed that we have full
+control to choose a point to sample, while in clinical trials we must
+take patients as they are (subject to certain inclusion/exclusion
+criteria). Similarly rewards may be deterministic rather than
+stochastic. These optimality results can still provide a useful target;
+one technique for adaptive designs is to find the optimal design and
+then modify the randomization to target it
+\citep{atkinson1982optimum, atkinson1992optimum}.
+
+\hypertarget{common-kinds-of-optimality}{%
+\subsection{Common Kinds of
+Optimality}\label{common-kinds-of-optimality}}
+
+To review the basic objectives for optimal design, consider the problem
+of estimating a linear response function \(\E[Y] = X^T \beta\). Perhaps
+the most common objective in optimal design is \(d\)-optimality which is
+motivated by the goal of minimizing the volume for the confidence
+ellipsoid around \(\beta\). The volume of the confidence ellipsoid for
+\(\beta\) is proportional to \(\det{(XX^T)}^{-1/2}\), and so maximizing
+\(\det{(XX^T)}\) makes this ellipsoid as small as possible.
+
+\[\text{d-optimal criterion:=} \max_{X \in \mathcal{X}}  \text{det}\left(XX^T\right)\]
+The \(d\)-optimality criterion is concerned with the overall volume of
+the confidence ellipsoid, while we might only be interested in a
+particular point or region. This desire motivates \(c\)- and
+\(V\)-optimality which try respectivelyto minimize the confidence region
+at a point and in a particular region. For a given \(c \in \mathcal{X}\)
+of interest, the \(c\)-optimality criterion is defined as
+\(\argmin_{X \in \mathcal{X}} c^T(XX^T)^{-1}c\). The \(V\)-optimality
+criterion is defined in a similar fashion except we'll define a region
+of interest \(C \subseteq \mathcal{X}\), and then
+\(\argmin_{X \in \mathcal{X}} \int_{c \in C}c^T(XX^T)^{-1}c \, \mathrm{d}F(c)\).
+\(c\)- and \(V\)- optimal designs have an intuitive appeal because the
+whole covariate space is not usually equally interesting; an attractive
+property of \(d\)-optimality that is not shared by either \(c\)- or
+\(V\)-optimality is that it is invariant to reparameterizations.
+
+\hypertarget{optimal-design-in-clinical-trials}{%
+\subsection{Optimal Design in Clinical
+Trials}\label{optimal-design-in-clinical-trials}}
+
+Atkinson
+
+Elving Set
+
+Barycentric Spanners
+
+Geometric design
+
+Very dependent on the shape of the function
+
+When the response is a linear function of the parameters the optimal
+design puts the entirety of the observations on the edges of the design
+space. When the response is a quadtratic function, the optimal design
+splits half of the observations between the edges of the design space
+and the other half is placed in the middle of the design space.
+Christine Smith worked out the optimal design for polynomial functions
+up to degree six. The degree must be known in advance. The optimal
+design for a lower degree polynomial will not be optimal for higher
+degree polynomials; indeed it may not be estimable at all.
+
+Maximizing the expected number of successes falls under the general
+umbrella of maximizing the cumulative expected reward
+\(\R_n = \E[\sum_{t = 1}^n Y_t]\). This objective is commonly restated
+as minimizing the cumulative regret, where regret is defined as the
+difference in expectation between the action we chose and the action
+chosen by an oracle with knowledge of the best treatment in expectation.
+The expected number of successes and expected regret both have Bayesian
+and Frequentist versions which differ in terms of whether the regret is
+defined with respect to fixed parameter(s) (Frequentist) or a
+distribution over the parameter space (Bayesian). Notice that maximizing
+the cumulative expected rewards only considers the outcomes of those
+within the trial. There are two commonly used contrasting objectives
+that only consider the outcomes after the trial is complete: 1) the
+expected reward for the first out-of-sample patient, known as the
+``simple'' regret, and 2) the posterior probability assigned to the
+hypothesis that an arm is optimal for the true optimal arm. A less
+common, but no less important, objective is maximizing the power of a
+statistical test (the specifics of the test will depend on the problem
+at hand).
+
+For all objectives, there is work on instance-dependent (or
+problem-dependent) bounds that characterize optimal performance on a
+specific bandit instance and instance-independent bounds that provide
+more general performance guarantees that don't rely on parametric
+assumptions. While instance-independent bounds don't rely on parametric
+assumptions, they are still a family of results and the bounds for the
+same algorithm and general problem may vary depending on what
+assumptions are made such as boundedness or the tail probabilities
+(e.g.~sub-Gaussian, sub-exponential). We can additionally distinguish
+between asymptotic and finite-sample results.
+
+Regret may be analyzed asymptotically as \(n\) goes to infinity or for a
+finite time horizon. Asymptotically we wish to find a policy \(\pi\)
+that for all bandits \(\nu\) satisfies
+\(\lim_{n \to \infty} \frac{R_n(\pi, \nu)}{f(n)} = 0\) where \(f(n)\) is
+as small as possible. In the finite-horizon case we will instead seek
+guarantees that with high probability the regret will not grow faster
+than a certain rate with the sample size. Asymptotic results do not
+provide any guarantees about the finite-time performance of an
+algorithm; you could take an algorithm and add a fixed period where we
+throw out the data without looking at it without changing the asymptotic
+performance. Still, favorable asymptotic results are encouraging that
+the algorithm may have good finite-time performance.
+
+We will now formally define the regret of a policy or bandit algorithm.
+Let \(\nu = \{P_a: a \in \mathcal{A}\}\) be a collection of
+distributions (a stochastic bandit), and let \(\mu_a(\nu)\) denote the
+expected reward of playing arm \(a\),
+\(\mu_a(\nu) = \int_{-\infty}^{\infty} x \, \mathrm{d}P_a(x)\). Define
+\(\mu^*(\nu) = \max_{a \in \mathcal{A}} \mu_a(\nu)\) as the mean reward
+of the optimal arm. Then the regret of policy \(\pi\) on bandit instance
+\(\nu\) is given by
+\[\Reg_n(\nu, \pi) = n\mu^*(\nu) - \E_{\pi} \left[\sum_{t = 1}^n Y_t \right]\]
+
+This can be rewritten in terms of the gaps between the mean of each arm
+and the optimal arm and the expected number of times that the arm will
+be assigned provided there is a countable number of arms and a finite
+time horizon. Define the suboptimality gap for arm \(a\) as
+\(\Delta_a(\nu) = \mu^*(\nu) - \mu_a(\nu)\), and let the sample size for
+arm \(a\) after \(n\) patients have entered the study be denoted by
+\(N_a(n) = \sum_{t = 1}^n I(A_t = a)\). Then we can rewrite the regret
+
+\[\Reg_n = \sum_{a \in \mathcal{A}}\Delta_a \E_{\pi}[N_a(n)]\]
+
+\hypertarget{regret-and-power}{%
+\subsection{Regret and Power}\label{regret-and-power}}
+
+One might hope that by increasing the expected number of successes
+within the trial we are also increasing the probability that we can
+identify the best treatment after the trial. Sadly this is not the case.
+Adaptive exploration methods that try to maximize the expected number of
+successes in a trial do so at the expense of power in the two-arm case
+\citep{bubeck2009pure, wathen2017simulation}. The power of a statistical
+test is the probability of rejecting the null hypothesis using that test
+for a fixed alternative parameter value. Power is contingent on the
+statistical test in question. Consider an experiment that can be
+represented using the \(K\)-armed MAB problem and the two null
+hypotheses we might wish to test after running an experiment, hypothesis
+A \(H_0: m_1 = \ldots = \mu_K\) and hypothesis B \(H_0: m_1 > m_2\). A
+design that assigned all patients equally between Treatments 1 and 2
+would increase the power to test Hypothesis B relative to a design that
+split patients equally between Treatments 1, \ldots, K while decreasing
+the power to test Hypothesis A. For realistic experiments, designs that
+maximize the power to test all potential hypotheses related to the study
+outcomes are not possible. The impact on power is more complex when
+there are multiple treatments because there are multiple potential
+hypotheses of interest including pair-wise comparisons and a global
+hypothesis that all the arms' means are equal. The power to compare the
+best and second-best treatment may increase because the sample size for
+these arms could be higher than under equal allocation, but the power
+for comparisons between arms that are sub-optimal will likely be worse
+than under equal allocation. The conflict in what's being optimized
+remains, and methods that explicitly try to maximize power when there
+are multiple treatment arms will outperform TS at the expense of the
+expected number of successes in the trial.
+
+To help understand the intuition for why methods that optimize the
+expected number of successes are suboptimal, consider Neyman's classic
+design for allocating samples when the population can be divided into
+mutually exclusive strata and variance within each strata is known; in
+the case of a clinical trial without covariates the treatment arms form
+the strata. Initially developed in the context of survey sampling, for
+clinical trials, Neyman allocation \cite{neyman1934aspects} assigns
+patients to treatments proportional to the treatment's variance over the
+sum of all treatments' variances. It can be proven that this allocation
+is optimal for minimizing the variance of the estimator for the
+difference in treatment effect provided the resulting allocation is an
+integer solution (rounding to reach an integer solution may not be
+optimal). For a \(k\)-arm trial where the responses follow Gaussian
+distributions with mean \(\mu_k\) and standard deviation \(\sigma_k\)
+and where a Wald test will be used to test for a difference in treatment
+effect, the optimal allocation ratio \(\rho\) of patients assigned to
+treatment \(i\) is
+
+\[\rho^*_{\mathrm{Neyman}}(a_i) = \frac{\sigma_i}{\sum_{k = 1}^{K} \sigma_k}\]
+
+\hypertarget{results-for-mab-problem}{%
+\section{Results for MAB Problem}\label{results-for-mab-problem}}
+
+\[H = \sum_{k = 1}^{K}\]
+
+\hypertarget{drop-the-loser-rule-for-contextual-bandits}{%
+\section{Drop-the-loser Rule for Contextual
+Bandits}\label{drop-the-loser-rule-for-contextual-bandits}}
+
+\hypertarget{introduction-1}{%
+\section{Introduction}\label{introduction-1}}
+
+\hypertarget{motivating-trial}{%
+\subsection{Motivating Trial}\label{motivating-trial}}
+
+This work was motivated by a comparative effectiveness trial design for
+a study to investigate four interventions for reducing the discomfort
+from office cystoscopy. Cystoscopy is a procedure where an endoscope is
+passed through the urethra to directly inspect the bladder, and this
+procedure is typically done without general anesthesia. It is one of the
+most common outpatient procedures with more than one million individuals
+undergoing the procedure every year in the United
+States\cite{dartmouth_atlas_data_2021}, and for patients with bladder
+cancer must regularly (often every three months) undergo the procedure
+for surveillance. Numerous interventions have been evaluated and have
+some evidence of efficacy in reducing discomfort: intra-urethral
+lidocaine with longer than standard dwell time (\(\geq 10\) minutes
+versus immediately before the procedure, as is common), real-time
+visualization where the patient watches their cystoscopy on a monitor,
+increasing hydrostatic pressure via ``bag squeeze'\,' when the
+cystoscope traverses the urethral sphincter, and listening to calming
+music \textbf{add cites for methods}. The vast majority of cystoscopy
+studies enrolled only men, and some that enrolled women have found
+different effects for men and women. In addition to biological sex, age
+and previous cystoscopy experience may impact treatment response. The
+potential treatments included each intervention alone and all of the
+treatments in pairwise combinations, for example combining increased
+intra-urethral lidocaine dwell time with visualization. The goal of the
+study was to create clinical treatment guidelines for assigning future
+patients to treatments based on phenotypic characteristics in order to
+reduce discomfort as measured on a 10-point visual analog scale. In
+statistical terms, the goal was to estimate a dynamic treatment regime
+that would best reduce the pain experienced by cystoscopy patients in
+the general population.
+
+Our motivating trial has a number of salient considerations that
+inspired our design: 1) the interventions involve treatments already
+used (to varying degrees)in clinical care, 2) there are a large number
+of potential interventions with four solo interventions and six
+combinations of two interventions, and 3) existing experimental evidence
+and biologically-motivated theorizing suggest that there are multiple
+subgroups with different responses to treatment. Because the
+interventions are already used in clinical practice there is less
+concern about safety constraints. The large number of treatments suggest
+that removing less effective treatments could improve power at the end
+of the study, but the presence of heterogenous treatment effects
+preclude using methods that eliminate treatments based on the average
+treatment effect (ATE) because a treatment with a lower ATE may be
+optimal for a subgroup of individuals. In light of these considerations
+we developed a randomization algorithm that can remove poorly performing
+arms in a way that respects hetergenous treatment effects by evaluating
+the arms in terms of their contribution to the value function of the
+estimated optimal dynamic treatment regime (DTR).
+
+\hypertarget{past-work}{%
+\subsection{Past Work}\label{past-work}}
+
+The existing literature on design for precision medicine is
+predominantly focused on Sequential Multiple Assignment Randomized
+Trials (SMARTs) \citep{lei2012smart, kosorok2015adaptive} which are
+multi-stage trials. In a SMART the treatment received at a later stage
+may be a function of an individual's response to an earlier treatment,
+but the randomization probabilities are typically fixed over time. What
+little work has been done on adaptive trial designs for precision
+medicine has focused on maximizing the expected outcomes within the
+trial population \citep{guo2017subgroup}. This is a reasonable goal in
+certain contexts, but it is necessarily suboptimal when the goal is to
+maximize the expected outcomes in a target population.
+
+\hypertarget{problem-definition}{%
+\subsection{Problem Definition}\label{problem-definition}}
+
+We will now formalize the statement of the problem. At time
+\(t = 1, \ldots [T]\) a new subject enters the study and we observe
+their covariate information encoded in a vector
+\(x_t \in \mathcal{X} \subseteq \mathbb{R}^d\) where
+\(X_1, \ldots, X_2\) are independent and identically distributed random
+variables with context distribution \(\mathcal{D}\). After this
+covariate information is observed, a treatment (arm, action)
+\(a_t \in \mathcal{A}\) is assigned according to an assignment policy
+\(\pi: \mathcal{X} \times \mathcal{H}_{t-1} \to \mathcal{A}\) where
+\(\mathcal{H}_{t-1} = \left\{(x_1, a_1, r_1), \ldots, (x_{t - 1}, a_{t - 1}, r_{t -1})\right\}\)
+is the collected history of contexts, actions, and rewards through time
+\(t-1\) with \(\mathcal{H}_0 = null\) . The outcome (reward)
+\(r_t \in [0,1]\) is immediately observed. The conditional expected
+reward is a fixed but unknown function of the covariate and treatment
+information \(\E[r_t |x_t, a_t] = f(x_t, a_t)\).
+
+\hypertarget{objective}{%
+\subsubsection{Objective}\label{objective}}
+
+Our goal will be to minimize the expected regret in the target
+population based on the estimated optimal policy \(\widehat{\pi}_T\) at
+the conclusion of the study. This does not take into account any of the
+outcomes in the study except insofar as they influence the estimation of
+the optimal policy at the end of the trial.
+
+\[\mathrm{Reg}_{\text{pop}} = \E_{X, \pi}[f^*(\pi^*(x), x) - f^*(\widehat{\pi}_T(x), x)]\]
+
+\hypertarget{assumptions}{%
+\subsubsection{Assumptions}\label{assumptions}}
+
+\emph{Assumption - realizibility}
+
+There exists \(f^* \in \mathcal{F}\) s.t.
+\(\E[Y | x_t, a_t] = f^*(x_t, a_t)\)
+
+\emph{Assumption - rewards}
+
+\(Y_t = f^*(a_t, \pi_t) + \epsilon_t\)
+
+Where \(\epsilon_t\) is a fixed but unknown distribution. Because
+\(Y_t\) is bounded this implies that \(\epsilon_t\) has a sub-Gaussian
+distribution.
+
+\emph{Assumption - Function Class}
+
+\(|\mathcal{F}|\) is bounded
+
+\(\mathrm{VC}(\mathcal{F})\) is bounded where \(\mathrm{VC}\) is
+Vapnik-Chernis dimension
+
+\emph{Assumption - Oracle Access - Foster'20}
+
+We assume that we have access to a solver
+
+\(\widehat{f}_m = \argmin_{f \in \mathcal{F}} \sum_{t = \tau_{m-1}}^{\tau_m - 1} \left(f(x_t, a_t) - r(x_t, a_t) \right)^2\)
+
+\hypertarget{method}{%
+\subsection{Method}\label{method}}
+
+The logic of our method is to increase the sample size for better
+treatments at the expense of inferior treatments by sequentially
+eliminating treatments that are not optimal for any subset of patients.
+It proceeds by splitting the available samples \(T\) into \(M\) epochs
+where \(M = ceiling(\log_2{T})\). At the end of an epoch the set of
+feasible treatments for the next epoch, \(\mathcal{A}_{m + 1}\), is
+formed by constructing confidence intervals around the estimated value
+functions for the estimated optimal policies if treatment \(a\) were not
+available
+\(\pi_{\not a} = \pi: \mathcal{H} \times \mathcal{X} \to \mathcal{A} \, \backslash \, a\).
+If a treatment is \emph{not} part of the optimal DTR then the value
+function doesn't change when it is removed, that is
+\(\mathcal{V}(\pi_{\not a}) = \mathcal{V}(\pi)\). For mathematical
+simplicity, we will only use the observations in the most recent epoch
+to determine the set of feasible treatments for the next epoch. Because
+the assignments within an epoch are random with equal probability the
+parameter estiamtes will be unbiased. Data from past epochs could be
+incorporated using an AIPW estimator in practice.
+
+\(\mathcal{V}(\pi) = \E_X[Y^*(\pi(X))]\)
+
+\(\mathcal{V}(\pi_{\not a})\)
+
+\hypertarget{meta-algorithm}{%
+\subsubsection{Meta-algorithm}\label{meta-algorithm}}
+
+\begin{algorithm}[H]
+\SetAlgoVlined
+\KwIn{Sample size $N$, Treatment arms $[K]$}
+\SetKwFunction{FindDominatedArms}{FindDominatedArms}
+\SetKwFunction{WithinEpochRandomization}{WithinEpochRandomization}
+
+Set the number of epochs $L = \lceil \log_2{K} \rceil$
+
+Define epoch boundaries $\tau_m = 2^m$
+
+Set epoch sample sizes to $t_m = \tau_m - \tau_{m - 1}$
+
+Set active arm set $\mathcal{A}_1 = [K]$
+
+ \For{$l = 1, \ldots, L$}{
+  Assign patients to $a \in \mathcal{A}_l$ using \WithinEpochRandomization 
+  
+Update active arm set $\mathcal{A}_{l + 1} = \mathcal{A}_l \, \backslash$ \FindDominatedArms{$\mathcal{A}_l, \, \mathcal{H}_t$}
+  
+ }
+ \caption{Contextual Drop the Loser Meta-algorithm}
+\end{algorithm}
+
+\hypertarget{high-probability-events}{%
+\subsection{High Probability Events}\label{high-probability-events}}
+
+Taken from Foster 20 (add citation)
+
+\hypertarget{hpedp}{%
+\subsection{\texorpdfstring{\(\hpeDP\)}{\textbackslash hpeDP}}\label{hpedp}}
+
+Set \(\mu_m = \frac{64 \log{4M/\delta}}{n_{m-1}}\) for all
+\(m \in [M]\). Let \(\delta\) be a fixed in the interval \((0, 1]\), and
+then define the event \(\hpeDP\) as the event that for all \(m \in [M]\)
+
+\[\hpeDP := \{2/3 \varrho \leq \widehat{\varrho} \leq 4/3 \varrho\}\]
+
+\(\hpeDP\) holds with probability at least \(1 - \delta/2\)
+
+\hypertarget{hpew}{%
+\subsection{\texorpdfstring{\(\hpeW\)}{\textbackslash hpeW}}\label{hpew}}
+
+Let \(\delta\) be a fixed in the interval \((0, 1]\), and for all
+\(m \in [M]\) let \(\hpeW^{(m)}\) denote the event that
+
+\[\hpeW^{(m)} = \begin{cases} \widehat{w}_m \in [2/3 w_m, 4/3w_m] & \text{if } w_m \geq \frac{64}{n_{m-1}} \log{4M/\delta} \\ \widehat{w}_m < \frac{65}{n_{m-1}} \log{4M/\delta} & \text{if } w_m > \frac{64}{n_{m-1}} \log{4M/\delta}
+\end{cases}\]
+
+Define the event \(\hpeW = \cap_{m = 1}^{M} \hpeW^{(m)}\)
+
+Then \(hpeW\) holds with probability at least \(1 - \delta/2\)
+
+Let \(D_{\delta} = 16 \log{\frac{2 | \mcF | T^2 }{\delta}}\)
+
+Define
+\(M_t(f) = \left(f(x_t, a_t) - r_t(a_t) \right)^2 - \left(f^*(x_t, a_t) - r_t(a_t) \right)^2\)
+
+Let \(\hpeMt\) denote the event that
+
+\[\sum_{t = \tau}^{\tau'} \E[M_t(f) | \mcH_{t - 1} ] \leq C_{\delta} + 2 \sum_{t = \tau}^{\tau'}M_(f)\]
+
+For all \(f \in \mcF\), and \(\tau, \tau' \in [T]\) \(\hpeMt\) holds
+with probability at least \(1-\delta / 2\)
+
+\hypertarget{proposal-two}{%
+\section{Proposal Two}\label{proposal-two}}
+
+Determining dosages that are both efficacious and safe is a key step in
+drug development. This dosage is often dependent on patients'
+characteristics such as age, weight, and disease-specific biomarkers.
+Often these differences are dealt with qualitatively or ignored in
+early-phase clinical trials. The question of estimating an optimal
+personal dosing role has received some attention in the past with the
+growing interest in precision medicine. This literature focused on
+estimating personalized dose responses after data has been collected
+\citep{chen2016personalized, zhu2020kernel, zhou2021parsimonious}. In
+this project, we will instead investigate how to design a clinical trial
+when the goal is to estimate an optimal dosing rule and we're able to
+adapt the randomization probabilities over time.
+
+\subsection{Previous work}
+
+Dose-finding trials have a rich tradition of adaptivity from the
+(deservedly) statistically maligned 3+3 design to more statistically
+sound methods including Bayesian Continual Reassessment Method
+\cite{o1990continual, goodman1995some}. More recently,
+\cite{guo2017bayesian} propose an adaptive design when there are
+biomarkers that affect dose response utilizing Thompson Sampling.
+However, their objective is to maximize the expected number of successes
+within the trial rather than most accurately estimate the rule so that
+when it's applied to the general population it minimizes the expected
+regret.
+
+In the bandit literature, this type of problem is an example of a
+structured bandit problem where playing one arm provides some
+information about the expected reward of playing a different arm. The
+linear bandit problem is the simplest structured bandit problem, and in
+it, the expected response is given by \(a^T \theta\) where the parameter
+vector \(\theta\) is shared across all actions, we have full control
+over which \(a \in \mathcal{A} = \{a_1, \ldots, a_k\}\) we select, and
+the response does not include any covariate information
+\cite{xu2018fully}. The optimism under uncertainty principle that's used
+in unstructured bandit problems like the MAB and CMAB problems are
+suboptimal in a structured bandit problem \citep{lattimore2017end}.
+
+\subsection{Problem Definition}
+
+We consider a trial where the sample size \(T\) is fixed, there is a
+single treatment with \(K\) possible dosages, and the researcher is able
+to adapt the randomization probability for the \(t\)-th patient based on
+the accumulated data of the trial up to that point. Each treatment \(k\)
+is associated with an unknown parameter vector
+\(\beta_k \in \mathbb{R}^d\). For any integer \(k\), let \([k]\) denote
+the set \(\{1, \ldots, k \}\). At each time \(t = 1, \ldots, T\), we
+observe a new individual with baseline covariates
+\(x_t \in \mathbb{R}^d\). The experimenter then uses a randomization
+policy \(\pi(x_t)\) to assign this individual to a treatment
+\(a_t \in [K]\) and observes a stochastic linear outcome
+\[Y_{t} = X_t^T \beta_k + A_t^T\theta + \epsilon_{t}\]
+
+\subsection{Proposed Method}
+
+Propose to extend the successive rejection algorithm to the structured
+case by modifying the rejection criteria to include the potential
+information gain that an arm provides.
+
+\hypertarget{proposal-three}{%
+\section{Proposal Three}\label{proposal-three}}
+
+\hypertarget{appendix}{%
+\section{Appendix}\label{appendix}}
+
+\section{Notation}
+
+For a natural number \(n\), let \([n]\) denote the set
+\(\{1, \ldots, n\}\)
+
+\hypertarget{optimal-design-1}{%
+\subsection{Optimal Design}\label{optimal-design-1}}
+
+\hypertarget{problem-definition-1}{%
+\subsection{Problem Definition}\label{problem-definition-1}}
+
+\begin{itemize}
+    
+\item $t \in [T]$ indexes the observations
+
+\item $k \in [K]$ indexes arms 
+
+\item $X_t \in  \mathcal{X} \subseteq \mathbb{R}^d$ denotes the context (covariate) vector at time $t$
+
+We'll assume that $\mathcal{X}$ has been rescaled so that $\mathcal{X} \subseteq [0, 1]^d$ for simplicity
+
+\item $A_t \in [K] \equiv \mathcal{A}$ denotes the arm (action, treatment) chosen at time $t$
+     
+
+ \item $\beta_k$ is the parameter vector associated with arm $k$
+
+\item $Y_t \in \mathbb{R}$ denotes the outcome at time $t$
+
+\item $\mathcal{H}_t = \sigma(X_1, A_1, Y_1, \ldots, A_{t - 1}, Y_{t -1}, X_t)$ the collected history available at prior to making the assignment for patient $t$
+\end{itemize}
+
+\hypertarget{algorithm-related}{%
+\subsection{Algorithm-related}\label{algorithm-related}}
+
+\hypertarget{tuning-parameters}{%
+\paragraph{Tuning parameters}\label{tuning-parameters}}
+
+\begin{itemize}
+\item $\delta$ failure probability
+\item $\beta_m$ Confidence radius
+\item $\mu_m$ smoothing parameter
+\item $\lambda_m$ instance dependent scale factor
+\item $\gamma_m$ Learning rate. 
+
+$$\gamma_m = \lambda_m \sqrt{\frac{| \mcA| n_{m-1}}{\log{2 | \mcF | T^2 / \delta}}}$$
+\end{itemize}
 
 %------------ END MAIN TEXT ---------------------------------------------------%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

@@ -1,11 +1,40 @@
-\contentsline {chapter}{LIST OF TABLES}{viii}{section*.1}
-\contentsline {chapter}{LIST OF FIGURES}{ix}{section*.2}
-\contentsline {chapter}{LIST OF ABBREVIATIONS}{x}{section*.3}
+\contentsline {chapter}{LIST OF TABLES}{ix}{section*.1}
+\contentsline {chapter}{LIST OF FIGURES}{x}{section*.2}
+\contentsline {chapter}{LIST OF ABBREVIATIONS}{xi}{section*.3}
 \contentsline {section}{\numberline {0.1}Introduction}{1}{section.0.1}
-\contentsline {subsection}{\numberline {0.1.1}Getting started}{1}{subsection.0.1.1}
-\contentsline {subsection}{\numberline {0.1.2}Or in separate files}{1}{subsection.0.1.2}
-\contentsline {section}{\numberline {0.2}Literature Review}{1}{section.0.2}
-\contentsline {section}{\numberline {0.3}How to cite}{1}{section.0.3}
-\contentsline {subsection}{\numberline {0.3.1}rmarkdown syntax}{1}{subsection.0.3.1}
-\contentsline {chapter}{BIBLIOGRAPHY}{2}{section*.4}
+\contentsline {section}{\numberline {0.2}Literature Review}{3}{section.0.2}
+\contentsline {section}{\numberline {0.3}Terminology}{3}{section.0.3}
+\contentsline {subsubsection}{\numberline {0.3.0.1}Landau Notation}{4}{subsubsection.0.3.0.1}
+\contentsline {section}{\numberline {0.4}Precision Medicine}{5}{section.0.4}
+\contentsline {subsection}{\numberline {0.4.1}Estimation Methods}{6}{subsection.0.4.1}
+\contentsline {subsection}{\numberline {0.4.2}SMARTs}{6}{subsection.0.4.2}
+\contentsline {section}{\numberline {0.5}Optimal Design}{6}{section.0.5}
+\contentsline {subsection}{\numberline {0.5.1}Common Kinds of Optimality}{7}{subsection.0.5.1}
+\contentsline {subsection}{\numberline {0.5.2}Optimal Design in Clinical Trials}{7}{subsection.0.5.2}
+\contentsline {subsection}{\numberline {0.5.3}Regret and Power}{10}{subsection.0.5.3}
+\contentsline {section}{\numberline {0.6}Results for MAB Problem}{11}{section.0.6}
+\contentsline {section}{\numberline {0.7}Drop-the-loser Rule for Contextual Bandits}{11}{section.0.7}
+\contentsline {section}{\numberline {0.8}Introduction}{11}{section.0.8}
+\contentsline {subsection}{\numberline {0.8.1}Motivating Trial}{11}{subsection.0.8.1}
+\contentsline {subsection}{\numberline {0.8.2}Past Work}{13}{subsection.0.8.2}
+\contentsline {subsection}{\numberline {0.8.3}Problem Definition}{13}{subsection.0.8.3}
+\contentsline {subsubsection}{\numberline {0.8.3.1}Objective}{14}{subsubsection.0.8.3.1}
+\contentsline {subsubsection}{\numberline {0.8.3.2}Assumptions}{14}{subsubsection.0.8.3.2}
+\contentsline {subsection}{\numberline {0.8.4}Method}{14}{subsection.0.8.4}
+\contentsline {subsubsection}{\numberline {0.8.4.1}Meta-algorithm}{15}{subsubsection.0.8.4.1}
+\contentsline {subsection}{\numberline {0.8.5}High Probability Events}{15}{subsection.0.8.5}
+\contentsline {subsection}{\numberline {0.8.6}\({\mathcal {E}_{\mathrm {dp}}}\)}{16}{subsection.0.8.6}
+\contentsline {subsection}{\numberline {0.8.7}\({\mathcal {E}_{\mathrm {W}}}\)}{16}{subsection.0.8.7}
+\contentsline {section}{\numberline {0.9}Proposal Two}{16}{section.0.9}
+\contentsline {subsection}{\numberline {0.9.1}Previous work}{17}{subsection.0.9.1}
+\contentsline {subsection}{\numberline {0.9.2}Problem Definition}{18}{subsection.0.9.2}
+\contentsline {subsection}{\numberline {0.9.3}Proposed Method}{18}{subsection.0.9.3}
+\contentsline {section}{\numberline {0.10}Proposal Three}{18}{section.0.10}
+\contentsline {section}{\numberline {0.11}Appendix}{18}{section.0.11}
+\contentsline {section}{\numberline {0.12}Notation}{18}{section.0.12}
+\contentsline {subsection}{\numberline {0.12.1}Optimal Design}{18}{subsection.0.12.1}
+\contentsline {subsection}{\numberline {0.12.2}Problem Definition}{18}{subsection.0.12.2}
+\contentsline {subsection}{\numberline {0.12.3}Algorithm-related}{19}{subsection.0.12.3}
+\contentsline {paragraph}{Tuning parameters}{19}{paragraph*.4}
+\contentsline {chapter}{BIBLIOGRAPHY}{20}{section*.5}
 \contentsfinish 
