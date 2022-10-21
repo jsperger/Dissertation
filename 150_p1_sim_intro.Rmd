@@ -1,0 +1,10 @@
+---
+output: pdf_document
+---
+
+To investigate the
+
+## Comparison Methods
+
+Equal allocation 
+Top-two TS

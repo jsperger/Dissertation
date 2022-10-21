@@ -1,0 +1,14 @@
+---
+output: pdf_document
+---
+
+## Contextual bandit problem definition
+
+
+## Contextual Bandit Algorithms
+
+LinUCB
+
+TS
+
+SquareCB

@@ -20,4 +20,11 @@ $Y^*\left(\pi(X)\right)$ denote the potential outcome if a patient with covariat
 the value of a DTR $\mcV(\pi)$ is defined as the expected value of assigning treatments according to the DTR:
 $mcV(\pi) = \E_X[Y^*(\pi(X))]$. The statistical goal of precision medicine is to estimate an optimal DTR $\pi^*$ that maximizes the value function $\mcV(pi^*) \geq \mcV(\pi) \,\forall \pi \in \Pi$. We say an optimal DTR because there does not need to be a unique optimal DTR, though many authors may impose this assumption for simplicity.
 
-SMARTs
+## Estimation Methods
+
+Estimation approaches for DTRs fall into two broad approaches: 1) the "direct" approach tries to optimize the estimated policy directly without estimating the relationship between treatment and response, and 2) the
+"indirect" or regression-based approach which attempts to model the 
+and then creates a DTR by selecting the treatment that maximizes the estimated expected response
+
+## SMARTs
+

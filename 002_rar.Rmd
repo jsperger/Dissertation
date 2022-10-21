@@ -1,0 +1,11 @@
+---
+output: pdf_document
+---
+
+The idea of adapting
+
+
+Thompson Sampling
+
+
+Play the winner 
