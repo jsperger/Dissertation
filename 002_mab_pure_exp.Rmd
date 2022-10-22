@@ -14,6 +14,6 @@ As the gap between arms grows smaller the complexity measure $H$ of the problem 
 
 In the fixed budget case the overall sample size $T$ is fixed and the objective is to maximize the probability assigned to the best arm at the end of the trial $\argmax_{\pi \in \Pi} P\left(\widehat{\mu}= \mu^* | \mcH_T(\pi) = \left((x_1, \pi(x_1), y_1), \ldots, (x_T, \pi(x_T), y_T) \right) \right)$. 
 
-In the fixed confidence case the sample size is unlimited, but the objective is to return the correct answer using as few samples as possible. Subject to the constraint that  $P\left(\widehat{\mu}= \mu^* | \mcH_T(\pi) \geq 1 - \delta$ 
+In the fixed confidence case the sample size is unlimited, but the objective is to return the correct answer using as few samples as possible. Subject to the constraint that  $P\left(\widehat{\mu}= \mu^* | \mcH_T(\pi) \right) \geq 1 - \delta$ 
 
 Algorithms that are optimal for the fixed budget case are not optimal for the fixed confidence case and vice versa. This may be a little surprising, 

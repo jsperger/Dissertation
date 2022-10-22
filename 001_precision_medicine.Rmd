@@ -22,9 +22,21 @@ $mcV(\pi) = \E_X[Y^*(\pi(X))]$. The statistical goal of precision medicine is to
 
 ## Estimation Methods
 
-Estimation approaches for DTRs fall into two broad approaches: 1) the "direct" approach tries to optimize the estimated policy directly without estimating the relationship between treatment and response, and 2) the
-"indirect" or regression-based approach which attempts to model the 
-and then creates a DTR by selecting the treatment that maximizes the estimated expected response
+Estimation approaches for DTRs fall into two broad approaches: 1) the "direct"
+approach relies on estimating the value function $\mcV(\pi)$ under different
+policies $\pi \in \Pi$ and then searching the policy space $\Pi$ for the optimal
+policy $\widehat{\pi} = \argmax_{\pi \in \Pi} \widehat{\mcV}(\pi)$, and 2)
+"indirect", or regression-based, approaches model the conditional mean response
+and then the optimal DTR is simply the policy that assigns the treatment with
+the largest conditional response given the covariates.
+
+Direct methods, also known as policy search methods or actor-critic methods, can
+trace their lineage to control theory and dynamic programming
+\citep{witten1977adaptive, sutton2018reinforcement}. These control methods require that
+policies $\pi(X, \theta)$ can be parameterized in a way that they are differentiable with respect
+to their parameters $\theta$.  
+
+
 
 ## SMARTs
 
