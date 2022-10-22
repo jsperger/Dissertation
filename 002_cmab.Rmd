@@ -7,8 +7,28 @@ output: pdf_document
 
 ## Contextual Bandit Algorithms
 
-LinUCB
+Greedy and $\epsilon$-greedy \citep{langford2007epoch}
 
-TS
+LinUCB 
 
-SquareCB
+TS \citep{agrawal2013thompson}
+
+SquareCB \citep{foster2018practical}
+
+"ILOVETOCONBANDITS" \citep{agarwal2014taming}
+Approximate a covering distribution over policies and cost-sensitive classification oracles.
+
+\cite{bietti2021contextual} performed an extensive comparison of current CMAB methods for regret minimization by evaluating four major classes of CMAB algorithms and three additional modifications to these algorithms on 516 datasets from \url{openml.org}. The models included a greedy algorithm (with $\epsilon$-greedy as a variant) \citep{langford2007epoch}, a version of Thompson Sampling using the online bootstrap (with a greedy variant) \citep{agrawal2013thompson}, an online covering algorithm (with a modified exploration probability variant) \citep{agarwal2014taming}, and RegCB \citep{foster2018practical}.
+
+
+Bastani paper on how greedy algorithms can be optimal if the contexts are diverse enough and a margin condition holds \citep{bastani2017mostly}
+condition applied to the minimum eigenvalue of the information matrix
+
+
+
+
+## Contextual Bandit in Healthcare
+
+LASSO for high-dimensional covariates and and propose aplying it to EHR or genetic data \citep{bastani2020online}
+
+Review the potential of contextual bandit algorithms for mobile health generally and just-in-time adaptive interventions (JITAIs) specifically \citep{tewari2017ads}. 
