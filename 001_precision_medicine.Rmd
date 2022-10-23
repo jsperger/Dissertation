@@ -36,7 +36,7 @@ trace their lineage to control theory and dynamic programming
 policies $\pi(X, \theta)$ can be parameterized in a way that they are differentiable with respect
 to their parameters $\theta$.  
 
-
+\cite{tsiatis2019dynamic}
 
 ## SMARTs
 

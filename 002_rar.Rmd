@@ -50,8 +50,19 @@ assigned to ECMO.
 
 \cite{wathen2017simulation}
 
-Mention Ivanova papers
+### Cites to work in 
 
+Mention Ivanova papers
 
 Thompson Sampling
 
+Multi-armed bandit models for the optimal design of clinical trials: benefits and challenges \cite{villar2015multi}
+
+
+Covariate-adjusted response-adaptive randomization for multi-arm clinical trials using a modified forward looking Gittins index rule \cite{villar2018covariate}
+
+Response-adaptive randomization in clinical trials: from myths to practical considerations \cite{robertson2020response}
+
+MRTs \cite{bidargaddi2020designing, qian2021micro}
+
+Ivanova \cite{ivanova2003play}

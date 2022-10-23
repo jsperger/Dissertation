@@ -8,7 +8,9 @@ Maximizing the expected number of successes falls under the general umbrella of 
 
 For all objectives, there is work on instance-dependent (or problem-dependent) bounds that characterize optimal performance on a specific bandit instance and instance-independent bounds that provide more general performance guarantees that don't rely on parametric assumptions. While instance-independent bounds don't rely on parametric assumptions, they are still a family of results and the bounds for the same algorithm and general problem may vary depending on what assumptions are made such as boundedness or the tail probabilities (e.g. sub-Gaussian, sub-exponential). We can additionally distinguish between asymptotic and finite-sample results. 
 
-Regret may be analyzed asymptotically as $n$ goes to infinity or for a finite time horizon. Asymptotically we wish to find a policy $\pi$ that for all bandits $\nu$ satisfies $\lim_{n \to \infty} \frac{\Reg_n(\pi, \nu)}{f(n)} = 0$ where $f(n)$ is as small as possible. In the finite-horizon case we will instead seek guarantees that with high probability the regret will not grow faster than a certain rate with the sample size. Asymptotic results do not provide any guarantees about the finite-time performance of an algorithm; you could take an algorithm and add a fixed period where we throw out the data without looking at it without changing the asymptotic performance. Still, favorable asymptotic results are encouraging that the algorithm may have good finite-time performance. 
+Regret may be analyzed asymptotically as $n$ goes to infinity or for a finite time horizon. Asymptotically we wish to find a policy $\pi$ that for all bandits $\nu$ satisfies $\lim_{n \to \infty} \frac{\Reg_n(\pi, \nu)}{f(n)} = 0$ where $f(n)$ is as small as possible. 
+
+In the finite-horizon case we will instead seek guarantees that with high probability the regret will not grow faster than a certain rate with the sample size. Asymptotic results do not provide any guarantees about the finite-time performance of an algorithm; you could take an algorithm and add a fixed period where we throw out the data without looking at it without changing the asymptotic performance. Still, favorable asymptotic results are encouraging that the algorithm may have good finite-time performance. 
 
 We will now formally define the regret of a policy or bandit algorithm. Let $\nu = \{P_a: a \in \mathcal{A}\}$ be a collection of distributions (a stochastic bandit), and let $\mu_a(\nu)$ denote the expected reward of playing arm $a$, $\mu_a(\nu) = \int_{-\infty}^{\infty} x \, \mathrm{d}P_a(x)$. Define $\mu^*(\nu) = \max_{a \in \mathcal{A}} \mu_a(\nu)$ as the mean reward of the optimal arm.  Then the regret of policy $\pi$ on bandit instance $\nu$ is given by 
 $$\Reg_n(\nu, \pi) = n\mu^*(\nu) - \E_{\pi} \left[\sum_{t = 1}^n Y_t \right]$$ 
@@ -29,3 +31,9 @@ The (Frequentist) Regret and Bayesian Regret are both defined in terms of observ
 A Bayesian definition could be given in the same manner as the cumulative expected regret, but the posterior probability assigned to the event that an arm is optimal for the actual optimal arm is used more often. Again letting $a^*$ denote the optimal arm in a bandit instance, then after an experiment with a sample size of $N$, the posterior probability assigned to the optimal arm is given by
         
         $$P(a^* \text{ is optimal} | \mathcal{H}_N) = P(\bigcap_{a \in \mathcal{A}} \mu_a^* \geq \mu_a |  \mathcal{H}_N )$$ 
+        
+### Cites to work in
+
+\cite{lattimore2020bandit}
+
+\cite{lai1985asymptotically} lower bound

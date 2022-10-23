@@ -1,0 +1,10 @@
+---
+output: pdf_document
+---
+
+### Within Epoch Randomization
+
+The choice of within-epoch randomization is critical for targeting our objective of minimizing the population expected regret of $\widehat{\pi}_T$. With minimal assumptions about $\mcF$ equal assignment is necessary. For the within-epoch randomization we allocate patients equally between the available treatments using the maximal imbalance method of Berger, Ivanova, and Knoll \citep{berger2003minimizing, salama2008efficient}. This method is similar to permuted block randomization in that it forces balance (contra simple random assignment), however it has less predictable treatment assignments and is thus more resistant to selection bias than the randomized block procedure is. 
+When the randomization probabilities are set according to "inverse gap weighting" to be inversely proportional to the gap between the predicted outcomes under each intervention and the best intervention scaled by a learning rate the algorithm is optimal for the regret minimization problem \citep{abe1999associative, foster2018practical}. The improvements in in-sample regret come at the expense of population regret performance however. 
+
+If we had greater knowledge about the function class $\mcF$ we potentially improve the within-epoch randomization to reduce the variance of the estimated policy $\widehat{\pi}_T$ by targeting the theoretical optimal allocation using results from optimal design theory. 

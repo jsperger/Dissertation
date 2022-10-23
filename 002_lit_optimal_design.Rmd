@@ -34,6 +34,9 @@ is not usually equally interesting; an attractive property of $d$-optimality tha
 either $c$- or $V$-optimality is that it is invariant to reparameterizations.
 
 
+TODO: Efficiency definition
+TODO: Define a design
+
 ## Optimal Design in Clinical Trials
 
 Atkinson
@@ -50,3 +53,19 @@ When the response is a linear function of the parameters the optimal design puts
 on the edges of the design space. 
 When the response is a quadtratic function, the optimal design splits half of the observations between the edges of the design space and the other half is placed in the middle of the design space.
 Christine Smith worked out the optimal design for polynomial functions up to degree six. The degree must be known in advance. The optimal design for a lower degree polynomial will not be optimal for higher degree polynomials; indeed it may not be estimable at all.
+
+
+## Cites to work in
+
+
+Gittins index \cite{gittins1979bandit, gittins2011multi}
+
+Bayesian review \cite{shahriari2015taking}
+
+You know what it is \cite{pukelsheim2006optimal}
+
+Nonlinear response models \cite{fedorov2013optimal}
+
+RAR in Clinical Trials \cite{atkinson2019randomised}
+
+efficient algorithms \cite{harman2020randomized} and R package \cite{harman2019optimal}

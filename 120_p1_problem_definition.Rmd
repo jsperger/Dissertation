@@ -16,7 +16,11 @@ outcomes in the study except insofar as they influence the estimation of the opt
 
 $$\mathrm{Reg}_{\text{pop}} = \E_{X, \pi}[f^*(\pi^*(x), x) - f^*(\widehat{\pi}_T(x), x)]$$
 
-We assume that the contexts are randomly sampled from the target population.
+We assume that the contexts are randomly sampled from the target population so there is no
+mismatch between the distribution of covariates in the study and that in the 
+general population. This is a more reasonable assumption in post-market studies
+which typically have fewer exclusion criteria than Phase I-III trials, but relaxing
+this restriction is a potential line of future work.
 
 ### Assumptions
 
@@ -38,7 +42,29 @@ Where $\epsilon_t$ is a fixed but unknown distribution. Because $Y_t$ is bounded
 
 *Assumption - Oracle Access - Foster'20*
 
-We assume that we have access to a solver
+We assume that we have access to an "oracle" capable of solving a weighted regression problem
 
-$\widehat{f}_m = \argmin_{f \in \mathcal{F}} \sum_{t = \tau_{m-1}}^{\tau_m - 1} \left(f(x_t, a_t) - r(x_t, a_t) \right)^2$
+$$\widehat{f}= \argmin_{f \in \mathcal{F}} \sum_{(w, x, a, y) \in \mcH} w\left(f(x, a) - y \right)^2$$
 
+### Example - Linear Regression with a Single Covariate and Three Arms
+
+For a concrete example consider a three-arm clinical trial where the expected response is a linear function of a single covariate. Specifically the expected response of a patient with covarate $x \in [0, 1]$ under treatment $k$ is given by 
+$$\E[Y |X = x, A = k] = \alpha_k + \beta_k x$$
+
+Then the function class is given by $\mcF = \{f: f(x) = \alpha + \beta x, \quad \alpha, \beta \in \mathbb{R}^1\}$. Figure~\ref{fig:P1LinearProblem} plots the expected response under each treatment as a function of the covariate value $x$ in four scenarios assuming that a high response indicates a better outcome:
+
+1) There is a single best treatment. This is depicted in the upper-left quadrant of the plot where Arm 2 is above the lines for Arms 1 & 3 for all values of $x$
+
+2) Every treatment is optimal for some subgroup. This is depicted in the upper-right quadrant where Arm 2 is optimal for $x \in [0, .25]$, Arm 3 is optimal for $x \in [.25, .675]$, and Arm 2 is optimal for $x \in [.675, 1]$.
+
+3) One arm is inferior to a combination of other arms. This is depicted in the lower-left quadrant where Arm 3 is always suboptimal. Arm 2 is optimal for $x \in [0, .5]$, and Arm 1 is optimal for $x \in [.5, 1]$. This highlights the fact that pairwise comparisons alone are insufficient for determining whether an arm is suboptimal.
+
+4) One arm is dominated by another arm. This is depicted in the lower-right quadrant where Arm 3 is always inferior to Arm 2.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=.9\linewidth]{Figures/p1_problem_illustration.png}
+    \label{fig:P1LinearProblem}
+\end{figure}
+
+The realizability assumption is with $f^*(x, k) = \alpha_k + \beta_k x$, and the oracle assumption implies that we can fit a weighted least squares model with a single covariate. This requirement is easily met, and there is in fact a closed form solution for this model. Note that $\mcF$ is not finite and we'll need to either use the VC-dimension or a WLS-model-specific regret bound to determine the overall regret.

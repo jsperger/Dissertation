@@ -1,0 +1,11 @@
+---
+output: pdf_document
+---
+
+### Removing Suboptimal Arms
+
+weighted bootstrap \cite{rubin1981bayesian, ma2005robust}
+Value function inference\cite{wu2021resampling}
+
+$$\mcV(\pi) - \mcV(\pi_{\not a}) \geq \zeta_m$$
+
