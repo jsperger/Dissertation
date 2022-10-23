@@ -4,6 +4,23 @@ output: pdf_document
 
 ## Contextual bandit problem definition
 
+### Setups
+
+
+*Realizability based*
+
+Realizability assumption: there exists a function $f^* \in \mcF$ such that $ f^*(x, a) = \E[Y | X = x, A = a]$. Within this general statement lies a large body of work on specific function classes such as linear models where $f^*(x, a) = x^T\theta_a$, generalized linear models $f^*(x, a) = g(x^T\theta_a)$.
+
+*Agnostic*
+
+Let $\Pi \subseteq \mcA^{\mcS}$ be a class of policies (DTRs, decision functions) $\Pi: \mcX \to \mcA$.
+
+No *explicit* assumptions are made about the data generating distributions for the contexts or the rewards. In the author's opinion, this is slightly misleading. In the place of explicit assumptions about the data generating distributions, it is assumed that we have access to an oracle which has a high-probability bound on the estimation error e.g. Assumption 2 from \citep{simchi2022bypassing} that for any $\delta > 0$ the oracle returns a predictor $\widehat{f}$ such that with probability at least $1 - \delta$ the following inequality holds
+
+$$\E_{X, \pi} \left[\left(\widehat{f}(x, \a) - f^*(x, a) \right)^2 \right] \leq \mcE_{\mcF, \delta} (n)$$
+
+where $\mcE_{\mcF}(n)$ is a function that decreases with $n$. This is not a very restrictive assumption in practical applications, but it should be noted that there are assumptions entailed about the data generating distribution from the oracle assumption. One common assumption is that $Y \in [0, 1]$ or $|Y| \leq b \in \mathbb{R}$ both of which imply that the reward distribution is subgaussian \citep{vershynin2018high}. 
+
 
 ## Contextual Bandit Algorithms
 
@@ -11,12 +28,19 @@ Greedy and $\epsilon$-greedy \citep{langford2007epoch}
 
 LinUCB 
 
+Exp4?
+
 TS \citep{agrawal2013thompson}
 
 SquareCB \citep{foster2018practical}
 
+ \cite{foster2020beyond} modify their earlier algorithm by assuming access to an *online* regression oracle and show that this improves the expected regret to match the theoretical lower bound on the regret rate.
+
 "ILOVETOCONBANDITS" \citep{agarwal2014taming}
 Approximate a covering distribution over policies and cost-sensitive classification oracles.
+
+
+\cite{simchi2022bypassing} provide an algorithm that uses an offline regression oracle and achieves the optimal rate of regret while also reducing the number of calls to the oracle from $O(T^{3/2})$ oracle calls to $O(\log T)$.  
 
 \cite{bietti2021contextual} performed an extensive comparison of current CMAB methods for regret minimization by evaluating four major classes of CMAB algorithms and three additional modifications to these algorithms on 516 datasets from \url{openml.org}. The models included a greedy algorithm (with $\epsilon$-greedy as a variant) \citep{langford2007epoch}, a version of Thompson Sampling using the online bootstrap (with a greedy variant) \citep{agrawal2013thompson}, an online covering algorithm (with a modified exploration probability variant) \citep{agarwal2014taming}, and RegCB \citep{foster2018practical}.
 

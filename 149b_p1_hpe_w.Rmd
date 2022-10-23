@@ -13,4 +13,4 @@ $$\hpeW^{(m)} = \begin{cases} \widehat{w}_m \in [2/3 w_m, 4/3w_m] & \text{if } w
 
 Define the event $\hpeW = \cap_{m = 1}^{M} \hpeW^{(m)}$
 
-Then $hpeW$ holds with probability at least $1 - \delta/2$
+Then $\hpeW$ holds with probability at least $1 - \delta/2$

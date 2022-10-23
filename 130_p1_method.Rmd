@@ -7,10 +7,10 @@ output: pdf_document
 The logic of our method is to increase the sample size for better treatments at 
 the expense of inferior treatments by sequentially eliminating treatments that 
 are not optimal for any subset of patients. It proceeds by splitting the available samples $T$ into $M$ epochs where 
-$M = ceiling(\log_2{T})$. At the end of an epoch the set of feasible treatments for the next epoch, $\mathcal{A}_{m + 1}$,
+$M = \lceil\log_2{T}\rceil$. At the end of an epoch the set of feasible treatments for the next epoch, $\mathcal{A}_{m + 1}$,
 is formed by constructing confidence intervals around the estimated value functions for the estimated optimal policies
 if treatment $a$ were not available $\pi_{\not a} = \pi: \mathcal{H} \times \mathcal{X} \to \mathcal{A} \, \backslash \, a$.
-If a treatment is *not* part of the optimal DTR then the value function doesn't change when it is removed, that is $\mathcal{V}(\pi_{\not a}) = \mathcal{V}(\pi)$. For mathematical simplicity, we will only use the observations in the most recent epoch to determine the set of feasible treatments for the next epoch. Because the assignments within an epoch are random with equal probability the parameter estiamtes will be unbiased. Data from past epochs could be incorporated using an AIPW estimator in practice.
+If a treatment is *not* part of the optimal DTR then the value function doesn't change when it is removed, that is $\mathcal{V}(\pi_{\not a}) = \mathcal{V}(\pi)$. For mathematical simplicity, we will only use the observations in the most recent epoch to determine the set of feasible treatments for the next epoch. Because the assignments within an epoch are random with equal probability the parameter estiamtes will be unbiased. Data from past epochs could be incorporated using an AIPW estimator in practice \citep{robins1994estimation, zhong2021aipw}.
 
 $\mathcal{V}(\pi) = \E_X[Y^*(\pi(X))]$
 
@@ -26,19 +26,20 @@ $\mathcal{V}(\pi_{\not a})$
 \SetKwFunction{FindDominatedArms}{FindDominatedArms}
 \SetKwFunction{WithinEpochRandomization}{WithinEpochRandomization}
 
-Set the number of epochs $L = \lceil \log_2{K} \rceil$
-
-Define epoch boundaries $\tau_m = 2^m$
-
-Set epoch sample sizes to $t_m = \tau_m - \tau_{m - 1}$
+Set the number of epochs $M = \lceil \log_2{K} \rceil$
 
 Set active arm set $\mathcal{A}_1 = [K]$
 
- \For{$l = 1, \ldots, L$}{
-  Assign patients to $a \in \mathcal{A}_l$ using \WithinEpochRandomization 
+ \For{$m = 1, \ldots, M$}{
+  Assign patients to $a \in \mathcal{A}_m$ using \WithinEpochRandomization 
   
-Update active arm set $\mathcal{A}_{l + 1} = \mathcal{A}_l \, \backslash$ \FindDominatedArms{$\mathcal{A}_l, \, \mathcal{H}_t$}
+Update active arm set $\mathcal{A}_{m + 1} = \mathcal{A}_m \, \backslash$ \FindDominatedArms{$\mathcal{A}_m, \, \mathcal{H}_t$}
   
  }
  \caption{Contextual Drop the Loser Meta-algorithm}
 \end{algorithm}
+
+
+Define epoch boundaries $\tau_m = 2^m$
+
+Set epoch sample sizes to $t_m = \tau_m - \tau_{m - 1}$

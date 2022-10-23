@@ -2,7 +2,7 @@
 output: pdf_document
 ---
 
-# Results for MAB Problem
+# Results for MAB Pure Exploration Problem
 
 Without loss of generality assume that the maximum mean is unique and that its index is one $\mu^* = \mu_1$. We then define an instance complexity measure $H$ based on the inverse gaps between the means for suboptimal arms and the optimal arm's mean:
 

@@ -4,12 +4,8 @@ output: pdf_document
 
 ## Problem Definition 
 
-We will now formalize the statement of the problem. At time $t = 1, \ldots [T]$ a new subject 
-enters the study and we observe their covariate information encoded in a vector $x_t \in  \mathcal{X} \subseteq \mathbb{R}^d$ where
-$X_1, \ldots, X_2$ are independent and identically distributed random variables with context distribution $\mathcal{D}$. 
-After this covariate information is observed, a treatment (arm, action) $a_t \in \mathcal{A}$ is assigned according to an assignment policy $\pi: \mathcal{X} \times \mathcal{H}_{t-1} \to \mathcal{A}$ where $\mathcal{H}_{t-1} = \left\{(x_1, a_1, r_1), \ldots, (x_{t - 1}, a_{t - 1}, r_{t -1})\right\}$ is the collected history of contexts, actions, and rewards through time $t-1$ with $\mathcal{H}_0 = null$
-. The outcome (reward) $r_t \in [0,1]$ is immediately observed. The conditional expected reward is a fixed but unknown function of the covariate and treatment information $\E[r_t |x_t, a_t] = f(x_t, a_t)$. 
-
+We will now formalize the statement of the problem. At time $t = 1, \ldots [T]$ we observe a context $x_t \in  \mathcal{X} \subseteq \mathbb{R}^d$; that is a new subject enters the study and we observe their covariate information. $X_1, \ldots, X_T$ are independent and identically distributed random variables with context distribution $\mathcal{D}$. 
+After the context is observed, we assign an arm (treatment) $a_t \in \mathcal{A} = [K]$ where $[N]$ denotes the set $\{1, \ldots, N \}$ for any $N \in \mathbb{N}$. The arm is assigned according to an assignment policy $\pi: \mathcal{X} \times \mathcal{H}_t \to \mathcal{A}$ where $\mathcal{H}_{t} = \left\{(x_1, a_1, y_1), \ldots, (x_{t - 1}, a_{t - 1}, y_{t -1})\right\}$ is the collected history of contexts, actions, and rewards up to time $t$ with $\mathcal{H}_0 = \emptyset$. The outcome (reward) $y_t \in [0,1]$ is immediately observed. The conditional expected reward is a fixed but unknown function of the covariate and treatment information $\E[Y_t |X_t = x_t, \, A_t = a_t] = f^*(x_t, a_t)$. The assumption that the outcomes are bounded is for convenience and can be relaxed to allow outcomes in $\mathbb{R}$.
 
 
 ### Objective
@@ -20,25 +16,25 @@ outcomes in the study except insofar as they influence the estimation of the opt
 
 $$\mathrm{Reg}_{\text{pop}} = \E_{X, \pi}[f^*(\pi^*(x), x) - f^*(\widehat{\pi}_T(x), x)]$$
 
-### Assumptions
+We assume that the contexts are randomly sampled from the target population.
 
+### Assumptions
 
 *Assumption - realizibility*
 
 There exists $f^* \in \mathcal{F}$ s.t. $\E[Y | x_t, a_t] = f^*(x_t, a_t)$
 
+We will focus on the induced policy $\pi_f$ from a regression function $f$ i.e. $\pi_f(x) = \argmax_{a \in \mathcal{A}} f(x,a)$. 
+
+We will first present results for when $|\mathcal{F}|$ is finite in Section ADDREF, and then expand the analysis to cases where $|\mathcal{F}|$ is infinite
+but has finite Vapnik–Chervonenkis (VC) dimension \cite{vapnik1971uniform}.
+
 *Assumption - rewards*
 
-$Y_t = f^*(a_t, \pi_t) + \epsilon_t$
+$Y_t = f^*(x_t, a_t) + \epsilon_t$
 
-Where $\epsilon_t$ is a fixed but unknown distribution. Because $Y_t$ is bounded this implies
-that $\epsilon_t$ has a sub-Gaussian distribution.
+Where $\epsilon_t$ is a fixed but unknown distribution. Because $Y_t$ is bounded this implies that $\epsilon_t$ has a sub-Gaussian distribution.
 
-*Assumption - Function Class*
-
-$|\mathcal{F}|$ is bounded
-
-$\mathrm{VC}(\mathcal{F})$ is bounded where $\mathrm{VC}$ is Vapnik-Chernis dimension
 
 *Assumption - Oracle Access - Foster'20*
 
