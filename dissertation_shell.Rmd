@@ -74,19 +74,20 @@ knitr::opts_chunk$set(echo = FALSE)
 ```{r, child='002_rar.Rmd'}
 ```
 
-```{r, child='002_lit_optimal_design.Rmd'}
+```{r, child='002_rar_controversies.Rmd'}
 ```
 
-```{r, child='002_bandit_objectives.Rmd'}
+```{r, child='002_lit_optimal_design.Rmd'}
 ```
 
 ```{r, child='002_regret_power.Rmd'}
 ```
 
+```{r, child='002_bandit_objectives.Rmd'}
+```
 
 ```{r, child='002_mab_pure_exp.Rmd'}
 ```
-
 
 ```{r, child='003_est_after_adaptation.Rmd'}
 ```
@@ -101,6 +102,12 @@ knitr::opts_chunk$set(echo = FALSE)
 ```
 
 ```{r, child='130_p1_method.Rmd'}
+```
+
+```{r, child='131_p1_method_within_epoch.Rmd'}
+```
+
+```{r, child='132_p1_removing_arms.Rmd'}
 ```
 
 

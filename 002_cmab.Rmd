@@ -30,7 +30,50 @@ LinUCB
 
 Exp4?
 
-TS \citep{agrawal2013thompson}
+### Thompson Sampling
+
+The extension of Thompson Sampling to the case where the optimal treatment depends on patient covariates deserves additional attention because of its relevancy to health research. The simplest way to extend Thompson Sampling to the contextual bandit problem is to specify a linear model relating the expected outcome to the patient's covariates \citep{agrawal2013thompson}. The researcher considers $K$ potential interventions in their trial, and each arm $k$ has an unknown parameter vector $\beta_k$ that is predictive of an individual's expected response to treatment given the patient's characteristics. At each time $t$ when a patient enters the trial, their characteristics (or context) $X_t \in \mathcal{R}^d$ are observed, and after they receive their treatment $k$ the researcher observes their outcome $Y_t = X_t^T \beta_k + \epsilon_t$. We assume that each $\epsilon_t$ is an independent, identically distributed mean zero random variable. Most theoretical papers consider the case where $\epsilon_t$ are iid $\sigma$-subgaussian random variables, that is they are random variables $Z$ that satisfy the condition that for all $t > 0$ we have $\E[e^{Zt}] \leq \exp{t^2 \sigma^2 / 2}$. Gaussian random variables are sub-gaussian. Assume that $\epsilon_t \sim N(0, \sigma^2)$ where $\sigma^2$ is known for simplicity. Choosing the normal distribution with parameters $\mu_{k, \,0}, \sigma_{k, \,0}^2$ as the prior distribution gives us a closed form solution for the posterior distribution. The TS algorithm for the contextual bandit problem with linear rewards and known variance is given in algorithm~\ref{alg:CMABTS}. 
+
+The algorithm begins by assigning the first $d \times k$ participants equally between each arm at random so that every parameter vector is estimable, and then estimates $\widehat{\beta}_{k}$ for each arm using least squares. When a new patient enrolls in the study, we observe their characteristics $x_t$  and sample parameter values $\tilde{\beta}_{k,t}$ for each of the $k$ arms from a $d$-dimensional multivariate normal distribution with mean $\widehat{\beta}_{k}$ and variance $\sigma_{k, 0}^2\left(I_d + X_k^TX_k \right)^{-1}$. Here $X_k$ is an $n_{k, t} \times d$ dimensional matrix where each row is comprised of the covariates from one patient who was assigned to arm $k$. The arm chosen is the arm that maximizes $x_t^T\tilde{\beta}_{k,t}$. The outcome for the patient is observed, and we update our estimate of $\widehat{\beta}_{k}$ for the chosen arm and its variance. 
+
+\begin{algorithm}
+\SetAlgoVlined
+\KwIn{Known precision matrices $\Lambda_k$, 
+
+Prior distributions $\text{MVN}_d(\beta_{k, 0}, \Lambda_{k, 0}^{-1})$ for each arm's parameter vector}
+
+Initialize $L_{k, 1} = \Lambda_{k,0}$ for each arm $k$
+
+Initialize $\widehat{\beta}_{k, 1} = \beta_{k, 0}$
+
+ \For{$t = 1, \ldots, n$}{
+ Observe new data $x_t$
+ 
+ 
+Sample parameters from the posterior distribution $\tilde{\beta}_{k,t} \sim \text{MVN}(\widehat{\beta}_{k, t}, \, L_{k,t}^{-1})$
+
+Assign treatment $a_t = \argmax_{k} x_t^T \tilde{\beta}_{k,t}$ and observe response $y_t$
+
+
+\For{$k = 1, \ldots, K$}{
+\eIf{$a_t = k$}
+{
+    Update $L_{k, t+1} = (L_{k, t} + x^Tx)\Lambda_k$
+    
+    Update $\widehat{\beta}_{k, t + 1} = L_{k, t+1}\left(L_{k, t}\widehat{\beta}_{k, t} + x^T y \right)$
+    
+}{ Carry forward $L_{k, t+1} = L_{k, t}$ and $\widehat{\beta}_{k, t + 1} = \widehat{\beta}_{k, t} $}
+
+}
+}
+
+ \caption{TS for the Contextual Bandit with linear rewards and known variance}  \label{alg:CMABTS}
+\end{algorithm}
+
+
+\citep{agrawal2013thompson}
+
+#### SquareCB
 
 SquareCB \citep{foster2018practical}
 

@@ -35,26 +35,94 @@ $\phi_t$ is $\mcH_t$ measurable.
 
 ## Objectives
 
-Maximize the expected outcomes
+Maximize the expected outcomes or Expected Number of Successes (ENS)
+
+expected number of successes $\mathrm{ENS} = \sum_{t = 1}^T \E[Y_t]$
 
 For a fixed power maximize the outcomes
 
 Maximize power
 
 
-## Controversies 
-Extracorporeal membrane oxygenation (ECMO) trial
-\citep{bartlett1985extracorporeal} utilized a randomized play-the-winner design
-that resulted in a single assignment to the control condition and eleven patients
-assigned to ECMO. 
+## Methods
 
-\cite{wathen2017simulation}
+### Thompson Sampling
 
-### Cites to work in 
+The earliest example of response-adaptive randomization is a heuristic Bayesian method that randomizes patients to one of two treatments with probability equal to the posterior probability that said arm is optimal. To formalize this example, at time $t = 1, \ldots, T$ a new patient arrives. The treatment chosen for the $t$-th patient is denoted by $A_t \in \{1, 2\}$, and  the patient's success or failure, denoted by $Y_t$, is observed immediately after the treatment is assigned. The history of treatment assignments and responses available when the treatment decision is made for the $t$-th patient is denoted by $\mathcal{H}_t = \{A_1, Y_1, \ldots A_{t-1}, Y_{t-1}\}$ and $\mathcal{H}_1 = \emptyset$. The success probability for an individual given treatment one follows a Bernoulli distribution with success probability $\mu_1$, and likewise treatment two with success probability $\mu_2$. Our objective is to maximize the ENS . 
 
-Mention Ivanova papers
+Thompson Sampling begins with choosing a prior distribution over the success probabilities for the treatments $P(\mu_A)$ and $P(\mu_B)$. The prior distributions do not need to be identical, and could reflect what is known about the problem before beginning the trial. The beta distribution is a natural choice of prior for this MAB problem where the individual responses follow a Bernoulli distribution because there is a convenient analytical form for the posterior distribution, namely that for a beta prior with parameters $\alpha_t, \beta_t$ and an observation $y_t$ from the Bernoulli distribution, the posterior distribution follows the beta distribution with parameters $\alpha_{t + 1} = \alpha_t + y_t$ and $\beta_{t + 1} = \beta_t + (1 - y_t)$. A uniform prior falls under the framework as the uniform distribution over $(0,1)$ is a special case of the beta distribution with parameters $\alpha = 1, \beta = 1$. We'll suppress the time index, and use $(\alpha_k, \beta_k)$ to refer to the current parameters for treatment $k$. When the $t$-th patient enters the trial, their treatment assignment is made by randomly drawing $\tilde{\mu}_1 \sim \text{Beta}(\alpha_1, \beta_2)$ and $\tilde{\mu}_2 \sim \text{Beta}(\alpha_2, \beta_2)$ and assigning the patient to $\argmax_{k \in \{1, 2 \}} \tilde{\mu}_k$. Finally, the outcome $y_t$ is observed and the parameters for the arm that were played are updated. This procedure is repeated until the end of the trial. The full pseudocode for the algorithm is given in algorithm~\ref{alg:BernTS}.
 
-Thompson Sampling
+\begin{algorithm}
+\SetAlgoVlined
+\KwIn{Prior parameters $\bm{\alpha} = (\alpha_{1}, \ldots, \alpha_K)$, \,$\bm{\beta} = (\beta_{1}, \ldots, \beta_K)$}
+
+ \For{Patients $t = 1, \ldots, n$}{
+\For{Treatments $k = 1, \ldots, K$}{
+Sample $\tilde{\mu}_k \sim \text{Beta}(\alpha_k, \beta_k)$
+}
+ Assign treatment $a_t = \max_{k \in [K]} \tilde{\mu}_k$
+ 
+ Observe outcome $y_t$
+ 
+ For the assigned treatment $k$, update $(\alpha_k, \beta_k) \leftarrow (\alpha_k + y_t, \beta_k + (1 - y_t))$
+}
+ \caption{Beta-bernoulli Thompson Sampling}  \label{alg:BernTS}
+\end{algorithm}
+
+### Urn-based Designs
+
+After an almost four-decade gap since the work of Thompson, one of the earliest proposed response-adaptive designs proposed for clinical trials was the "Play the Winner" (PW) for a two-arm trial with binary outcomes \citep{zelen1969play}. This design can be represented using an urn model where there are two types of balls, one corresponding to each treatment. When there are no balls in the urn the allocation is chosen at random. If the treatment is successful a ball of that type is added to the urn; otherwise, a ball of the opposed type is added to the urn. The balls are chosen *without* replacement so that there is at most one ball in the urn at any given time. This makes the allocations deterministic given the previous treatment and response. This is undesirable, and a randomized extension which chooses balls *with* replacement where the number of balls of each type can be modified was proposed by \cite{wei1978randomized}. Wei also provided a generalization to multiple treatments known as either a Generalized P\'{o}lya urn or a Generalized Friedman Urn. The algorithm for the Generalized P\'{o}lya urn is given in Algorithm~\ref{alg:LitUrn} \cite{eggenberger1923statistik, wei1979generalized}.
+
+
+\begin{algorithm}[H]
+\SetAlgoVlined
+\KwIn{$T$ Samples, $K$ Arms, $b$ initial balls, $\alpha$ success param, $\beta$ failure param}
+Add $b$ balls of each type $k = 1, \ldots, K$ to the urn
+
+ \For{$t = 1, \ldots, T$}{
+  Draw a ball from the urn and assign the treatment corresponding to the ball type $k$
+  
+  Observe response $y_t$
+  
+  \eIf{$y_t = 1$}{
+ Add $\alpha$ balls of type $k$
+ }{Add $\beta$ balls of each $j \neq k \in [K]$ type}
+ }
+ \caption{Generalized P\'{o}lya Urn for Binary Outcomes}
+\label{alg:LitUrn}
+\end{algorithm}
+
+There are other potential tweaks to urn-models that have been proposed. The model could be modified by removing balls on failure or only adding balls in the case of a successful treatment \citep{smythe1996central, durham1990randomized}. 
+
+### Drop the loser
+
+Ivanova \cite{ivanova2000drop, ivanova2003play}
+
+
+
+### MAB Approaches 
+
+
+
+For the MAB problem with Bernoulli rewards, let $T_k(t -1)$ denote the number of times arm $k$ was assigned before time $t$ and define
+
+$$\mathrm{UCB}_k(t -1, \delta) = \begin{cases}\infty & \text{if }T_k(t - 1) = 0 \\ \widehat{\mu}_k + \sqrt{\frac{2 \log 1/\delta}{T_k(t - 1)}} & \text{otherwise} \end{cases}$$
+    
+$\delta$ is approximately the probability that the upper end of the confidence interval underestimates the true mean
+    
+\begin{algorithm}[H]
+\SetAlgoVlined
+\KwIn{Sample size N, arm set [K], desired upper bound $\delta$}
+
+ \For{$t = 1, \ldots, N$}{
+ $A_t = \argmax_k \mathrm{UCB}_k(t -1, \delta)$
+ 
+ Observe $Y_t$ and update confidence bounds
+}
+
+ \caption{Upper Confidence Bound for MABs}
+ \label{alg:UCBBern}
+\end{algorithm}    
 
 Multi-armed bandit models for the optimal design of clinical trials: benefits and challenges \cite{villar2015multi}
 
@@ -65,4 +133,3 @@ Response-adaptive randomization in clinical trials: from myths to practical cons
 
 MRTs \cite{bidargaddi2020designing, qian2021micro}
 
-Ivanova \cite{ivanova2003play}

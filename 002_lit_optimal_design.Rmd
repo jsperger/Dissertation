@@ -37,6 +37,12 @@ either $c$- or $V$-optimality is that it is invariant to reparameterizations.
 TODO: Efficiency definition
 TODO: Define a design
 
+ A design $\xi$ specifies $l \geq 1$ regression vectors $x_i$ with corresponding positive weights $w_i$ that sum to one.
+    
+    The moment matrix of a design $\xi \in \Xi$ is the 
+    
+    $$M(\xi) = \sum_{x \in \text{supp} \, \xi} \xi(x)xx^{\prime} = \int_{\mathcal{X}}xx^{\prime}\, \mathrm{d}\xi$$
+
 ## Optimal Design in Clinical Trials
 
 Atkinson

@@ -17,7 +17,15 @@ In the bandit literature, this type of problem is an example of a structured ban
 We consider a trial where the sample size $T$ is fixed, there is a single treatment with $K$ possible dosages, and the researcher is able to adapt the randomization probability for the $t$-th patient based on the accumulated data of the trial up to that point. 
  Each treatment $k$ is associated with an unknown parameter vector $\beta_k \in \mathbb{R}^d$. For any integer $k$, let $[k]$ denote the set $\{1, \ldots, k \}$. At each time $t = 1, \ldots, T$, we observe a new individual with baseline covariates $x_t \in \mathbb{R}^d$. The experimenter then uses a randomization policy $\pi(x_t)$ to assign this individual to a treatment $a_t \in [K]$ and observes a stochastic linear outcome
 $$Y_{t} = X_t^T \beta_k + A_t^T\theta + \epsilon_{t}$$
+\subsubsection{The Challenge with Structured Exploration}
+
+The type of exploration utilized in Section One is no longer applicable when there is structure between the treatments. The issue stems from the structure of the problem - it's now possible for an arm that is far from optimal to be very informative about the optimal arm, but because the informative arm is far from optimal TS won't assign the arm very often. Consider the simple case below where we have three arms to choose from with fixed covariates, $e_1 = \begin{pmatrix}1 \\ 0 \end{pmatrix}$, $e_2 = \begin{pmatrix}0 \\ 1 \end{pmatrix}$, and $x = \begin{pmatrix} 1 - \delta \\ \delta \end{pmatrix}$ where $\delta$ is small but nonzero. The outcome is a linear function of the chosen arm and a common parameter vector $\theta$, $Y_t = a_t^T \theta + \epsilon_t$ and assume $\epsilon_t \sim N(0, 1)$ and $\epsilon_t \perp a_t$. Let $\theta = \begin{pmatrix}1 \\ 0 \end{pmatrix}$. It's very difficult to determine whether $e_1$ or $x$ is optimal with samples from these two arms when $\delta$ is small. Using arm $e_2$ instead of $x$ would allow us to estimate $\theta$ much faster, and in doing so we would learn whether $e_1$ or $x$ is better. The problem is that $e_2$ is far from optimal and would quickly be eliminated by our method detailed in Section One.
 
 \subsection{Proposed Method}
 
-Propose to extend the successive rejection algorithm to the structured case by modifying the rejection criteria to include the potential information gain that an arm provides. 
+I propose to extend the successive rejection algorithm to the structured case by modifying the rejection criteria to include the potential information gain that an arm provides. One potential information measure is the expected reduction in the Kullback-Leibler divergence in the conditional mean model for treatment $a$ proposed by \citep{russo2014learning}.
+ 
+ $$\E[\KL(a_t) - \KL(a_{t + 1}) | \mcH_{t}, A_t = a]$$
+ For two probability measures $P, Q$ on the same measurable space $(\Omega, \mcA)$ with densities $p, q$ with respect to a $\sigma$-finite measure $\mu$ ($\mu = P + Q$ always suffices) and $P(\Omega) = 1$ while $Q(\Omega) \leq 1$.
+ 
+ $$\KL(P, Q) = \E_{P}\left[\log{\frac{p(X)}{q(X)}}\right]$$

@@ -8,6 +8,12 @@ For a natural number $n$, let $[n]$ denote the set $\{1, \ldots, n\}$
 
 ## Optimal Design
 
+ A design $\xi$ specifies $l \geq 1$ regression vectors $x_i$ with corresponding positive weights $w_i$ that sum to one.
+    
+    The moment matrix of a design $\xi \in \Xi$ is the 
+    
+    $$M(\xi) = \sum_{x \in \text{supp} \, \xi} \xi(x)xx^{\prime} = \int_{\mathcal{X}}xx^{\prime}\, \mathrm{d}\xi$$
+
 ## Problem Definition
 
 \begin{itemize}

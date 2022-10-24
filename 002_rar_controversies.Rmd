@@ -1,0 +1,16 @@
+---
+output: pdf_document
+--- 
+
+## Controversies 
+
+#### Medical
+
+Extracorporeal membrane oxygenation (ECMO) trial
+\citep{bartlett1985extracorporeal} utilized a randomized play-the-winner design
+that resulted in a single assignment to the control condition and eleven patients
+assigned to ECMO. 
+
+#### Statistical
+
+\cite{wathen2017simulation}
