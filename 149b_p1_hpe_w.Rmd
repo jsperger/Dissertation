@@ -3,7 +3,7 @@ output: pdf_document
 ---
 
 
-## $\hpeW$
+\definition{High Probability Event $\hpeW$ \cite{foster2020instance}}
 
 Let $\delta$ be a fixed in the interval $(0, 1]$, and for all $m \in [M]$ let 
 $\hpeW^{(m)}$ denote the event that

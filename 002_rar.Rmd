@@ -2,7 +2,7 @@
 output: pdf_document
 ---
 
-# Response-adaptive Randomization
+## Response-adaptive Randomization (RAR)
 
 Response-adaptive randomization has a rich history in biostatistics and
 statistics stretching back until at least the pioneering work of
@@ -10,8 +10,8 @@ statistics stretching back until at least the pioneering work of
 the randomization probabilities so that they are proportional to the posterior
 probability that arm is superior. To formalize the concept of response-adaptive
 randomization, consider a clinical trial with $T$ patients and $K$ potential
-treatments. An allocation or randomization sequence is a matrix $A = (A_1,
-\ldots, A_n)$ where $A_i = e_k$ is a standard basis vector consisting of all
+treatments. An allocation or randomization sequence is a 
+matrix $\mssA = (A_1, \ldots, A_n)$ where $A_i = e_k$ is a standard basis vector consisting of all
 zeros except for a single one in the $k$-th position corresponding to the
 treatment that the $i$-th individual received. Let $Y* = (Y_1^*, \ldots, Y_T^*)$
 denote the $T \times K$ matrix of potential outcomes where $Y_i^*$ is the vector
@@ -33,7 +33,9 @@ $\phi_t$ is $\mcH_t$ measurable.
 \item Covariate-adjusted response-adaptive randomization $\phi_t = \E[A_t | \mcH_t] = \E[A_t | \mcH_t]$ 
 \end{enumerate}
 
-## Objectives
+The work in this dissertation will focus on what Hu and Rosenberger term "covariate-adjusted response-adaptive (CARA)" randomization. 
+
+### RAR Objectives
 
 Maximize the expected outcomes or Expected Number of Successes (ENS)
 
@@ -44,9 +46,16 @@ For a fixed power maximize the outcomes
 Maximize power
 
 
-## Methods
+#### Considerations for randomization
 
-### Thompson Sampling
+usability of the resulting data for "off-policy" evaluation
+
+Predictability of the assignments
+
+
+### Methods
+
+#### Thompson Sampling
 
 The earliest example of response-adaptive randomization is a heuristic Bayesian method that randomizes patients to one of two treatments with probability equal to the posterior probability that said arm is optimal. To formalize this example, at time $t = 1, \ldots, T$ a new patient arrives. The treatment chosen for the $t$-th patient is denoted by $A_t \in \{1, 2\}$, and  the patient's success or failure, denoted by $Y_t$, is observed immediately after the treatment is assigned. The history of treatment assignments and responses available when the treatment decision is made for the $t$-th patient is denoted by $\mathcal{H}_t = \{A_1, Y_1, \ldots A_{t-1}, Y_{t-1}\}$ and $\mathcal{H}_1 = \emptyset$. The success probability for an individual given treatment one follows a Bernoulli distribution with success probability $\mu_1$, and likewise treatment two with success probability $\mu_2$. Our objective is to maximize the ENS . 
 

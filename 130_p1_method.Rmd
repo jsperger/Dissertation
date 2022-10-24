@@ -2,8 +2,6 @@
 output: pdf_document
 ---
 
-## Method
-
 The aim of our method is to increase the sample size for better treatments at 
 the expense of inferior treatments by sequentially eliminating treatments that 
 are not optimal for any subset of patients. 
@@ -11,9 +9,29 @@ Our method proceeds by splitting the available samples $T$ into $M$ epochs where
 $M = \lceil\log_2{T}\rceil$. At the end of an epoch the set of feasible treatments for the next epoch, $\mathcal{A}_{m + 1}$,
 is formed by constructing confidence intervals around the estimated value functions for the estimated optimal policies
 if treatment $a$ were not available $\pi_{\not a} = \pi: \mathcal{H} \times \mathcal{X} \to \mathcal{A} \, \backslash \, a$.
-If a treatment is *not* part of the optimal DTR then the value function doesn't change when it is removed, that is $\mathcal{V}(\pi_{\not a}) = \mathcal{V}(\pi)$. For mathematical simplicity, we will only use the observations in the most recent epoch to determine the set of feasible treatments for the next epoch. Because the assignments within an epoch are random with equal probability the parameter estiamtes will be unbiased. Data from past epochs could be incorporated using an AIPW estimator in practice \citep{robins1994estimation, zhong2021aipw}. The meta-algorithm for our approach is given in . The within-epoch randomization and the arm removal methods will be specified later, our point in abstracting them here is to emphasize two areas of potential adaptation to address different objectives. 
+If a treatment is *not* part of the optimal DTR then the value function doesn't change when it is removed, that is $\mathcal{V}(\pi_{\not a}) = \mathcal{V}(\pi)$. For mathematical simplicity, we will only use the observations in the most recent epoch to determine the set of feasible treatments for the next epoch. Because the assignments within an epoch are random with equal probability the parameter estiamtes will be unbiased. Data from past epochs could be incorporated using an AIPW estimator in practice \citep{robins1994estimation, zhong2021aipw}. The meta-algorithm for our approach is given in Algorithm~\ref{alg:P1Meta}. The within-epoch randomization and the arm removal methods will be specified later, our point in abstracting them here is to emphasize two areas of potential adaptation to address different objectives. 
 
-%$\mathcal{V}(\pi) = \E_X[Y^*(\pi(X))]$
 
-%$\mathcal{V}(\pi_{\not a})$
+\begin{algorithm}[H]
+\SetAlgoVlined
+\KwIn{Sample size $T$, Treatment arms $[K]$}
+\SetKwFunction{FindSuboptimalArms}{FindSuboptimalArms}
+\SetKwFunction{WithinEpochRandomization}{WithinEpochRandomization}
+
+Set the number of epochs $M = \lceil \log_2{T} \rceil$
+
+Set active arm set $\mathcal{A}_1 = [K]$
+
+ \For{$m = 1, \ldots, M$}{
+  Assign patients to $a \in \mathcal{A}_m$ using \WithinEpochRandomization 
+  
+  Define $\mcH_m \subset \mcH_t$ as the subset of the history comprised of observations in epoch $m$
+  
+Update active arm set $\mathcal{A}_{m + 1} = \mathcal{A}_m \, \backslash$ \FindSuboptimalArms{$\mathcal{A}_m, \, \mathcal{H}_m$}
+  
+ }
+ \caption{Contextual Successive Rejection Meta-algorithm}
+\label{alg:P1Meta}
+\end{algorithm}
+
 

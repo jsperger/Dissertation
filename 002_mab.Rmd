@@ -1,0 +1,16 @@
+---
+output: pdf_document
+---
+
+## The Multi-armed Bandit (MAB) Problem
+
+Definition
+
+
+Exploration
+Exploitation
+
+Single-stage
+
+Principle: optimism under uncertainty
+

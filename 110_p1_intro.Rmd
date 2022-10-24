@@ -2,15 +2,15 @@
 output: pdf_document
 ---
 
-# Introduction
+## Introduction
 
-## Motivating Trial 
+### Motivating Trial 
 
 This work was motivated by a comparative effectiveness trial design for a study to investigate four interventions for reducing the discomfort from office cystoscopy. Cystoscopy is a procedure where an endoscope is passed through the urethra to directly inspect the bladder, and this procedure is typically done without general anesthesia. It is one of the most common outpatient procedures with more than one million individuals undergoing the procedure every year in the United States\cite{dartmouth_atlas_data_2021}, and for patients with bladder cancer must regularly (often every three months) undergo the procedure for surveillance. Numerous interventions have been evaluated and have some evidence of efficacy in reducing discomfort: intra-urethral lidocaine with longer than standard dwell time ($\geq 10$ minutes versus immediately before the procedure, as is common), real-time visualization where  the patient watches their cystoscopy on a monitor, increasing hydrostatic pressure via ``bag squeeze'' when the cystoscope traverses the urethral sphincter, and listening to calming music \textbf{add cites for methods}. The vast majority of cystoscopy studies enrolled only men, and some that enrolled women have found different effects for men and women. In addition to biological sex, age and previous cystoscopy experience may impact treatment response. The potential treatments included each intervention alone and all of the treatments in pairwise combinations, for example combining increased intra-urethral lidocaine dwell time with visualization. The goal of the study was to create clinical treatment guidelines for assigning future patients to treatments based on phenotypic characteristics in order to reduce discomfort as measured on a 10-point visual analog scale. In statistical terms, the goal was to estimate a dynamic treatment regime that would best reduce the pain experienced by cystoscopy patients in the general population.
 
 Our motivating trial has a number of salient considerations that inspired our design: 1) the interventions involve treatments already used (to varying degrees)in clinical care, 2) there are a large number of potential interventions with four solo interventions and six combinations of two interventions, and 3) existing experimental evidence and biologically-motivated theorizing suggest that there are multiple subgroups with different responses to treatment. Because the interventions are already used in clinical practice there is less concern about safety constraints. The large number of treatments suggest that removing less effective treatments could improve power at the end of the study, but the presence of heterogenous treatment effects preclude using methods that eliminate treatments based on the average treatment effect (ATE) because a treatment with a lower ATE may be optimal for a subgroup of individuals. In light of these considerations we developed a randomization algorithm that can remove poorly performing arms in a way that respects hetergenous treatment effects by evaluating the arms in terms of their contribution to the value function of the estimated optimal dynamic treatment regime (DTR). 
 
-## Past Work
+### Past Work
 
 The existing literature on design for precision medicine is predominantly focused on Sequential Multiple Assignment Randomized Trials (SMARTs) \citep{lei2012smart, kosorok2015adaptive} which are multi-stage trials. In a SMART the treatment received at a later stage may be a function of an individual's response to an earlier treatment, but the randomization probabilities are typically fixed over time. What little work has been done on adaptive trial designs for precision medicine has focused on maximizing the expected outcomes within the trial population \citep{guo2017subgroup}. This is a reasonable goal in certain contexts, but it is necessarily suboptimal when the goal is to maximize the expected outcomes in a target population. 
 
@@ -27,10 +27,6 @@ where $\mathcal{H}$ is the history of samples $(w, x, a, y)$ and $w \in \mathbb{
 
 2) The action selection probability of a CMAB algorithm (which will depend on the realization of $X \in \mcX$) has a dual representation as randomly selecting a deterministic policy from an appropriate distribution $Q(\cdot)$ over the space of potential deterministic policies (which is independent of $X$) \cite{simchi2022bypassing}. This will allow us to analyze an algorithm's behavior at time $t$ without observing $x_t$.
 
-3) \cite{foster2020instance} introduces a class of complexity measures that will be critical for our theoretical analysis. They define the "policy disagreement coefficient" as follows:
-
-$$\theta_{\mcD, \pi^*}^{\mathrm{pol}}(\Pi, \epsilon_0) = \sup_{\epsilon \geq \epsilon_0} \frac{P_{\mcD}(x: \, \exists \pi \in \Pi_{\epsilon} \text{ s.t. } \pi(x) \neq \pi^*(x))}{\epsilon}$$
-
-where $\pi_{\epsilon} = \left\{\pi \in \Pi: P_{\mcD}(\pi(x) \neq \pi^*(x) \leq \epsilon) \right\}$. We can interpret this measure as quantifying how likely we are to encounter subjects where a near-optimal policy disagrees on their treatment assignment with the optimal policy. 
+3) \citep{foster2020instance} adapt the "policy disagreement coefficient" (PDC) from the active learning literature \citep{cohn1994improving, hanneke2014theory} to reinforcement learning and the CMAB problem and prove a number of inequalities based on this coefficient. The PDC quantifies how likely we are to encounter subjects where a near-optimal policy disagrees on their treatment assignment with the optimal policy. When this quantity is large the problem instance is challenging in the sense that there are large areas of the context space where it is easy to make a mistake because the second best policy is close in value to the optimal policy.
 
 

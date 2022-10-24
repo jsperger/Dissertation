@@ -2,9 +2,41 @@
 output: pdf_document
 ---
 
-To investigate the
+## Simulation 
 
-## Comparison Methods
+We test the performance of our method in a series of simulation For the first scenario we consider the case where $K = 4$, $\mcF$ is the class of linear functions with a single covariate. Suppose that $X \sim \text{Unif}(0, 1)$ and $\epsilon \sim N(0,1)$. The arm parameter vectors $\beta_k$ are given by: 
+
+$$\beta_1 = \begin{pmatrix}0 \\ 1 \end{pmatrix}, \quad \beta_2 = \begin{pmatrix} 1 \\ -1 \end{pmatrix}, \quad \beta_3 = \begin{pmatrix} 0.8 \\ -.95 \end{pmatrix}, \beta_4 = \begin{pmatrix} 0.5 \\ -1.2 \end{pmatrix}$$
+
+In this case the optimal DTR $\pi^*$ includes two treatments depending on a single covariate $X$, namely
+
+$$\pi^*(x) = \begin{cases}\text{Arm 1} & \text{ if }x \leq .5 \\
+\text{Arm 2} & \text{ if }x \geq .5
+\end{cases}$$
+
+And the value of the optimal policy $\mcV(\pi^*) = .75$. 
+
+### Value Improvement
+
+```{=latex}
+\begin{table}[]
+\centering
+\begin{tabular}{@{}lllll@{}}
+\toprule
+$\Reg^{\text{pop}}(\widehat{\pi}_T)$ & \begin{tabular}[c]{@{}l@{}}ER\\ T = 100\end{tabular} & \begin{tabular}[c]{@{}l@{}}SR\\ T = 100\end{tabular} & \begin{tabular}[c]{@{}l@{}}ER\\ T = 800\end{tabular} & \begin{tabular}[c]{@{}l@{}}SR\\ T = 800\end{tabular} \\
+\midrule 
+1st Quartile             & 0.045                                                & 0.037                                                & 0.016                                                & 0.013                                                \\
+Mean                     & 0.147                                                & 0.114                                                & 0.041                                                & 0.033                                                \\
+Median                   & 0.10                                                 & 0.081                                               & 0.034                                                & 0.027                                                \\
+3rd Quartile             & 0.188                                                & 0.147                                                & 0.059                                                & 0.048     \\                                       \bottomrule   
+\end{tabular}
+\caption{Scenario 1 - Expected Population Regret}
+\label{fig:P1Sc1Reg}
+\end{table}
+```
+
+### Comparison Methods
 
 Equal allocation 
 Top-two TS
+Foster SquareCB 

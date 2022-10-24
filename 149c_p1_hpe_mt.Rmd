@@ -2,6 +2,8 @@
 output: pdf_document
 ---
 
+\definition{High Probability Event $\hpeMt$ \cite{foster2020instance}}
+
 Let $D_{\delta} = 16 \log{\frac{2 | \mcF | T^2 }{\delta}}$
 
 

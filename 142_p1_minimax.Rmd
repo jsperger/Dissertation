@@ -1,0 +1,24 @@
+---
+output: pdf_document
+---
+
+
+### Minimaxity
+
+\definition{Policy Disagreement Coefficient $\pdcF$}
+
+The policy disagreement coefficient (PDF) $\pdcF$ is defined as follow:
+
+$$\theta_{\mcD, \pi^*}^{\mathrm{pol}}(\Pi, \epsilon_0) = \sup_{\epsilon \geq \epsilon_0} \frac{P_{\mcD}(x: \, \exists \pi \in \Pi_{\epsilon} \text{ s.t. } \pi(x) \neq \pi^*(x))}{\epsilon}$$
+
+where $\pi_{\epsilon} = \left\{\pi \in \Pi: P_{\mcD}(\pi(x) \neq \pi^*(x) \leq \epsilon) \right\}$. When the context is clear we'll abbreviate the notation as $/pdcS$.
+
+\definition{Bounded PDC Minimaxity $\mmpolS$}
+
+Define the allocation sequence $A$ as a sequence of mappings $A_t: \left(\left(\mcX \times \mcA \times [0, 1] \right)^{t - 1} \times \mcX \right) \to \mcA$. Then $A_t$ is a distribution over the possible actions after observing the context $x_t$. Following \cite{foster2020instance} but modifying the notion of regret we are interested in, for a given function class $\mcF$ the *constrained minimax complexity* $\mmpol$
+
+$$\mmpol = \inf_{\mssA} \sup_{\mcD, P_Y}\left\{\E_{\mcD, P_Y} \left[ \Regpop \right]  | f^* \in \mcF, \, \pdcS \leq b \right\}$$
+
+\textbf{Contextual Successive Rejection Bounded PDC Optimality}
+
+The Contextual Successive Rejection algorithm is $\mmpol$-optimal

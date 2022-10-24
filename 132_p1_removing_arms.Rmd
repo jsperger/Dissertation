@@ -4,7 +4,9 @@ output: pdf_document
 
 ### Finding Suboptimal Arms
 
-Removing arms 
+
+
+#### Other Approaches to Confidence Intervals
 
 weighted bootstrap \cite{rubin1981bayesian, ma2005robust}
 Value function inference\cite{wu2021resampling}

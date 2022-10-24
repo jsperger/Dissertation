@@ -2,7 +2,7 @@
 output: pdf_document
 ---
 
-# Bandit Objectives
+## Bandit Objectives
 
 Maximizing the expected number of successes falls under the general umbrella of maximizing the cumulative expected reward $\Reg_n = \E[\sum_{t = 1}^n Y_t]$. This objective is commonly restated as minimizing the cumulative regret, where regret is defined as the difference in expectation between the action we chose and the action chosen by an oracle with knowledge of the best treatment in expectation. The expected number of successes and expected regret both have Bayesian and Frequentist versions which differ in terms of whether the regret is defined with respect to fixed parameter(s) (Frequentist) or a distribution over the parameter space (Bayesian). Notice that maximizing the cumulative expected rewards only considers the outcomes of those within the trial. There are two commonly used contrasting objectives that only consider the outcomes after the trial is complete: 1) the expected reward for the first out-of-sample patient, known as the "simple" regret, and 2) the posterior probability assigned to the hypothesis that an arm is optimal for the true optimal arm. A less common, but no less important, objective is maximizing the power of a statistical test (the specifics of the test will depend on the problem at hand).  
 
@@ -18,7 +18,7 @@ $$\Reg_n(\nu, \pi) = n\mu^*(\nu) - \E_{\pi} \left[\sum_{t = 1}^n Y_t \right]$$
 This can be rewritten in terms of the gaps between the mean of each arm and the optimal arm and the expected number of times that the arm will be assigned provided there is a countable number of arms and a finite time horizon. Define the suboptimality gap for arm $a$ as $\Delta_a(\nu) = \mu^*(\nu) - \mu_a(\nu)$, and let the sample size for arm $a$ after $n$ patients have entered the study be denoted by $N_a(n) = \sum_{t = 1}^n I(A_t = a)$. Then we can rewrite the regret
 
 $$\Reg_n = \sum_{a \in \mathcal{A}}\Delta_a \E_{\pi}[N_a(n)]$$
-## Additional Objectives 
+### Additional Objectives 
 
 We will now briefly introduce some of the most common alternatives to the objectives presented here. The Bayesian regret arises from putting a prior distribution over the possible bandit instances. Suppose our bandit instance $\nu$ comes from an environment $\mathcal{E}$, and let $Q$ be a prior probability measure on $\mathcal{E}$. Then the Bayesian Regret $\mathrm{BR}_N$ is 
     
@@ -32,7 +32,41 @@ A Bayesian definition could be given in the same manner as the cumulative expect
         
         $$P(a^* \text{ is optimal} | \mathcal{H}_N) = P(\bigcap_{a \in \mathcal{A}} \mu_a^* \geq \mu_a |  \mathcal{H}_N )$$ 
         
-### Cites to work in
+
+## Distinction between fixed budget and fixed confidence cases
+
+In the fixed budget case the overall sample size $T$ is fixed and the objective is to maximize the probability assigned to the best arm at the end of the trial
+
+$$\argmax_{\pi \in \Pi} P\left(\widehat{\mu}= \mu^* | \mcH_T(\pi) \right)= \left((x_1, \pi(x_1), y_1), \ldots, (x_T, \pi(x_T), y_T) \right)$$
+
+In the fixed confidence case the sample size is unlimited, but the objective is to return the correct answer using as few samples as possible. Subject to the constraint that  $P\left(\widehat{\mu}= \mu^* | \mcH_{\tau}(\pi) \right) \geq 1 - \delta$ where $\tau$ is the stopping time. Algorithms that are optimal for the fixed budget case are not necessarily optimal for the fixed confidence case and vice versa. 
+
+#### A caution about comparing rates
+
+It is important to note that multiplying by a non-zero constant does not affect results in landau notation, for example, if $f(n)$ is $O\left(g(n)\right)$ then for a constant $c$, $|c| \times f(n)$ is also $O\left(g(n)\right)$. One implication of this property is that two algorithms that are both rate-optimal may have different performance for finite sample sizes. Additionally, an algorithm that has a suboptimal rate may still perform better at certain sample sizes than a rate-optimal algorithm. To illustrate the point, consider the  algorithm detailed Algorithm \ref{alg:DoNothing} that takes an existing rate-optimal algorithm $\mssA$ and a positive integer as input and simply does nothing for a fixed period of time.
+
+```{=latex}
+
+\begin{algorithm}
+\SetAlgoVlined
+\KwIn{Rate-optimal algorithm $\mssA$, constant $c \in \mbbN^+$}
+
+\For{Patients $t = 1, \ldots, c$}{
+Do nothing
+}
+
+\For{Patients $t = c + 1, \ldots$}{
+Assign using algorithm $\mssA$
+}
+
+ \caption{Rate-optimal slacking}
+ \label{alg:DoNothing}
+\end{algorithm}
+```
+
+Algorithm \ref{alg:DoNothing} and $\mssA$ are both rate-optimal but for any fixed sample size $\mssA$ is obviously preferable. 
+        
+#### Cites to work in
 
 \cite{lattimore2020bandit}
 

@@ -2,18 +2,18 @@
 output: pdf_document
 ---
 
-# Results for MAB Pure Exploration Problem
+## MAB Pure Exploration Problem
 
-Without loss of generality assume that the maximum mean is unique and that its index is one $\mu^* = \mu_1$. We then define an instance complexity measure $H$ based on the inverse gaps between the means for suboptimal arms and the optimal arm's mean:
+Without loss of generality assume that the maximum mean is unique and that its index is one $\mu^* = \mu_1$. Then an instance-dependent complexity measure $H$ based on the inverse gaps between the means for suboptimal arms and the optimal arm's mean is defined as:
 
 $$H = \sum_{k =2}^{K} \frac{1}{(\mu_k - \mu^* )^2}$$
 
 As the gap between arms grows smaller the complexity measure $H$ of the problem grows larger matching as one would expect. 
 
-# Distinction between fixed budget and fixed confidence cases
+\cite{carpentier2016tight}
 
-In the fixed budget case the overall sample size $T$ is fixed and the objective is to maximize the probability assigned to the best arm at the end of the trial $\argmax_{\pi \in \Pi} P\left(\widehat{\mu}= \mu^* | \mcH_T(\pi) = \left((x_1, \pi(x_1), y_1), \ldots, (x_T, \pi(x_T), y_T) \right) \right)$. 
+The probability that the best arm will be misidentified when there is a unique best arm is lower bounded by 
 
-In the fixed confidence case the sample size is unlimited, but the objective is to return the correct answer using as few samples as possible. Subject to the constraint that  $P\left(\widehat{\mu}= \mu^* | \mcH_T(\pi) \right) \geq 1 - \delta$ 
+$$P(\widehat{a}_{T + 1} \neq a^*) \geq \exp{\left( - \frac{T}{H \log{K}} \right)}$$
 
-Algorithms that are optimal for the fixed budget case are not optimal for the fixed confidence case and vice versa. This may be a little surprising, 
+Successive Rejection algorithm of \cite{audibert2010best} is optimal for the MAB best arm identification problem.  

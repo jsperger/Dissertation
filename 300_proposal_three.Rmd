@@ -19,5 +19,15 @@ Our design combines complete randomization at the individual level with a steppe
 
 We consider a cohort stepped wedge design with open cohorts of individuals and groups. Participants enroll in the trial and are individually randomized, and participants are part of (or join, in the case of a motivating trial) a group that is randomized using a stepped wedge design.  The primary outcome is measured at the individual level and is a function of individual and group characteristics and individual and group level intervention effects. The expected response for individual $i = 1, \ldots, n$ in cluster $j = 1, \ldots, J$, at time $t = 1, \ldots, T$ is given by
 
-$$\E[Y_{ijt}] = X_{ijt}^T\beta_i + W_{jt}^T \beta_j + A_{i}\tau_i + A_{ijt} \tau_j + A_i A_{ijt} \gamma$$
+$$\E[Y_{ijt}] = X_{ijt}^T\beta_{\rm ind} + W_{jt}^T \beta_{\rm grp} + A_{i}\tau_{\rm ind} + A_{ijt} \tau_{\rm grp} + A_i A_{ijt} \gamma$$
+Where $A_i$ is an indicator of whether individual $i$ was in the intervention condition, and $A_{ijt}$ indicates whether cluster $j$, the cluster individual $i$ belongs to, was treated by time $t$. The individual-level treatment effect is denoted by $\tau_{\rm ind}$, the group-level treatment effect by $\tau_{\rm grp}$, and the interaction between both interventions by $\gamma$. The expected response is also a function of their individual characteristics $X_{ijt}$ and the organization’s characteristics $W_{jt}$. 
 
+I propose to study two potential study objectives:
+
+1) to test the intervention main effects: $H_0: \tau_{\rm ind} = 0$ vs. $H_1: \tau_{\rm ind} \neq 0$ and $H_0: \tau_{\rm grp} = 0$ vs. $H_1: \tau_{\rm grp} \neq 0$ , and 
+
+2) to test the combined effect of both interventions: $H_0: (\tau_{\rm ind} + \tau_{\rm grp} + \gamma) = 0$ vs. $H_1: (\tau_{\rm ind} + \tau_{\rm grp} + \gamma) \neq 0$. 
+
+I will derive closed-form sample size formulas for these objectives based on analyzing the data using Generalized Estimating Equations (GEE). Sample size calculators do not currently exist for this setting outside of bespoke simulation studies \citep{ouyang2022sample}. While some calculators allow for nested clusters, for example randomizing wards within a hospital to an intervention at different times, this is distinct from having interventions at both the group and group-member level. 
+
+I propose to evaluate the relative efficiency of this design with two natural competitors: 1) the completely randomized design where both individuals and groups are randomized to either the intervention or control, and 2) the group-only design where both individuals and groups are randomized using a stepped wedge design. We will derive the asymptotic relative efficiency of the treatment effect estimators from these designs and conduct a simulation study to evaluate their finite sample relative performance. We anticipate that the completely randomized design will be the most efficient design, though it is often not possible to implement in this research area, while our design will provide meaningful improvement over the group-only design. 

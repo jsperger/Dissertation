@@ -2,7 +2,7 @@
 output: pdf_document
 ---
 
-# Optimal Design
+## Optimal Design
 
 The word ``optimal'' is frequently encountered in the discussion of trial designs.
 The optimal design literature has a rich history going back until at least the pioneering work of Kirstine Smith in her 1918 dissertation \citep{smith1918standard}. Before delving into their results, it is important to emphasize that optimality is always contingent on an objective and the assumptions made about the problem. This is at odds with the non-technical usage of optimal meaning the "best possible" because, outside of extremely trivial special cases, a design that is optimal for one standard objective will \emph{not} be optimal for a different objective \citep{silvey1980optimal, bubeck2009pure}. 
@@ -15,7 +15,7 @@ provide a useful target; one technique for adaptive designs is to find the optim
 design and then modify the randomization to target it \citep{atkinson1982optimum, atkinson1992optimum}.
 
 
-## Common Kinds of Optimality
+### Common Kinds of Optimality
 
 To review the basic objectives for optimal design, consider the problem of
 estimating a linear response function $\E[Y] = X^T \beta$. Perhaps the most common
@@ -61,7 +61,7 @@ When the response is a quadtratic function, the optimal design splits half of th
 Christine Smith worked out the optimal design for polynomial functions up to degree six. The degree must be known in advance. The optimal design for a lower degree polynomial will not be optimal for higher degree polynomials; indeed it may not be estimable at all.
 
 
-## Cites to work in
+### Cites to work in
 
 
 Gittins index \cite{gittins1979bandit, gittins2011multi}

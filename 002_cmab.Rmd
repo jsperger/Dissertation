@@ -22,7 +22,7 @@ $$\E_{X, \pi} \left[\left(\widehat{f}(x, \a) - f^*(x, a) \right)^2 \right] \leq 
 where $\mcE_{\mcF}(n)$ is a function that decreases with $n$. This is not a very restrictive assumption in practical applications, but it should be noted that there are assumptions entailed about the data generating distribution from the oracle assumption. One common assumption is that $Y \in [0, 1]$ or $|Y| \leq b \in \mathbb{R}$ both of which imply that the reward distribution is subgaussian \citep{vershynin2018high}. 
 
 
-## Contextual Bandit Algorithms
+### Contextual Bandit Algorithms
 
 Greedy and $\epsilon$-greedy \citep{langford2007epoch}
 
@@ -30,7 +30,7 @@ LinUCB
 
 Exp4?
 
-### Thompson Sampling
+#### Thompson Sampling
 
 The extension of Thompson Sampling to the case where the optimal treatment depends on patient covariates deserves additional attention because of its relevancy to health research. The simplest way to extend Thompson Sampling to the contextual bandit problem is to specify a linear model relating the expected outcome to the patient's covariates \citep{agrawal2013thompson}. The researcher considers $K$ potential interventions in their trial, and each arm $k$ has an unknown parameter vector $\beta_k$ that is predictive of an individual's expected response to treatment given the patient's characteristics. At each time $t$ when a patient enters the trial, their characteristics (or context) $X_t \in \mathcal{R}^d$ are observed, and after they receive their treatment $k$ the researcher observes their outcome $Y_t = X_t^T \beta_k + \epsilon_t$. We assume that each $\epsilon_t$ is an independent, identically distributed mean zero random variable. Most theoretical papers consider the case where $\epsilon_t$ are iid $\sigma$-subgaussian random variables, that is they are random variables $Z$ that satisfy the condition that for all $t > 0$ we have $\E[e^{Zt}] \leq \exp{t^2 \sigma^2 / 2}$. Gaussian random variables are sub-gaussian. Assume that $\epsilon_t \sim N(0, \sigma^2)$ where $\sigma^2$ is known for simplicity. Choosing the normal distribution with parameters $\mu_{k, \,0}, \sigma_{k, \,0}^2$ as the prior distribution gives us a closed form solution for the posterior distribution. The TS algorithm for the contextual bandit problem with linear rewards and known variance is given in algorithm~\ref{alg:CMABTS}. 
 
@@ -93,8 +93,7 @@ condition applied to the minimum eigenvalue of the information matrix
 
 
 
-
-## Contextual Bandit in Healthcare
+### Contextual Bandit in Healthcare
 
 LASSO for high-dimensional covariates and and propose aplying it to EHR or genetic data \citep{bastani2020online}
 

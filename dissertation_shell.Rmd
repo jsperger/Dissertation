@@ -93,13 +93,15 @@ knitr::opts_chunk$set(echo = FALSE)
 ```
 
 
-# Drop-the-loser Rule for Contextual Bandits
+# Contextual Successive Rejection for DTR Estimation
 
 ```{r, child='110_p1_intro.Rmd'}
 ```
 
 ```{r, child='120_p1_problem_definition.Rmd'}
 ```
+
+## Method
 
 ```{r, child='130_p1_method.Rmd'}
 ```
@@ -110,8 +112,13 @@ knitr::opts_chunk$set(echo = FALSE)
 ```{r, child='132_p1_removing_arms.Rmd'}
 ```
 
+## Theory 
 
-## High Probability Events
+```{r, child='142_p1_minimax.Rmd'}
+```
+
+
+### High Probability Events
 
 ```{r, child='149a_p1_hpe_dp.Rmd'}
 ```
@@ -122,13 +129,21 @@ knitr::opts_chunk$set(echo = FALSE)
 ```{r, child='149c_p1_hpe_mt.Rmd'}
 ```
 
-# Proposal Two
+## Simulation
+
+```{r, child='150_p1_sim_intro.Rmd'}
+```
+
+# Structured Successive Rejection
 
 ```{r, child='200_proposal_two.Rmd'}
 ```
 
 
-# Proposal Three
+# Multi-level Inteventions with distinct Individual- and Group-level Randomizations
+
+```{r, child='300_proposal_three.Rmd'}
+```
 
 # Appendix
 

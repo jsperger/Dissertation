@@ -2,3 +2,17 @@
 output: pdf_document
 ---
 
+## Estimation after Adaptation
+
+```{=latex}
+Parameter estimates from standard methods are biased when based on data collected using response-adaptive randomization \citep{xu2013estimation, nie2017adaptively}. This issue arises even when the adjustment is only made at certain intervals such as in group-sequential methods that may terminate early for success or failure or remove under-performing arms at certain intervals instead of for every allocation \citep{emerson1990parameter}. Under reasonable assumptions about the data collection (the algorithm exploits knowledge it gains at least some of the time, and independence of irrelevant alternatives), estimates from adaptively collected data are biased downwards overall \citep{nie2017adaptively}. If an arm is played less frequently the estimate of its mean must be smaller than some other arms. This can happen when the arm is truly inferior or if the samples were ``unlucky'' and lower than the mean. Because the arm is less likely to be played, this negative bias is likely to go uncorrected. If an arm is ``overperforming'' however, it will continue to be played and its estimate will likely revert to the mean for that arm. The end result is that estimates of the mean rewards have overall net negative bias. 
+
+Fortunately, the classic inverse-probability weighted (IPW) estimator provides unbiased estimates of the expected mean rewards. The IPW estimator is given by 
+
+$$\widehat{\mu}_k^{\text{IPW}} = \frac{1}{T}\sum_{t = 1}^T \frac{Y_t I(A_t = k)}{\phi_t(k)}$$
+
+where $\phi_t(k)$ denotes the probability of assignment to arm $k$ at time $t$ conditional on the history: $\phi_t(k) = P(A_t = k | \mathcal{H}_t)$. This conditional assignment probability $\phi_t(k)$ is commonly known as a propensity score. It's important to note that the $T$ in the equation is the total sample size, not the sample size for the $k$-th arm. The total sample size for an experiment should be independent of the assignment probabilities, while the sample size for an arm will depend on changing arm probabilities. The Augmented Inverse-probability Weighted (AIPW) estimator also provides unbiased estimatoes of the expected mean rewards \citep{robins1994estimation, zhong2021aipw}. 
+
+ $$\widehat{\mu}_k^{\text{AIPW}} = \frac{1}{T}\sum_{t = 1}^T \left( \frac{I(A_t = k)}{\phi_t(k)}Y_t + \left(1 - \frac{I(A_t = k)}{\phi_t(k)}\right)\widehat{m}_t(k)\right)$$
+
+```

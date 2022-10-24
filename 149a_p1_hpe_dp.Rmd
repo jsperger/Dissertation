@@ -2,9 +2,8 @@
 output: pdf_document
 ---
 
-Taken from Foster 20 (add citation)
 
-## $\hpeDP$
+\definition{High Probability Event $\hpeDP$ \cite{foster2020instance}}
 
 Set $\mu_m = \frac{64 \log{4M/\delta}}{n_{m-1}}$ for all $m \in [M]$. 
 Let $\delta$ be a fixed in the interval $(0, 1]$, and then define the event 
