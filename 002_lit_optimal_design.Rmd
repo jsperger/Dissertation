@@ -33,45 +33,17 @@ $c$- and $V$- optimal designs have an intuitive appeal because the whole covaria
 is not usually equally interesting; an attractive property of $d$-optimality that is not shared by 
 either $c$- or $V$-optimality is that it is invariant to reparameterizations.
 
+Optimal designs are highly dependent on the function to be estiamted \cite{pukelsheim2006optimal, fedorov2013optimal}.Christine Smith worked out the $d$-optimal design for polynomial functions up to degree six \citep{smith1918standard}. The degree must be known in advance. The optimal design for a lower degree polynomial will not be optimal for higher degree polynomials; indeed a higher-degree polynomial may not be estimable at all if the design from a lower-degree polynomial is employed. When the response is a linear function of the parameters the optimal design puts the entirety of the observations on the edges of the design space. When the response is a quadtratic function, the optimal design splits half of the observations between the edges of the design space and the other half is placed in the middle of the design space. 
+Efficient algorithms are available for many function classes, including nonlinear functions \cite{harman2020randomized}, and available in an R package \cite{harman2019optimal}.
 
-TODO: Efficiency definition
-TODO: Define a design
+### Optimal Design in Clinical Trials
 
- A design $\xi$ specifies $l \geq 1$ regression vectors $x_i$ with corresponding positive weights $w_i$ that sum to one.
-    
-    The moment matrix of a design $\xi \in \Xi$ is the 
-    
-    $$M(\xi) = \sum_{x \in \text{supp} \, \xi} \xi(x)xx^{\prime} = \int_{\mathcal{X}}xx^{\prime}\, \mathrm{d}\xi$$
+Atkinson proposes an adaptive design based on optimal design where the goal
+is to estimate treatment effect contrasts $\widehat{\alpha}_i - \widehat{\alpha}_j$ assuming the data comes from a linear regression model:
 
-## Optimal Design in Clinical Trials
+$$\E[Y_n] = X_n\omega = A_n\alpha + Z_n \psi$$
+where $A_n$ is the $n \times k$ matrix of indicator variables for the assigned treatment and $Z_n$ is $n \times d$ matrix of prognostic factors. Consider a contrast matrix $C$ of the form $C^T = (L^T, 0)$. After some algebra, the $d$-optimum design that minimizes the variance of the contrast matrix maximizes $\Omega = L^T \left( A^TA - A^TZ(Z^TZ)^{-1}Z^TA \right)^{-1}L$. 
 
-Atkinson
+Next, after the new vector of covariates is observed $Z_{n + 1}$, the hypothetical value of $\Omega_{n + 1}$ is computed under each potential allocation. Whichever treatment allocation maximizes the precision can be allocated deterministically or randomly.
 
-Elving Set
-
-Barycentric Spanners
-
-Geometric design
-
-Very dependent on the shape of the function
-
-When the response is a linear function of the parameters the optimal design puts the entirety of the observations
-on the edges of the design space. 
-When the response is a quadtratic function, the optimal design splits half of the observations between the edges of the design space and the other half is placed in the middle of the design space.
-Christine Smith worked out the optimal design for polynomial functions up to degree six. The degree must be known in advance. The optimal design for a lower degree polynomial will not be optimal for higher degree polynomials; indeed it may not be estimable at all.
-
-
-### Cites to work in
-
-
-Gittins index \cite{gittins1979bandit, gittins2011multi}
-
-Bayesian review \cite{shahriari2015taking}
-
-You know what it is \cite{pukelsheim2006optimal}
-
-Nonlinear response models \cite{fedorov2013optimal}
-
-RAR in Clinical Trials \cite{atkinson2019randomised}
-
-efficient algorithms \cite{harman2020randomized} and R package \cite{harman2019optimal}
+If we are interested in all the treatment contrasts with a reference then the variance of the estimator $\widehat{\alpha}$ is minimized by the balanced design and there is balance over all prognostic factors so that $A^TZ = 0$.

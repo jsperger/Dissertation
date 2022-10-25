@@ -2,8 +2,7 @@
 output: pdf_document
 ---
 
-## Simulation 
-
+### Scenario One
 We test the performance of our method in a series of simulation For the first scenario we consider the case where $K = 4$, $\mcF$ is the class of linear functions with a single covariate. Suppose that $X \sim \text{Unif}(0, 1)$ and $\epsilon \sim N(0,1)$. The arm parameter vectors $\beta_k$ are given by: 
 
 $$\beta_1 = \begin{pmatrix}0 \\ 1 \end{pmatrix}, \quad \beta_2 = \begin{pmatrix} 1 \\ -1 \end{pmatrix}, \quad \beta_3 = \begin{pmatrix} 0.8 \\ -.95 \end{pmatrix}, \beta_4 = \begin{pmatrix} 0.5 \\ -1.2 \end{pmatrix}$$
@@ -34,9 +33,3 @@ Median                   & 0.10                                                 
 \label{fig:P1Sc1Reg}
 \end{table}
 ```
-
-### Comparison Methods
-
-Equal allocation 
-Top-two TS
-Foster SquareCB 

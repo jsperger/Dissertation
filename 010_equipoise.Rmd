@@ -1,0 +1,12 @@
+---
+output: pdf_document
+--- 
+
+## Equipoise
+
+Before continuing to the projects in this dissertation, a brief interlude
+Since the development of response-adaptive randomization there have been recurring debates about their ethics, with proponents typically pointing to the increased number of successful treatments while detractors question whether the modification of assignment probabilities central to response-adaptive randomization violates the principle of equipoise that guides many discussions of the ethics of clinical trials. Equipoise is typically defined as a state of genuine uncertainty about which of two treatment options is preferable has been a focal point of the discussion of the ethics of clinical trials since its introduction in \cite{fried1974medical}. Two of the main views of equipoise are an individual-focused equipoise where the uncertainty is that of a physician deciding how to treat a patient and ``clinical equipoise'' where the uncertainty is that of the overarching community of clinicians as evidenced by honest, professional disagreement over the best treatment \citep{freedman1987equipoise}. Response-adaptive randomization is more problematic under the individual interpretation of equipoise than the clinical view of equipoise. 
+
+An extreme statement of the view that outcome-adaptive randomization is ethically problematic is given by \citep{saxman2015ethical}, who writes ``equipoise is disturbed as soon as data are available from the first group of patients enrolled into the study and the randomization is adapted to favor the ‘better’ treatment arm.'' Taken to the logical extreme, experimentation could continue indefinitely under this definition as long as the data is never checked. Similarly, if equipoise were so fragile that it's disturbed by any accumulation of evidence then the evidence from a Phase II clinical trial would render a Phase III trial unethical. 
+
+Equipoise should be concerned with the state of clinical knowledge, not the study mechanisms. A clinical trial that amassed data but refused to analyze it wouldn't continue to be ethical indefinitely so long as they continue to put off analyzing the data. Single trials are rarely persuasive enough to settle medical debates, and replication is a fundamental part of the scientific process. 

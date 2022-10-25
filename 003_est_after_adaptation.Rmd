@@ -13,6 +13,6 @@ $$\widehat{\mu}_k^{\text{IPW}} = \frac{1}{T}\sum_{t = 1}^T \frac{Y_t I(A_t = k)}
 
 where $\phi_t(k)$ denotes the probability of assignment to arm $k$ at time $t$ conditional on the history: $\phi_t(k) = P(A_t = k | \mathcal{H}_t)$. This conditional assignment probability $\phi_t(k)$ is commonly known as a propensity score. It's important to note that the $T$ in the equation is the total sample size, not the sample size for the $k$-th arm. The total sample size for an experiment should be independent of the assignment probabilities, while the sample size for an arm will depend on changing arm probabilities. The Augmented Inverse-probability Weighted (AIPW) estimator also provides unbiased estimatoes of the expected mean rewards \citep{robins1994estimation, zhong2021aipw}. 
 
- $$\widehat{\mu}_k^{\text{AIPW}} = \frac{1}{T}\sum_{t = 1}^T \left( \frac{I(A_t = k)}{\phi_t(k)}Y_t + \left(1 - \frac{I(A_t = k)}{\phi_t(k)}\right)\widehat{m}_t(k)\right)$$
+%$$\widehat{\mu}_k^{\text{AIPW}} = \frac{1}{T}\sum_{t = 1}^T \left( \frac{I(A_t = k)}{\phi_t(k)}Y_t + \left(1 - \frac{I(A_t = k)}{\phi_t(k)}\right)\widehat{m}_t(k)\right)$$
 
 ```

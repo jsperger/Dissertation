@@ -39,4 +39,4 @@ to their parameters $\theta$.
 
 ### SMARTs
 
-The second stage of a SMART is adaptive in the sense that the randomization probability often depends on the response to the first-line treatment. Not adaptive in the sense that the randomization probabilities are fixed over time, though there is very recent work on this IVANOVA EMAIL
+The second stage of a SMART is adaptive in the sense that the randomization probability often depends on the response to the first-line treatment. Not adaptive in the sense that the randomization probabilities are fixed over time, though there is very recent work on this \citep{wang2022adaptive}.

@@ -4,11 +4,59 @@ output: pdf_document
 
 ### Finding Suboptimal Arms
 
+Suboptimal arms can be removed at the end of an epoch by comparing the estimated
+value of the fitted optimal policy and that of the estimated value of the same policy 
+if arm $a$ were removed. If an arm is suboptimal, removing it from the set of feasible
+treatments to assign does not change the estimated value function. An additional confidence
+term can prevent arms from being removed erroneously. By using the induced policy $\pi_{\widehat{f}_m}(x ;\mcA_m)$ only a single fitting procedure is needed per epoch because the expected 
+outcome for each arm is independent of all other arms by the definition of the CMAB problem.
 
 
-#### Other Approaches to Confidence Intervals
 
-weighted bootstrap \cite{rubin1981bayesian, ma2005robust}
+\begin{algorithm}[H]
+\SetAlgoVlined
+\KwIn{Active arm set $\mcA_m$, Function class $\mcF$, Recent epoch history $\mcH_m$}
+
+Compute $\widehat{f}_m = \argmin_{f \in \mcF} \sum_{\mcH_m}$
+
+Compute $\widehat{\mcV}\left(\pi_{\widehat{f}_m}(x ;\mcA_m)\right)$
+
+Define $\zeta_{m, \alpha} = (M - m + 1)\log{\left(\frac{ \log|\mcF| / \alpha}{2 n_m}\right)}$ // Confidence half-width
+
+Set $\mcA_{m + 1} = \mcA_m$
+
+ \For{$a \in \mcA_m$}{
+ 
+ Define $\mcA_{\not a} = \mcA_m \ a$
+ 
+ Compute $\widehat{\mcV} \left(\pi_{\widehat{f}_m}(x ;\mcA_{\not a})\right)$
+ 
+ \If{$\widehat{\mcV}(\pi_{\widehat{f}_m}(x ;\mcA_m)) - \widehat{\mcV}(\pi_{\widehat{f}_m}(x ;\mcA_{\not a})) \geq \zeta_m$}{
+ 
+ Update $\mcA_{m + 1} = \mcA_{m + 1} \ a$
+ }
+ 
+ Return $\mcA_{m + 1}$
+ 
+}
+
+ \caption{Removing Suboptimal Arms Subroutine}
+\label{alg:P1Suboptimal}
+\end{algorithm}
+
+#### Potential Practical Improvements
+
+##### Other Approaches to Confidence Intervals
+
+The confidence interval in Algorithm \ref{alg:P1Suboptimal} is constructed based 
+on non-asymptotic bounds, a necessary condition for our non-asymptotic bound on the population regret. They also utilize the fact that the rewards are bounded in $[0, 1]$ and a derivation based on Hoeffding's inequality \citep{maurer2009empirical}. When the rewards are not bounded the method of \cite{howard2021time} can be applied.
+
+While they do not come with finite guarantees, bounds based on asymptotic may nevertheless
+have strong empirical performance and provide tighter bounds than non-asymptotic confidence intervals. Asymptotic confidence bounds for value function inference are described in detail in chapter ten of  \cite{tsiatis2019dynamic}. The weighted bootstrap \cite{rubin1981bayesian, ma2005robust}
 Value function inference\cite{wu2021resampling}
 
-$$\mcV(\pi) - \mcV(\pi_{\not a}) \geq \zeta_m$$
+##### Conserving $\alpha$ 
+
+It will likely be impossible to remove an arm in the first few epochs because 
+the sample size is such that no difference in the estimated value function is great
+enough to be outside the confidence interval around zero. A practical improvement can be made by waiting until a later epoch to begin testing thus reducing the number of tests conducted (i.e. CI comparisons).

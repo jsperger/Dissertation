@@ -74,9 +74,6 @@ knitr::opts_chunk$set(echo = FALSE)
 ```{r, child='002_rar.Rmd'}
 ```
 
-```{r, child='002_rar_controversies.Rmd'}
-```
-
 ```{r, child='002_lit_optimal_design.Rmd'}
 ```
 
@@ -90,6 +87,14 @@ knitr::opts_chunk$set(echo = FALSE)
 ```
 
 ```{r, child='003_est_after_adaptation.Rmd'}
+```
+
+```{r, child='004_inference.Rmd'}
+```
+
+# Ethics of Response-adaptive Randomization
+
+```{r, child='010_equipoise.Rmd'}
 ```
 
 
@@ -134,6 +139,8 @@ knitr::opts_chunk$set(echo = FALSE)
 ```{r, child='150_p1_sim_intro.Rmd'}
 ```
 
+## Planned Continuation
+
 # Structured Successive Rejection
 
 ```{r, child='200_proposal_two.Rmd'}
@@ -143,9 +150,4 @@ knitr::opts_chunk$set(echo = FALSE)
 # Multi-level Inteventions with distinct Individual- and Group-level Randomizations
 
 ```{r, child='300_proposal_three.Rmd'}
-```
-
-# Appendix
-
-```{r, child='a01_notation.Rmd'}
 ```

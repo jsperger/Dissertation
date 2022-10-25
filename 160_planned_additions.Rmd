@@ -1,0 +1,23 @@
+---
+output: pdf_document
+---
+
+
+I will now outline the planned work to bring this project to completion.
+
+### Simulation
+#### Additional Comparison Methods
+
+Equal randomization remains the default method for most clinical trials.
+
+\cite{foster2018practical} SquareCB. While this is a method for reducing the
+in-sample regret, it will provide insight into the tradeoff between in-sample 
+and out-of-sample performance DTR estimation for the CMAB problem.
+
+SCUBA \cite{guo2017subgroup}
+
+Scenario Two
+
+### Defining a "null" scenario
+
+"Null" scenarios do not map neatly when the goal is function estimation rather than hypothesis testing. When no treatment is more effective than any other treatment the value of all DTRs are the same. Minimizing the population expected regret in this scenario is trivial because it is impossible to fail (everything is equally ineffective). An alternative performance metric we can investigate are the probability than an arm that is not suboptimal is removed prematurely. 
