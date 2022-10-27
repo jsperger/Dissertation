@@ -4,16 +4,13 @@ output: pdf_document
 
 ## MAB Pure Exploration Problem
 
-Without loss of generality assume that the maximum mean is unique and that its index is one $\mu^* = \mu_1$. Then an instance-dependent complexity measure $H$ based on the inverse gaps between the means for suboptimal arms and the optimal arm's mean is defined as:
+The "pure exploration" problem has been investigated in the MAB but not CMAB setting. \cite{carpentier2016tight} prove a lower bound based on an instance-dependent regret bound. Without loss of generality assume that the maximum mean is unique and that its index is one $\mu^* = \mu_1$. Then an instance-dependent complexity measure $H$ based on the inverse gaps between the means for suboptimal arms and the optimal arm's mean is defined as:
 
 $$H = \sum_{k =2}^{K} \frac{1}{(\mu_k - \mu^* )^2}$$
 
-As the gap between arms grows smaller the complexity measure $H$ of the problem grows larger matching as one would expect. 
-
-\cite{carpentier2016tight}
-
-The probability that the best arm will be misidentified when there is a unique best arm is lower bounded by 
+As the gap between arms grows smaller the complexity measure $H$ of the problem grows larger matching as one would expect. The probability that the best arm will be misidentified when there is a unique best arm is lower bounded by 
 
 $$P(\widehat{a}_{T + 1} \neq a^*) \geq \exp{\left( - \frac{T}{H \log{K}} \right)}$$
 
-Successive Rejection algorithm of \cite{audibert2010best} is optimal for the MAB best arm identification problem.  
+The successive rejection algorithm of \cite{audibert2010best} is optimal for the MAB best arm identification problem.  This suggests a few potential considerations for the CMAB problem: 1) finding an appropriate objective, 
+2) defining an appropriate complexity measure, and 3) determining an intelligent way to remove suboptimal arms. These intuitions motivate our Contextual Successive Rejection method.

@@ -55,6 +55,9 @@ abbreviations:
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
+```{=latex}
+\mychapter{1}{Introduction}
+```
 
 # Introduction 
 
@@ -74,13 +77,16 @@ knitr::opts_chunk$set(echo = FALSE)
 ```{r, child='002_rar.Rmd'}
 ```
 
+```{r, child='002_bandit_objectives.Rmd'}
+```
+
+```{r, child='002_rar_methods.Rmd'}
+```
+
 ```{r, child='002_lit_optimal_design.Rmd'}
 ```
 
 ```{r, child='002_regret_power.Rmd'}
-```
-
-```{r, child='002_bandit_objectives.Rmd'}
 ```
 
 ```{r, child='002_mab_pure_exp.Rmd'}
@@ -97,8 +103,9 @@ knitr::opts_chunk$set(echo = FALSE)
 ```{r, child='010_equipoise.Rmd'}
 ```
 
-
-# Contextual Successive Rejection for DTR Estimation
+```{=latex}
+\mychapter{2}{Contextual Successive Rejection for DTR Estimation}
+```
 
 ```{r, child='110_p1_intro.Rmd'}
 ```
@@ -106,7 +113,7 @@ knitr::opts_chunk$set(echo = FALSE)
 ```{r, child='120_p1_problem_definition.Rmd'}
 ```
 
-## Method
+# Method
 
 ```{r, child='130_p1_method.Rmd'}
 ```
@@ -117,13 +124,13 @@ knitr::opts_chunk$set(echo = FALSE)
 ```{r, child='132_p1_removing_arms.Rmd'}
 ```
 
-## Theory 
+# Theory 
 
 ```{r, child='142_p1_minimax.Rmd'}
 ```
 
 
-### High Probability Events
+## High Probability Events
 
 ```{r, child='149a_p1_hpe_dp.Rmd'}
 ```
@@ -134,20 +141,28 @@ knitr::opts_chunk$set(echo = FALSE)
 ```{r, child='149c_p1_hpe_mt.Rmd'}
 ```
 
-## Simulation
+# Simulation
 
 ```{r, child='150_p1_sim_intro.Rmd'}
 ```
 
-## Planned Continuation
+# Planned Continuation
 
-# Structured Successive Rejection
+```{r, child='160_planned_additions.Rmd'}
+```
+
+
+```{=latex}
+\mychapter{3}{Structured Successive Rejection}
+```
 
 ```{r, child='200_proposal_two.Rmd'}
 ```
 
 
-# Multi-level Inteventions with distinct Individual- and Group-level Randomizations
+```{=latex}
+\mychapter{4}{Multi-level Inteventions with distinct Individual- and Group-level Randomizations}
+```
 
 ```{r, child='300_proposal_three.Rmd'}
 ```

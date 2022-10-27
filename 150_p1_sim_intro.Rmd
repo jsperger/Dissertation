@@ -3,6 +3,7 @@ output: pdf_document
 ---
 
 ### Scenario One
+
 We test the performance of our method in a series of simulation For the first scenario we consider the case where $K = 4$, $\mcF$ is the class of linear functions with a single covariate. Suppose that $X \sim \text{Unif}(0, 1)$ and $\epsilon \sim N(0,1)$. The arm parameter vectors $\beta_k$ are given by: 
 
 $$\beta_1 = \begin{pmatrix}0 \\ 1 \end{pmatrix}, \quad \beta_2 = \begin{pmatrix} 1 \\ -1 \end{pmatrix}, \quad \beta_3 = \begin{pmatrix} 0.8 \\ -.95 \end{pmatrix}, \beta_4 = \begin{pmatrix} 0.5 \\ -1.2 \end{pmatrix}$$
@@ -17,6 +18,9 @@ And the value of the optimal policy $\mcV(\pi^*) = .75$.
 
 ### Value Improvement
 
+Table \ref{tbl:P1Sc1Reg} details $\Reg^{\text{pop}}(\widehat{\pi}_T)$
+under equal randomization (er) and contextual successive rejection at sample sizes of 100 and 800 for Scenario 1. There is an approximately 25% reduction in the expected population regret at a sample size of 100, and a 20% reduction at a sample size of 800. These results hold for the 1st and 3rd quartile and the median suggesting that the reduction in average regret is not an artifact of succeeding greatly on some realizations and performing worse on others. 
+
 ```{=latex}
 \begin{table}[]
 \centering
@@ -30,6 +34,6 @@ Median                   & 0.10                                                 
 3rd Quartile             & 0.188                                                & 0.147                                                & 0.059                                                & 0.048     \\                                       \bottomrule   
 \end{tabular}
 \caption{Scenario 1 - Expected Population Regret}
-\label{fig:P1Sc1Reg}
+\label{tbl:P1Sc1Reg}
 \end{table}
 ```

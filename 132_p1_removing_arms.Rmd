@@ -2,7 +2,7 @@
 output: pdf_document
 ---
 
-### Finding Suboptimal Arms
+## Finding Suboptimal Arms
 
 Suboptimal arms can be removed at the end of an epoch by comparing the estimated
 value of the fitted optimal policy and that of the estimated value of the same policy 
@@ -44,9 +44,9 @@ Set $\mcA_{m + 1} = \mcA_m$
 \label{alg:P1Suboptimal}
 \end{algorithm}
 
-#### Potential Practical Improvements
+### Potential Practical Improvements
 
-##### Other Approaches to Confidence Intervals
+#### Other Approaches to Confidence Intervals
 
 The confidence interval in Algorithm \ref{alg:P1Suboptimal} is constructed based 
 on non-asymptotic bounds, a necessary condition for our non-asymptotic bound on the population regret. They also utilize the fact that the rewards are bounded in $[0, 1]$ and a derivation based on Hoeffding's inequality \citep{maurer2009empirical}. When the rewards are not bounded the method of \cite{howard2021time} can be applied.
@@ -55,7 +55,7 @@ While they do not come with finite guarantees, bounds based on asymptotic may ne
 have strong empirical performance and provide tighter bounds than non-asymptotic confidence intervals. Asymptotic confidence bounds for value function inference are described in detail in chapter ten of  \cite{tsiatis2019dynamic}. The weighted bootstrap \cite{rubin1981bayesian, ma2005robust}
 Value function inference\cite{wu2021resampling}
 
-##### Conserving $\alpha$ 
+#### Conserving $\alpha$ 
 
 It will likely be impossible to remove an arm in the first few epochs because 
 the sample size is such that no difference in the estimated value function is great

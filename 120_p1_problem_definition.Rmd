@@ -2,13 +2,13 @@
 output: pdf_document
 ---
 
-## Problem Definition 
+# Problem Definition 
 
 We will now formalize the statement of the problem. At time $t = 1, \ldots [T]$ we observe a context $x_t \in  \mathcal{X} \subseteq \mathbb{R}^d$; that is a new subject enters the study and we observe their covariate information. $X_1, \ldots, X_T$ are independent and identically distributed random variables with context distribution $\mathcal{D}$. 
 After the context is observed, we assign an arm (treatment) $a_t \in \mathcal{A} = [K]$ where $[N]$ denotes the set $\{1, \ldots, N \}$ for any $N \in \mathbb{N}$. The arm is assigned according to an assignment policy $\pi: \mathcal{X} \times \mathcal{H}_t \to \mathcal{A}$ where $\mathcal{H}_{t} = \left\{(x_1, a_1, y_1), \ldots, (x_{t - 1}, a_{t - 1}, y_{t -1})\right\}$ is the collected history of contexts, actions, and rewards up to time $t$ with $\mathcal{H}_0 = \emptyset$. The outcome (reward) $y_t \in [0,1]$ is immediately observed. The conditional expected reward is a fixed but unknown function of the covariate and treatment information $\E[Y_t |X_t = x_t, \, A_t = a_t] = f^*(x_t, a_t)$. The assumption that the outcomes are bounded is for convenience and can be relaxed to allow outcomes in $\mathbb{R}$.
 
 
-### Objective
+## Objective
 
 Our goal will be to minimize the expected regret in the target population based on the estimated 
 optimal policy $\widehat{\pi}_T$ at the conclusion of the study. This does not take into account any of the 
@@ -22,7 +22,7 @@ general population. This is a more reasonable assumption in post-market studies
 which typically have fewer exclusion criteria than Phase I-III trials, but relaxing
 this restriction is a potential line of future work.
 
-### Assumptions
+## Assumptions
 
 *Assumption - realizibility*
 

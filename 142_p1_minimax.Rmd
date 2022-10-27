@@ -3,7 +3,7 @@ output: pdf_document
 ---
 
 
-### Minimaxity
+## Minimaxity
 
 \definition{Policy Disagreement Coefficient $\pdcF$}
 
@@ -21,4 +21,7 @@ $$\mmpol = \inf_{\mssA} \sup_{\mcD, P_Y}\left\{\E_{\mcD, P_Y} \left[ \Regpop \ri
 
 \textbf{Contextual Successive Rejection Bounded PDC Optimality}
 
-The Contextual Successive Rejection algorithm is $\mmpol$-optimal
+The Contextual Successive Rejection algorithm is $\mmpol$-optimal.
+
+The proof for this theorem proceeds by bounding the estimation error between $\widehat{\mcV}(\pi) - \mcV(\pi)$ and $\widehat{\mcV}(\widehat{pi}) - \mcV(\widehat{\pi})$. With these bounds in hand, we define high probability events for the true value of a policy estimated at the end of an epoch falling inside of the confidence band calculated at the end of an epoch. Conditioning 
+on these events holding we can derive a regret bound based on not removing any optimal arms. The exact details are in progress.
